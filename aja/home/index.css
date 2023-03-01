@@ -56,6 +56,13 @@ body {
 #registro:hover {   
     border-color: orange;
 }
+#login-2:hover {
+    border-color:orange;
+}
+
+#registro-2:hover {   
+    border-color: orange;
+}
 #login {
     display: none;
     font-size: 2rem;
@@ -64,6 +71,7 @@ body {
     border-bottom-right-radius: 0%;
     border-top-right-radius: 0%;
     border-right: 0;
+    opacity: 0;
     background-color: gray;
     text-decoration: none;
     padding: 10px;
@@ -74,7 +82,34 @@ body {
     cursor: pointer;
     z-index: 10;
 }
-
+#login-2 {
+    font-size: 0.8rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+    border-right: 0;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    background-color: lightgray;
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    cursor: pointer;
+    z-index: 10;
+}
+#h {
+    padding: 0.2rem;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
 #registro {
     display: none;
     font-size: 2rem;
@@ -86,6 +121,28 @@ body {
     background-color: gray;
     text-decoration: none;
     padding: 10px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    z-index: 10;
+}
+
+#registro-2 {
+    
+    font-size: 0.8rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0%;
+    border-top-left-radius: 0%;
+    border-right: 0;
+    background-color: lightgray;
+    text-decoration: none;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    padding: 5px;
     color: black;
     border: 3px solid white;
     font-family:'Courier New', Courier, monospace;

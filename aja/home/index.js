@@ -2,6 +2,9 @@ const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
 const b = document.querySelector('#side-f');
+const c = document.querySelector('#login-2');
+const d = document.querySelector('#registro-2');
+const f = document.querySelector('#h')
 const cortina = document.querySelector('#cortina')
 const body = document.querySelector('body');
 
@@ -20,11 +23,17 @@ botonDrop.addEventListener('click', (e) => {
         setTimeout(() => {
             a.classList.add('hiden');
             b.classList.add('hiden');
+            c.classList.add('hiden');
+            d.classList.add('hiden');
+            f.classList.add('hiden');
         }, 500);
     } 
     else {
         a.classList.remove('hiden');
         b.classList.remove('hiden');
+        c.classList.remove('hiden');
+        d.classList.remove('hiden');
+        f.classList.remove('hiden');
         cortina.classList.toggle('cortina-t')
         sideMobil.classList.remove('transition');
     }
@@ -35,6 +44,9 @@ cortina.addEventListener('click' , (e) => {
     console.log("jaja")
     a.classList.remove('hiden');
     b.classList.remove('hiden');
+    c.classList.remove('hiden');
+    d.classList.remove('hiden');
+    f.classList.remove('hiden');
     cortina.classList.toggle('cortina-t')
     sideMobil.classList.remove('transition');
 })
