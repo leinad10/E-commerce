@@ -20,7 +20,7 @@ botonDrop.addEventListener('click', (e) => {
         setTimeout(() => {
             a.classList.add('hiden');
             b.classList.add('hiden');
-        }, 2000);
+        }, 500);
     } 
     else {
         a.classList.remove('hiden');
