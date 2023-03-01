@@ -107,7 +107,7 @@ body {
     z-index: 10;
     opacity: 0.1;
     transition-property: width, opacity;
-    transition-duration: 2s;
+    transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
 }
 
@@ -120,7 +120,7 @@ body {
     opacity: 0;
     z-index: 5;
     transition-property: opacity, right;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
 }
 
