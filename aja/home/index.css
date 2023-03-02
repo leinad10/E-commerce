@@ -23,7 +23,7 @@ body {
     color: rgb(227, 221, 221);
 }   
 #div-nav {
-        
+    
      border: 10px solid orange;
      display: flex;
      box-shadow: 5px 15px 30px gray;
@@ -71,7 +71,6 @@ body {
     border-bottom-right-radius: 0%;
     border-top-right-radius: 0%;
     border-right: 0;
-    opacity: 0;
     background-color: gray;
     text-decoration: none;
     padding: 10px;
@@ -224,9 +223,11 @@ body {
 }
 .side-button{
     font-size: 1rem;
+
     color: white;
     background-color: black;
     border: 4px solid orange;
+    border-radius: 30px;
     padding: 0.5rem;
 }
 #side-t-2 {
@@ -278,6 +279,7 @@ body {
     color: white;
     background-color: black;
     border: 4px solid orange;
+    border-radius: 30px;
     padding: 0.5rem;
 }
 .side-f-contacts {
@@ -476,7 +478,7 @@ body {
 } */
 .c{
     position: relative;
-    bottom: 6%;
+    bottom: 2%;
 }
 
 .b:hover {
@@ -599,7 +601,7 @@ body {
         font-size: 2.5rem;
     }
     .c {
-        bottom: 20%;
+        bottom: 16%;
     }
 
 
@@ -610,7 +612,7 @@ body {
         width: 80%;
     }
     .c {
-        bottom: 3%;
+        bottom: 0%;
     }
 
 }
@@ -622,7 +624,7 @@ body {
         height: 65%;
     }
     .c {
-        bottom: 18%;
+        bottom: 10%;
     }
     .numbertext {
         top: 10%;
