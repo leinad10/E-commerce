@@ -52,42 +52,6 @@ cortina.addEventListener('click' , (e) => {
 })
 
 
-
-// function showSlides(n) {
-//   let i;
-//   let dots = document.getElementsByClassName("dot");
-//   let slides = document.getElementsByClassName("mySlides");
-//   console.log(slides.length);
-//   console.log(slides);
-//   console.log(slideIndex);
-//   if (n > slides.length) {slideIndex = 1}
-//   if (n < 1) {slideIndex = slides.length}
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   slideIndex++;
-//   for (i = 0; i < dots.length; i++) {
-//           dots[i].className = dots[i].className.replace("active","");
-//         }
-//   if (slideIndex > slides.length) {slideIndex = 1}
-//   slides[slideIndex-1].style.display = "flex";
-//   dots[slideIndex-1].className += " active";
-//   console.log(slideIndex);
-//   setTimeout(showSlides, 10000); // Change image every 2 seconds
-// }
-
-// function plusSlides(n) {
-//   showSlides(slideIndex + (n));
-// }
-
-// // Thumbnail image controls
-// function currentSlide(n) {
-//   showSlides(slideIndex = n);
-// }
-
-// let slideIndex = 0;
-// showSlides(slideIndex);
-
 function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("mySlides");
