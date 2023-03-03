@@ -5,6 +5,7 @@ const b = document.querySelector('#side-f');
 const c = document.querySelector('#login-2');
 const f = document.querySelector('#h');
 const cortina = document.querySelector('#cortina')
+const cortina2 = document.querySelector('#cortina-2')
 const body = document.querySelector('body');
 const usernameInput = document.querySelector('#usuarioInput');
 const usernameP = document.querySelector('#p-username');
@@ -14,6 +15,8 @@ const formulario = document.querySelector("#formulario");
 const select = document.querySelector("#select-number");
 const paswordInput = document.querySelector('#contraseñaInput');
 const mensaje = document.querySelector('#messageFromDB');
+const spiner = document.querySelector('#loader');
+const mensajeContainer = document.querySelector('#container-message');
 const verificarPasword = document.querySelector('#validacionContraseñaInput');
 const btn = document.querySelector('#boton-registrar');
 
@@ -141,17 +144,15 @@ verificarPasword.addEventListener('input', e => {
   validation(verificarPasword, paswordMatch);
 });
 
-formulario.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log("jajajaj");
-})
-
 select.addEventListener('change', e => {
     e.preventDefault();
+    if (select.value === "") {
+      e.target.classList.remove('correct')
+    }
     console.log("jaja");
     console.log(e.target);
     selectChecked = true
-    e.target.classList.add('correct')
+    e.target.classList.toggle('correct')
     validation(select, select)
 })
 
@@ -164,6 +165,11 @@ formulario.addEventListener('submit', e => {
     phone: numberInput.value,
     password : paswordInput.value,
   }
+ 
+  mensajeContainer.classList.add('show-transform');
+  cortina2.classList.add('show-transform');
+    
+  
   const aja = async () => {
     console.log(registroUser);
     console.log(JSON.stringify(registroUser));
@@ -185,31 +191,54 @@ formulario.addEventListener('submit', e => {
     } 
   }; 
   aja().then(contactos => {
+
     console.log(contactos.registroJSON);
     console.log(contactos.registro);
     if (contactos.registro.status === 400) {
+      spiner.classList.toggle('hidden');
+      mensajeContainer.classList.add("fail");
       mensaje.innerHTML=''
-      const enviarMensaje = document.createElement('h1');
-      enviarMensaje.innerHTML = `${contactos.registroJSON.error}`
+      const enviarMensaje = document.createElement('div');
+      enviarMensaje.innerHTML = `
+      <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+      <h1>${contactos.registroJSON.error}</h1>
+      `
       mensaje.append(enviarMensaje);
-      mensaje.classList.add('flex');
-      mensaje.classList.remove('show');
-      setInterval(() => {
-        mensaje.classList.remove('flex');
-        mensaje.classList.add('show')
-      }, 5000);
-    } else {
-      console.log("jajaj");
-        mensaje.innerHTML = ''
-        const enviarMensaje = document.createElement('h1');
-        enviarMensaje.innerHTML = `Usuario Creado satisfactoriamente`
-        mensaje.append(enviarMensaje);
-        mensaje.classList.add('show');
-        mensaje.classList.remove('hidden');
-        setInterval(() => {
-          mensaje.classList.add('hidden');
-          mensaje.classList.remove('show');
+      mensaje.classList.toggle('show-transform');
+      setTimeout(() => {
+        mensaje.classList.toggle('show-transform');
+        mensajeContainer.classList.remove('fail');
+        mensajeContainer.classList.remove('show-transform');
+        cortina2.classList.remove('show-transform');
+        spiner.classList.toggle('hidden');
+        mensajeContainer.classList.add('hidden');
         }, 5000);
+        setTimeout(()=>{
+          mensajeContainer.classList.remove('hidden');
+        },100);
+    } else {
+        spiner.classList.toggle('hidden');
+        mensajeContainer.classList.add("succes");
+        console.log("jajaj");
+        mensaje.innerHTML = ''
+        const enviarMensaje = document.createElement('div');
+        enviarMensaje.innerHTML = `
+        <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
+        <h1>Usuario creado exitosamente<br>Bienvenido ${contactos.registroJSON.savedUser.username}</h1>
+        `
+        mensaje.append(enviarMensaje);
+        mensaje.classList.toggle('show-transform');
+        setTimeout(() => {
+          mensaje.classList.toggle('show-transform');
+          mensajeContainer.classList.remove('succes');
+          mensajeContainer.classList.remove('show-transform');
+          cortina2.classList.remove('show-transform');
+          spiner.classList.toggle('hidden');
+          mensajeContainer.classList.add('hidden');
+        }, 5000);
+        setTimeout(()=>{
+          mensajeContainer.classList.remove('hidden');
+        },600);
         usernameInput.value = ''
         emailInput.value = ''
         paswordInput.value = ''
@@ -221,6 +250,7 @@ formulario.addEventListener('submit', e => {
         numberValidation = false;
         paswordValidation = false;
         selectChecked = false;
+        select.classList.remove('correct')
         validation(verificarPasword, paswordMatch);
         validation(emailInput, emailValidation);
         validation(usernameInput, usernameValidation);
