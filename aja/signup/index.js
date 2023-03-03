@@ -174,7 +174,7 @@ formulario.addEventListener('submit', e => {
     console.log(registroUser);
     console.log(JSON.stringify(registroUser));
     try {
-      const registro = await (fetch('http://localhost:3003/api/users', {
+      const registro = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
