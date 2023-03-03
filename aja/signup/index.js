@@ -16,10 +16,6 @@ const paswordInput = document.querySelector('#contraseñaInput');
 const verificarPasword = document.querySelector('#validacionContraseñaInput');
 const btn = document.querySelector('#boton-registrar');
 
-body.addEventListener('click' , e => {
-  e.preventDefault();
-  console.log(e.target);
-})
 
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();

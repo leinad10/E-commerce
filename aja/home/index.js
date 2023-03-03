@@ -8,10 +8,7 @@ const f = document.querySelector('#h')
 const cortina = document.querySelector('#cortina')
 const body = document.querySelector('body');
 
-body.addEventListener('click' , e => {
-  e.preventDefault();
-  console.log(e.target);
-})
+
 
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
