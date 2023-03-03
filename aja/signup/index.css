@@ -18,8 +18,16 @@ body {
 }
 .correct {
     border: 3px solid #0d803d !important;
-
+    animation: aja 0.5s;
 }
+@keyframes aja {
+    0%  { transform: scale(1.05, 1.05)}
+    
+    50% { transform: scale(1.09, 1.09)}
+   
+    100% { transform: scale(1.05, 1.05)}
+  } 
+
 .incorrect {
     border: 3px solid rgb(138, 22, 22) !important;
     animation: shake 0.5s;
