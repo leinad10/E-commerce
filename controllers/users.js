@@ -6,7 +6,7 @@ require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
 
-  const { username, email, password } = request.body;
+  const { username, email, codeNumber, phone, password } = request.body;
   const userExist = await User.findOne({ username });
 
   const isCorrect = /^(?=.*[a-z])(?=.*[0-9])(?=.*[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]).{6,24}$/;
@@ -20,9 +20,11 @@ exports.insertData = (async (request, response) => {
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
   //   // User creation in MongoDB
+  const numberPhone = `${codeNumber}-${phone}`
   const user = new User({
     username,
     email,
+    numberPhone,
     passwordHash,
   });
 

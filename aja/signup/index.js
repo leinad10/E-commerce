@@ -13,6 +13,7 @@ const numberInput = document.querySelector('#numberInput');
 const formulario = document.querySelector("#formulario");
 const select = document.querySelector("#select-number");
 const paswordInput = document.querySelector('#contraseñaInput');
+const mensaje = document.querySelector('#messageFromDB');
 const verificarPasword = document.querySelector('#validacionContraseñaInput');
 const btn = document.querySelector('#boton-registrar');
 
@@ -153,5 +154,84 @@ select.addEventListener('change', e => {
     e.target.classList.add('correct')
     validation(select, select)
 })
+
+formulario.addEventListener('submit', e => {
+  e.preventDefault();
+  const registroUser = {
+    username : usernameInput.value,
+    email : emailInput.value,
+    codeNumber: select.value,
+    phone: numberInput.value,
+    password : paswordInput.value,
+  }
+  const aja = async () => {
+    console.log(registroUser);
+    console.log(JSON.stringify(registroUser));
+    try {
+      const registro = await (fetch('http://localhost:3003/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(registroUser)
+    }));
+    const registroJSON = await registro.json();
+    return {registro,registroJSON}
+  }
+    catch {
+      console.log('error');
+      console.log(error.message);
+      console.log(error);
+    } 
+  }; 
+  aja().then(contactos => {
+    console.log(contactos.registroJSON);
+    console.log(contactos.registro);
+    if (contactos.registro.status === 400) {
+      mensaje.innerHTML=''
+      const enviarMensaje = document.createElement('h1');
+      enviarMensaje.innerHTML = `${contactos.registroJSON.error}`
+      mensaje.append(enviarMensaje);
+      mensaje.classList.add('flex');
+      mensaje.classList.remove('show');
+      setInterval(() => {
+        mensaje.classList.remove('flex');
+        mensaje.classList.add('show')
+      }, 5000);
+    } else {
+      console.log("jajaj");
+        mensaje.innerHTML = ''
+        const enviarMensaje = document.createElement('h1');
+        enviarMensaje.innerHTML = `Usuario Creado satisfactoriamente`
+        mensaje.append(enviarMensaje);
+        mensaje.classList.add('show');
+        mensaje.classList.remove('hidden');
+        setInterval(() => {
+          mensaje.classList.add('hidden');
+          mensaje.classList.remove('show');
+        }, 5000);
+        usernameInput.value = ''
+        emailInput.value = ''
+        paswordInput.value = ''
+        verificarPasword.value = ''
+        numberInput.value = ""
+        select.value = ""
+        usernameValidation = false;
+        emailValidation = false;
+        numberValidation = false;
+        paswordValidation = false;
+        selectChecked = false;
+        validation(verificarPasword, paswordMatch);
+        validation(emailInput, emailValidation);
+        validation(usernameInput, usernameValidation);
+        validation(select, select);
+        validation(numberInput, numberValidation);
+        // setInterval(() => {
+        //   window.location.href = '../loginn/index.html'
+        // }, 3000);
+    }
+  })
+  console.log(aja);
+});
 
 
