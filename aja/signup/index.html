@@ -115,13 +115,14 @@
                         <form id="formulario" autocomplete="off">
                             <!-- Username -->
                             <div class="input-container">
+                                
                                 <input type="text" class="inputs" id="usuarioInput" placeholder="Nombre de Usuario">
-                                <p id="p-username" class="correcion">Debe incluir 1 letra, minimo 3 caracteres, maximo 8 caracteres.</p>
+                                <span id="p-username" class="spch-bub-inside correcion">Debe incluir 1 letra, minimo 3 caracteres, maximo 8 caracteres.</span>
                             </div>
                         <!-- Email -->
                             <div class=" input-container">
                                 <input type="text" class="inputs" id="emailInput" placeholder="Correo electronico">
-                                <p id="p-email" class="correcion">ejemplo@email.com</p>
+                                <p id="p-email" class="spch-bub-inside correcion">ejemplo@email.com</p>
                             </div>
                             <div class="select"> 
                                 <select class="inputs" id="select-number">
@@ -135,7 +136,7 @@
                                 </select>
                                 <div class="input-container" id="number-input-container">
                                     <input type="text" class="inputs" id="numberInput" placeholder="Numero de telefono">
-                                    <p id="p-number" class="correcion">xxxxxxx</p>
+                                    <p id="p-number" class="spch-bub-inside correcion">xxxxxxx</p>
                                 </div>
                             </div>
                             
@@ -144,13 +145,13 @@
                         <!-- Contraseña -->
                             <div class=" input-container">
                                 <input type="password" class="inputs" id="contraseñaInput" placeholder="Contraseña">
-                                <p id="p-contraseña" class="correcion " ">La contraseña debe tener almenos 6caracteres eh incluir 1 numero, 1 letra y un caracter especial.</p>
+                                <p id="p-contraseña" class="spch-bub-inside correcion " ">La contraseña debe tener almenos 6caracteres eh incluir 1 numero, 1 letra y un caracter especial.</p>
                             </div>
                         
                         <!-- Confirmar contraseña -->
                             <div class=" input-container">
                                 <input type="password" class="inputs" id="validacionContraseñaInput" placeholder="Repita la Contraseña">
-                                <p id="p-contraseña" class="correcion" ">Debe coincidir con la contraseña</p>
+                                <p id="p-contraseña" class="spch-bub-inside correcion" ">Debe coincidir con la contraseña</p>
                             </div>
                 
                             <button type="submit" id="boton-registrar" disabled>Registrar</button>

@@ -101,6 +101,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .inputs{
@@ -166,8 +167,14 @@ body {
 
 
 .correcion {
-    display: none;
+    display:flex;
     position: absolute;
+    font-family:Tahoma;
+    color: #F5F5F5;
+    font-size:18px;
+    padding: .15em 0.5em;
+    border-radius: 0.2em;
+    display: none;
     background-color: lightcoral;
     z-index: 10;
     
@@ -246,6 +253,27 @@ body {
     font-weight: 800;
     cursor: pointer;
     z-index: 10;
+}
+
+
+.spch-bub-inside:before{
+    content:'';
+    display: block;
+    height:0;
+    width:0;
+    border-bottom: 0.6em solid transparent;
+    border-left: 0.6em solid #333;
+    top: 100%;
+    left: 10%;
+    overflow: hidden;
+    position: absolute;
+}
+.spch-bub-inside:hover {
+    background-color: #ABC;
+    color:#2c2c2c;
+}
+.spch-bub-inside:hover:before{
+    border-left-color:#ABC
 }
 #login-2 {
     font-size: 0.8rem;
@@ -640,7 +668,7 @@ body {
 }
 
 .show {
-    display: block !important; 
+    display: flex !important; 
 }
 
 .main-container {
