@@ -17,9 +17,6 @@
                 <a id="login" href="../login/">
                     Log in
                 </a>
-                <a id="registro" href="../signup/">
-                    Registro
-                </a>
             </div>
             <div id="boton-mobil">
                 <button id="botonDrop" class="">
@@ -68,9 +65,6 @@
                 <a id="login-2" href="../login/">
                     Log in
                 </a>
-                <a id="registro-2" href="../signup/">
-                    Registro
-                </a>
             </div>
         </div>
         <div id="main">
@@ -114,32 +108,63 @@
                 
             </div>
             <div id="prueba">
-                <div class="mySlides fade" style="display: flex;">
-                  <div class="numbertext">Cangreburguer</div>
-                  <img class='b' src="https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/334354762_2058079317731962_3402143427324015699_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=9cTpBvwEWuEAX8PoVlz&tn=x4ARY4h_Wils3wmz&_nc_ht=scontent-mia3-1.xx&oh=00_AfAnWgwWAuOuppLl0yNxEVXkwvwDeBvJBiLrl9lls11l2g&oe=64052088">
-                  <div class="text">Caption Text Caption Three dsdsds fgaga gdgfdgsd dgdgaga gdgdfa sjudhsad jhdasda</div>
+                
+                <div id="form-title">
+                    <h1>Registro de usuario</h1>
+                    <div id="form-div">
+                        <form id="formulario" autocomplete="off">
+                            <!-- Username -->
+                            <div class="input-container">
+                                <input type="text" class="inputs" id="usuarioInput" placeholder="Nombre de Usuario">
+                                <p id="p-username" class="correcion">Debe incluir 1 letra, minimo 3 caracteres, maximo 8 caracteres.</p>
+                            </div>
+                        <!-- Email -->
+                            <div class=" input-container">
+                                <input type="text" class="inputs" id="emailInput" placeholder="Correo electronico">
+                                <p id="p-email" class="correcion">ejemplo@email.com</p>
+                            </div>
+                            <div class="select"> 
+                                <select class="inputs" id="select-number">
+                                    <option value="" disabled selected>Seleciona un codigo</option>
+                                    <option value="0239">0239</option>
+                                    <option value="0412">0412</option>
+                                    <option value="0416">0416</option>
+                                    <option value="0426">0426</option>
+                                    <option value="0414">0414</option>
+                                    <option value="0424">0424</option>
+                                </select>
+                                <div class="input-container" id="number-input-container">
+                                    <input type="text" class="inputs" id="numberInput" placeholder="Numero de telefono">
+                                    <p id="p-number" class="correcion">xxxxxxx</p>
+                                </div>
+                            </div>
+                            
+                        <!-- Select -->
+                        
+                        <!-- Contraseña -->
+                            <div class=" input-container">
+                                <input type="password" class="inputs" id="contraseñaInput" placeholder="Contraseña">
+                                <p id="p-contraseña" class="correcion " ">La contraseña debe tener almenos 6caracteres eh incluir 1 numero, 1 letra y un caracter especial.</p>
+                            </div>
+                        
+                        <!-- Confirmar contraseña -->
+                            <div class=" input-container">
+                                <input type="password" class="inputs" id="validacionContraseñaInput" placeholder="Repita la Contraseña">
+                                <p id="p-contraseña" class="correcion" ">Debe coincidir con la contraseña</p>
+                            </div>
+                
+                            <button type="submit" id="boton-registrar" disabled>Registrar</button>
+                
+                        </form>
+                        
+                    </div>
+                </div>
+                <div id="form-image">
+                    <img class='logo' src="https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/334354762_2058079317731962_3402143427324015699_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=9cTpBvwEWuEAX8PoVlz&tn=x4ARY4h_Wils3wmz&_nc_ht=scontent-mia3-1.xx&oh=00_AfAnWgwWAuOuppLl0yNxEVXkwvwDeBvJBiLrl9lls11l2g&oe=64052088">
                 </div>
                 
-                <div class="mySlides fade" style="display: none;">
-                  <div class="numbertext">Club house</div>
-                  <img class='b' src="https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/334558703_799841904339037_7317448028271805824_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=gr0HuY-6_VIAX9dFgYx&_nc_ht=scontent-mia3-1.xx&oh=00_AfChrDz6X2jREUGLFJFFtjnWYkzOD_DxCC_29L0uNdu4sQ&oe=6404F389">
-                  <div class="text">Caption Two Caption Three dsdsds fgaga gdgfdgsd dgdgaga gdgdfa sjudhsad jhdasda</div>
-                </div>
                 
-                <div class="mySlides fade" style="display: none;">
-                  <div class="numbertext">Teque plus</div>
-                  <img class='b' src="https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/334436398_1512689082559730_8681763764644311448_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=kepwJRTWRlAAX-1ivjr&_nc_ht=scontent-mia3-1.xx&oh=00_AfCJrTbT8AXhiXD29iZEBIxN4i1HmdbqfskqXkwnLI4Y3Q&oe=6404BD96">
-                  <div class="text">Caption Three dsdsds fgaga gdgfdgsd dgdgaga gdgdfa sjudhsad jhdasda fsaddsdsdsa</div>
-                </div>
-            
-                <div class="c" style="text-align:center">
-                  <a class="prev" onclick="plusSlides(-1)">❮</a>
-                  <span class="dot" onclick="currentSlide(1)"></span> 
-                  <span class="dot" onclick="currentSlide(2)"></span> 
-                  <span class="dot" onclick="currentSlide(3)"></span> 
-                  <a class="next" onclick="plusSlides(1)">❯</a>
-                </div>
-            </div>    
+            </div>  
         </div>
     
         <script src="index.js"></script>
