@@ -222,7 +222,7 @@ body {
     padding-top: 2rem;
 }
 .side-button{
-    font-size: 1.8rem;
+    font-size: 1rem;
     color: white;
     background-color: black;
     border: 4px solid orange;
@@ -274,7 +274,7 @@ body {
     justify-content: space-evenly;
 }
 .side-button-2{
-    font-size: 1.8rem;
+    font-size: 1rem;
     color: white;
     background-color: black;
     border: 4px solid orange;
@@ -648,7 +648,16 @@ body {
 }
 
 @media (min-width: 768px) {
-    
+    .side-button{
+        font-size: 1.8rem;
+        
+        padding: 0.2rem;
+    }
+    .side-button-2{
+        font-size: 1.8rem;
+        
+        padding: 0.2rem;
+    }
     .b {
         width: 80%;
         height: 65%;
