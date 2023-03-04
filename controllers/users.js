@@ -180,7 +180,7 @@ exports.insertData = (async (request, response) => {
 
 exports.getData = (async (request, response) => {
   const data = request.body
-  User.find({data}, (err, docs) =>  {
+  User.find({}, (err, docs) =>  {
     response.send({
       docs
     })

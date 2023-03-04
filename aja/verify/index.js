@@ -33,11 +33,38 @@ const verificar = async () => {
   return {prueba, jsonprueba};
 }
 
+const getUsersInformacion = async () => {
+  console.log("probando");
+  const losUsers = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }));
+  console.log("probando2");
+const losUsersJson = await (losUsers.json());
+return {losUsersJson, losUsers};
+}
 
-verificar().then(e =>{
-  console.log(e.jsonprueba);
-  console.log(e.prueba);
+getUsersInformacion().then(e => {
+  console.log(e.losUsers);
+  console.log(e.losUsersJson);
+  const users = e.losUsersJson
+
+  verificar().then(e =>{
+    console.log(e.jsonprueba);
+    console.log(e.prueba);
+    console.log(users);
+    const verifiedUser = users.filter(e => {e.username===username})
+    console.log(verifiedUser);
+    if (verifiedUser.verify===true) {
+        console.log("Usuario verificado exitosamente");
+    }
+  })
 })
+
+
+
 
 console.log("muuuy bien hijo de puta");
 console.log(data);
