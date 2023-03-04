@@ -16,7 +16,8 @@ const catalog2 = document.querySelector('#catalog-2');
 const account2 = document.querySelector('#account-2');
 const cart2 = document.querySelector('#cart-2');
 const gallery2 = document.querySelector('#gallery-2');
-const username = localStorage.getItem("jsw")
+const username = localStorage.getItem("jsw");
+const mensaje = document.querySelector('#messageFromDB');
 
 data = {username : username}
 const verificar = async () => {
@@ -59,9 +60,38 @@ return {losUsersJson, losUsers};
       console.log(verifiedUser[0]);
       console.log(verifiedUser);
       const arraay = verifiedUser[0].verify
-      if (arraay===true) {
+      if (arraay===false) {
+          spiner.classList.toggle('hidden');
+          mensajeContainer.classList.add("fail");
+          mensaje.innerHTML=''
+          const enviarMensaje = document.createElement('div');
+          enviarMensaje.innerHTML = `
+          <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+          <h1>Hubo un error intenta verificarte de nuevo dando click al boton de abajo</h1>
+          <button id="vverificar" class="side-button-2">Verificar</button>
+          `
+          mensaje.append(enviarMensaje);
+          mensaje.classList.toggle('show-transform');
+          
+            
+      } else {
           console.log("Usuario verificado exitosamente");
-      }
+          spiner.classList.toggle('hidden');
+          mensajeContainer.classList.add("succes");
+          console.log("jajaj");
+          mensaje.innerHTML = ''
+          const enviarMensaje = document.createElement('div');
+          enviarMensaje.innerHTML = `
+          <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
+          <h1>Usuario verificado exitosamente</h1>
+          `
+          mensaje.append(enviarMensaje);
+          mensaje.classList.toggle('show-transform');
+          setTimeout(() => {
+            window.location = "../login"
+          }, 5000);
+          
+        }
     })
   })
 
