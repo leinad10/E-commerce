@@ -58,6 +58,7 @@ form.addEventListener('submit', e => {
 
     aja(pillo).then(e => {
       console.log(e);
+      
       if (e.login.status===400) {
         spiner.classList.toggle('hidden')
         mensajeContainer.classList.add('fail')
