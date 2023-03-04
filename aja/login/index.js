@@ -24,7 +24,7 @@ const mensajeContainer = document.querySelector('#container-message');
 
 const usernameInput  = document.querySelector('#usuarioInput');
 const passwordInput = document.querySelector('#contraseñaInput');
-const boton = document.querySelector('#boton-loginr');
+const boton = document.querySelector('#boton-login');
 const form = document.querySelector("#formulario");
 
 const aja = async (pillo) => {
@@ -39,10 +39,13 @@ const aja = async (pillo) => {
   const loginJSON = await login.json();
   console.log(loginJSON);
 }
-
+// if (usernameInput.value===""|| passwordInput.value==="") {
+//   boton.disabled = true
+// } else {boton.disabled=false}
 
 form.addEventListener('submit', e => {
     e.preventDefault();
+    
     const username = usernameInput.value;
     const password = passwordInput.value;
     const pillo = {username: username, password: password}
@@ -80,7 +83,7 @@ form.addEventListener('submit', e => {
         mensaje.innerHTML=''
         const enviarMensaje = document.createElement('div');
         enviarMensaje.innerHTML = `
-        <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+        <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
         <h1>${e.loginJSON.error}</h1>
         `
         mensaje.append(enviarMensaje);
