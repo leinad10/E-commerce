@@ -56,11 +56,10 @@ return {losUsersJson, losUsers};
       console.log(e.losUsersJson);
       const users = e.losUsersJson.docs
       const verifiedUser = users.filter(e => e.username === username)
-      console.log(verifiedUser["verify"]);
+      console.log(verifiedUser[0]);
       console.log(verifiedUser);
-      const verifiedUseraha = verifiedUser["verify"];
-      console.log(verifiedUseraha);
-      if (verifiedUser.verify===true) {
+      const arraay = verifiedUser[0].verify
+      if (arraay===true) {
           console.log("Usuario verificado exitosamente");
       }
     })
