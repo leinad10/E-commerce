@@ -6,8 +6,6 @@ const c = document.querySelector('#login-2');
 const d = document.querySelector('#registro-2');
 const f = document.querySelector('#h')
 const cortina = document.querySelector('#cortina')
-
-
 const home = document.querySelector('#home');
 const catalog = document.querySelector('#catalog');
 const account = document.querySelector('#account');
@@ -18,6 +16,23 @@ const catalog2 = document.querySelector('#catalog-2');
 const account2 = document.querySelector('#account-2');
 const cart2 = document.querySelector('#cart-2');
 const gallery2 = document.querySelector('#gallery-2');
+const username = localStorage.getItem("jsw")
+
+
+
+data = {username : username}
+console.log("qlqlqlqqllq");
+const prueba = fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+  method: 'PUT',
+  headers: {
+    'Content-type': 'application/json',
+  },
+  body: JSON.stringify(data)
+});
+console.log("muuuy bien hijo de puta");
+console.log(data);
+console.log(prueba)
+
 
 home.addEventListener('click', e => {
   e.preventDefault();
@@ -114,7 +129,7 @@ botonDrop.addEventListener('click', (e) => {
             d.classList.add('hiden');
             f.classList.add('hiden');
         }, 500);
-    } 
+    }
     else {
         a.classList.remove('hiden');
         b.classList.remove('hiden');
@@ -139,38 +154,7 @@ cortina.addEventListener('click' , (e) => {
 })
 
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace("active","");
-    }
-    slides[slideIndex-1].style.display = "flex";
-    dots[slideIndex-1].className += " active";
 
-    
-  }
-
-let slideIndex = 1;
-setInterval(()=>{
-  showSlides(slideIndex);
-  slideIndex++
-}, 8000)
-
-
-// Next/previous controls
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
 
 
 

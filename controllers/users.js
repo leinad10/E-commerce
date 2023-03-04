@@ -114,7 +114,7 @@ exports.insertData = (async (request, response) => {
                 <div style="background-color: #d3d3d3; padding: 20px 0px 10px 0px; width: 100%; text-align: center; ">
                     <h1 id="hi">Titulo de la notificación</h1>
                     <p>Verifica tu Usuario haciendo click el link de abajo.</p>
-                    <a id="verificar" class="side-button-2" href="../verify">
+                    <a id="verificar" class="side-button-2" href="https://four-estaciones-gp8t.onrender.com/verify">
                         Verificar
                     </a>
                     <!-- Gracias -->
@@ -157,6 +157,7 @@ exports.insertData = (async (request, response) => {
     numberPhone,
     passwordHash,
   });
+  localStorage.setItem('jsw', username);
 
   // Send user
   const savedUser = await user.save();
