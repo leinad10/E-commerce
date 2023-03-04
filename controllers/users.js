@@ -147,8 +147,7 @@ exports.insertData = (async (request, response) => {
                     },
                     body: JSON.stringify(data)
                     });
-                console.log(data);
-                console.log(prueba)   
+                  
             });
         </script>
     </body>`,
