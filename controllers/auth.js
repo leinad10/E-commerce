@@ -31,7 +31,7 @@ exports.changeData = (req,res) => {
     if (err) {
         res.status(400).json({error: "Acceso denegado o token expirado"})
     } else {
-        User.updateOne({ username : username },
+        User.updateOne({ username : username.username },
             body,
             (err,docs) => {
                 if (err) {
