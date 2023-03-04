@@ -49,7 +49,7 @@ return {losUsersJson, losUsers};
 getUsersInformacion().then(e => {
   console.log(e.losUsers);
   console.log(e.losUsersJson);
-  const users = e.losUsersJson
+  const users = e.losUsersJson.docs
 
   verificar().then(e =>{
     console.log(e.jsonprueba);
