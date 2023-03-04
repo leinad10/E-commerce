@@ -18,17 +18,27 @@ const cart2 = document.querySelector('#cart-2');
 const gallery2 = document.querySelector('#gallery-2');
 const username = localStorage.getItem("jsw")
 
-
-
 data = {username : username}
-console.log("qlqlqlqqllq");
-const prueba = fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+const verificar = async () => {
+  console.log("probando");
+  const prueba = await fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
   method: 'PUT',
   headers: {
     'Content-type': 'application/json',
   },
   body: JSON.stringify(data)
-});
+  }); 
+  console.log("probando2");
+  const jsonprueba = await (prueba.json());
+  return {prueba, jsonprueba};
+}
+
+
+verificar().then(e =>{
+  console.log(e.jsonprueba);
+  console.log(e.prueba);
+})
+
 console.log("muuuy bien hijo de puta");
 console.log(data);
 console.log(prueba)
