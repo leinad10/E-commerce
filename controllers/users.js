@@ -161,10 +161,9 @@ exports.insertData = (async (request, response) => {
     numberPhone,
     passwordHash,
   });
-  
+
   // Send user
   const savedUser = await user.save();
-  response.status(200).json({message: `Acceso autorizado ${accessToken}`})
   return response.status(200).json({savedUser});
   }
 );
