@@ -1,8 +1,8 @@
 const express = require('express');
 const { route } = require('../app');
-const controller = require('../controllers/users');
+const controller = require('../controllers/auth');
 const router = express.Router();
-const path = 'users'
+const path = 'auth'
 
 router.get(
     `/api/${path}`,
@@ -14,7 +14,7 @@ router.post(
 );
 router.put(
     `/api/${path}`,
-    controller.changeData
+    controller.insertData
 );
 
 module.exports = router
