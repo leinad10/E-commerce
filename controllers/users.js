@@ -56,7 +56,11 @@ exports.insertData = (async (request, response) => {
         h3{ font-size: 18px !important;}
         h4{ font-size: 16px !important;}
         p, a{font-size: 15px !important;}
-
+        
+        *{
+          list-style: none;
+          text-decoration: none;
+        }
         .claseBoton{
             width: 30%;
                 background-color: #fcae3b;
