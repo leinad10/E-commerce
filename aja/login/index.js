@@ -21,90 +21,87 @@ const mensaje = document.querySelector('#messageFromDB');
 const spiner = document.querySelector('#loader');
 const mensajeContainer = document.querySelector('#container-message');
 
-data = {username : username}
-const verificar = async () => {
-  console.log("probando");
-  const prueba = await fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
-  method: 'PUT',
+
+const usernameInput  = document.querySelector('#usuarioInput');
+const passwordInput = document.querySelector('#contraseñaInput');
+const boton = document.querySelector('#boton-loginr');
+const form = document.querySelector("#formulario");
+
+const aja = async (pillo) => {
+  const login = await (fetch('https://four-estaciones-gp8t.onrender.com/api/login', {
+  method: 'POST',
   headers: {
-    'Content-type': 'application/json',
-  },
-  body: JSON.stringify(data)
-  }); 
-  console.log("probando2");
-  const jsonprueba = await (prueba.json());
-  return {prueba, jsonprueba};
-}
-
-const getUsersInformacion = async () => {
-  console.log("probando");
-  const losUsers = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    }));
-  console.log("probando2");
-const losUsersJson = await (losUsers.json());
-return {losUsersJson, losUsers};
+      'Content-type': 'application/json',
+   },
+  body: JSON.stringify(pillo)
+  }));
+  console.log(login);
+  const loginJSON = await login.json();
+  console.log(loginJSON);
 }
 
 
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+    const pillo = {username: username, password: password}
+    console.log(pillo);
+    console.log(username);
+    console.log(password);
+    cortina2.classList.toggle('show-transform');
+    mensajeContainer.classList.toggle('show-transform');
 
-  verificar().then(e =>{
-    console.log(e.jsonprueba);
-    console.log(e.prueba);
-    getUsersInformacion().then(e => {
-      console.log(e.losUsers);
-      console.log(e.losUsersJson);
-      const users = e.losUsersJson.docs
-      const verifiedUser = users.filter(e => e.username === username)
-      console.log(verifiedUser[0]);
-      console.log(verifiedUser);
-      const arraay = verifiedUser[0].verify
-      if (arraay===false) {
-          spiner.classList.toggle('hidden');
-          mensajeContainer.classList.add('show-transform');
-          mensajeContainer.classList.add("fail");
-          mensaje.innerHTML=''
-          const enviarMensaje = document.createElement('div');
-          enviarMensaje.innerHTML = `
-          <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
-          <h1>Hubo un error intenta verificarte de nuevo dando click al boton de abajo</h1>
-          <button id="vverificar" class="side-button-2">Verificar</button>
-          `
-          mensaje.append(enviarMensaje);
+    aja(pillo).then(e => {
+      if (login.status===400) {
+        spiner.classList.toggle('hidden')
+        mensajeContainer.classList.add('fail')
+        mensaje.innerHTML=''
+        const enviarMensaje = document.createElement('div');
+        enviarMensaje.innerHTML = `
+        <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+        <h1>${e.loginJSON.error}</h1>
+        `
+        mensaje.append(enviarMensaje);
+        mensaje.classList.toggle('show-transform');
+        setTimeout(() => {
           mensaje.classList.toggle('show-transform');
-          
-            
+          spiner.classList.toggle('hidden');
+          mensajeContainer.classList.toggle('show-transform');
+          mensajeContainer.classList.toggle('fail');
+          cortina2.classList.toggle('show-transform');
+        }, 5000);
+        setTimeout(() => {
+            enviarMensaje.innerHTML=''
+        }, 5000);
       } else {
-          console.log("Usuario verificado exitosamente");
-          mensajeContainer.classList.add('show-transform');
-          spiner.classList.toggle('hidden');
-          mensajeContainer.classList.add("succes");
-          console.log("jajaj");
-          mensaje.innerHTML = ''
-          const enviarMensaje = document.createElement('div');
-          enviarMensaje.innerHTML = `
-          <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
-          <h1>Usuario verificado exitosamente</h1>
-          `
-          mensaje.append(enviarMensaje);
+        spiner.classList.toggle('hidden')
+        mensajeContainer.classList.add('succes')
+        mensaje.innerHTML=''
+        const enviarMensaje = document.createElement('div');
+        enviarMensaje.innerHTML = `
+        <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+        <h1>${e.loginJSON.error}</h1>
+        `
+        mensaje.append(enviarMensaje);
+        mensaje.classList.toggle('show-transform');
+        setTimeout(() => {
           mensaje.classList.toggle('show-transform');
-          setTimeout(() => {
-            window.location = "../login"
-          }, 5000);
-        }
+          spiner.classList.toggle('hidden');
+          mensajeContainer.classList.toggle('show-transform');
+          mensajeContainer.classList.toggle('succes');
+          cortina2.classList.toggle('show-transform');
+        }, 5000);
+        setTimeout(() => {
+            enviarMensaje.innerHTML=''
+        }, 5000);
+        localStorage.setItem('Usuario', username)
+        window.location.href='../agenda/index.html'
+      }
     })
-  })
+});
 
 
-
-
-
-console.log("muuuy bien hijo de puta");
-console.log(data);
-console.log(prueba)
 
 
 home.addEventListener('click', e => {

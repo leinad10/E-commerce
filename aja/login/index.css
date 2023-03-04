@@ -16,6 +16,95 @@ body {
     background-color: rgb(231, 231, 231);
     overflow: hidden;
 }
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputs{
+    width: 100%;
+    outline: none;
+    font-size: 1.2rem;
+    background-color: #5d5a5a;
+    color: lightgray;
+    border-radius: 30px;
+    text-align: center;
+    border-color: transparent;
+}
+#formulario{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: lightgray;
+    border-radius: 15px;
+    border: solid 1px black;
+    box-shadow: 10px 10px 20px black;
+    box-shadow:inset 0px 0px 10px black;
+}
+#form-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 15%;
+} 
+#boton-registrar {
+    width: 50%;
+    font-size: 1rem;
+    padding: 2px;
+    color: white;
+    background-color: black;
+    border-radius: 30px;
+    border: 5px solid orange;
+}
+#cortina-2 {
+    opacity: 0.95;
+    display: flex;
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    height: 150%;
+    background-color: #2c2c2c;
+    z-index: -15;
+    transform: scale(0,0);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+.show-transform {
+    transform: scale(1,1) !important;
+    z-index: 20 !important;
+}
+
+#form-div {
+    display: flex;
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+}
+::-webkit-input-placeholder { /* Edge */
+    color: lightgray;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: lightgray;
+  }
+  
+  ::placeholder {
+    color: lightgray;
+  }
 #nav-title {
     height: fit-content;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -79,7 +168,7 @@ body {
     font-family:'Courier New', Courier, monospace;
     font-weight: 800;
     cursor: pointer;
-    z-index: 10;
+    z-index: 0;
 }
 #login-2 {
     font-size: 0.8rem;
@@ -133,7 +222,7 @@ body {
     border: 3px solid white;
     font-family:'Courier New', Courier, monospace;
     font-weight: 800;
-    z-index: 10;
+    z-index: 0;
 }
 
 #registro-2 {
@@ -424,7 +513,7 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    z-index: -10;
+    z-index: 11;
     justify-content: center;
     align-items: center;
 }
@@ -723,6 +812,7 @@ body {
 }
 
 @media (min-width: 768px) {
+    
     .side-button{
         font-size: 1.8rem;
         

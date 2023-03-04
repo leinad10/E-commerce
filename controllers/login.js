@@ -26,16 +26,19 @@ exports.insertData = (async (request, response) => {
         console.log("3");
         const usuarioValido = {username: username}
         console.log(usuarioValido);
-        const accessToken =  generateAccessToken(usuarioValido);
-        console.log('aver');
-        function generateAccessToken(usuarioValido) {
-          return jwt.sign(usuarioValido, process.env.SECRET, {expiresIn: '10m'});
-        }
-        console.log('aver2');
-        response.cookie(`acces-token-${username}`, accessToken, { httpOnly: true })
-        response.status(200).json({message: `Acceso autorizado ${accessToken}`})
-        console.log(accessToken);
-        
+        if (aja.verify) {
+          const accessToken =  generateAccessToken(usuarioValido);
+          console.log('aver');
+          function generateAccessToken(usuarioValido) {
+            return jwt.sign(usuarioValido, process.env.SECRET, {expiresIn: '10m'});
+          }
+          console.log('aver2');
+          response.cookie(`acces-token-${username}`, accessToken, { httpOnly: true })
+          response.status(200).json({message: `Acceso autorizado ${accessToken}`})
+          console.log(accessToken);
+        } else {
+          response.status(400).json({error: "Reviza tu email para verificar tu usuario"})
+        } 
       } else {console.log('4');}
     }
   }
@@ -43,7 +46,3 @@ exports.insertData = (async (request, response) => {
     console.log(error);
   }
   });
-
-  exports.getData = (async (req,res) => {
-  
-  })
