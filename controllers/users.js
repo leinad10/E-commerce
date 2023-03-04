@@ -88,44 +88,70 @@ exports.insertData = (async (request, response) => {
             text-decoration: none;
             font-size: 13px !important;
         }
+        .side-button-2{
+            font-size: 1rem;
+            color: white;
+            background-color: black;
+            border: 4px solid orange;
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
     </style>
 </head>
 <body>
-    <div style="width: 100%; background-color: #e3e3e3;">
-        <div style="padding: 20px 10px 20px 10px;">
-            <!-- Imagen inicial -->
-            <div style="background-color: #000000; padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
+        <div style="width: 100%; background-color: #e3e3e3;">
+            <div style="padding: 20px 10px 20px 10px; border:#000000 1px solid">
+                <!-- Imagen inicial -->
+                <div style="background-color: #ffa500; padding: 10px 0px 10px 0px; width: 100%; text-align: center; ">
+                </div>
+                <!-- Imagen inicial -->
+    
+                <!-- Contenido principal -->
+                <div style="background-color: #d3d3d3; padding: 20px 0px 10px 0px; width: 100%; text-align: center; ">
+                    <h1 id="hi">Titulo de la notificación</h1>
+                    <p>Verifica tu Usuario haciendo click el link de abajo.</p>
+                    <button id="verificar" class="side-button-2">
+                        Verificar
+                    </button>
+                    <!-- Gracias -->
+                    <p>Gracias por tu tiempo.</p>
+                    <p style="margin-bottom: 50px;"><i>Atentamente:</i><br>4 Estaciones</p>
+    
+                    <!-- Botón -->
+                </div>
+                <!-- Contenido principal -->
+    
+                <!-- Footer -->
+                <div style="background-color: #717171; color: #ffffff; padding: 5px 0px 0px 0px; width: 100%; text-align: center;">
+                   
+                    <!-- Redes sociales -->
+    
+                    <h4>Soporte</h4>
+                    <p style="background-color: #ffa500; padding: 10px 0px 10px 0px; font-size: 12px !important;">
+    
+                    </p>
+                </div>
+                <!-- Footer -->
             </div>
-            <!-- Imagen inicial -->
-
-            <!-- Contenido principal -->
-            <div style="background-color: #ffffff; padding: 20px 0px 5px 0px; width: 100%; text-align: center;">
-                <h1>Titulo de la notificación</h1>
-                <p>Verifica tu Usuario haciendo click el link de abajo.</p>
-                <a href="https://leinad-app-0v4f.onrender.com/verify/index.html">Verificar</a>
-                <!-- Gracias -->
-                <p>Gracias por tu tiempo.</p>
-                <p style="margin-bottom: 50px;"><i>Atentamente:</i><br>Daniel Contreras</p>
-
-                <!-- Botón -->
-            </div>
-            <!-- Contenido principal -->
-
-            <!-- Footer -->
-            <div style="background-color: #282828; color: #ffffff; padding: 5px 0px 0px 0px; width: 100%; text-align: center;">
-               
-                <!-- Redes sociales -->
-
-                <h4>Soporte</h4>
-                <p style="background-color: black; padding: 10px 0px 10px 0px; font-size: 12px !important;">
-
-                </p>
-            </div>
-            <!-- Footer -->
         </div>
-    </div>
-    <script>
-</body>`,
+        <script>
+            const aja = document.querySelector('#verificar');
+            aja.addEventListener('click', e => {
+                e.preventDefault();
+                data = {username : input.value}
+                console.log("qlqlqlqqllq");
+                const prueba = fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                    });
+                console.log(data);
+                console.log(prueba)   
+            });
+        </script>
+    </body>`,
   };
 
   transporter.sendMail(mailOptions, async (err, info) => {
