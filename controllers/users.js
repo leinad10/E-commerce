@@ -114,9 +114,9 @@ exports.insertData = (async (request, response) => {
                 <div style="background-color: #d3d3d3; padding: 20px 0px 10px 0px; width: 100%; text-align: center; ">
                     <h1 id="hi">Titulo de la notificación</h1>
                     <p>Verifica tu Usuario haciendo click el link de abajo.</p>
-                    <button id="verificar" class="side-button-2">
+                    <a id="verificar" class="side-button-2" href="../verify">
                         Verificar
-                    </button>
+                    </a>
                     <!-- Gracias -->
                     <p>Gracias por tu tiempo.</p>
                     <p style="margin-bottom: 50px;"><i>Atentamente:</i><br>4 Estaciones</p>
