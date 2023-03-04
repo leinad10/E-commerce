@@ -89,9 +89,9 @@ return {losUsersJson, losUsers};
           `
           mensaje.append(enviarMensaje);
           mensaje.classList.toggle('show-transform');
-          setTimeout(() => {
-            window.location = "../login"
-          }, 5000);
+          // setTimeout(() => {
+          //   window.location = "../login"
+          // }, 5000);
           
         }
     })
