@@ -18,6 +18,8 @@ const cart2 = document.querySelector('#cart-2');
 const gallery2 = document.querySelector('#gallery-2');
 const username = localStorage.getItem("jsw");
 const mensaje = document.querySelector('#messageFromDB');
+const spiner = document.querySelector('#loader');
+const mensajeContainer = document.querySelector('#container-message');
 
 data = {username : username}
 const verificar = async () => {
