@@ -39,6 +39,8 @@ const aja = async (pillo) => {
   console.log(login);
   const loginJSON = await login.json();
   console.log(loginJSON);
+
+  return {login, loginJSON}
 }
 // if (usernameInput.value===""|| passwordInput.value==="") {
 //   boton.disabled = true
@@ -58,7 +60,7 @@ form.addEventListener('submit', e => {
 
     aja(pillo).then(e => {
       console.log(e);
-      
+
       if (e.login.status===400) {
         spiner.classList.toggle('hidden')
         mensajeContainer.classList.add('fail')
