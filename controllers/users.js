@@ -56,7 +56,7 @@ exports.insertData = (async (request, response) => {
         h3{ font-size: 18px !important;}
         h4{ font-size: 16px !important;}
         p, a{font-size: 15px !important;}
-        
+
         *{
           list-style: none;
           text-decoration: none;
@@ -161,8 +161,7 @@ exports.insertData = (async (request, response) => {
     numberPhone,
     passwordHash,
   });
-  localStorage.setItem('jsw', username);
-
+  
   // Send user
   const savedUser = await user.save();
   response.status(200).json({message: `Acceso autorizado ${accessToken}`})
