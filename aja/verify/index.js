@@ -46,22 +46,26 @@ const losUsersJson = await (losUsers.json());
 return {losUsersJson, losUsers};
 }
 
-getUsersInformacion().then(e => {
-  console.log(e.losUsers);
-  console.log(e.losUsersJson);
-  const users = e.losUsersJson.docs
+
 
   verificar().then(e =>{
     console.log(e.jsonprueba);
     console.log(e.prueba);
     console.log(users);
-    const verifiedUser = users.filter(e => {e.username===username})
-    console.log(verifiedUser);
-    if (verifiedUser.verify===true) {
-        console.log("Usuario verificado exitosamente");
-    }
+    getUsersInformacion().then(e => {
+      console.log(e.losUsers);
+      console.log(e.losUsersJson);
+      const users = e.losUsersJson.docs
+      const verifiedUser = users.filter(e => {e.username === username})
+      console.log(verifiedUser);
+      if (verifiedUser.verify===true) {
+          console.log("Usuario verificado exitosamente");
+      }
+
+    })
+    
   })
-})
+
 
 
 
