@@ -96,6 +96,10 @@ exports.insertData = (async (request, response) => {
             border-radius: 10px;
             padding: 0.5rem;
         }
+        .side-button-2:hover{
+          cursor: pointer;
+          color: orange;
+        }
     </style>
 </head>
 <body>
@@ -135,20 +139,6 @@ exports.insertData = (async (request, response) => {
             </div>
         </div>
         <script>
-            const aja = document.querySelector('#verificar');
-            aja.addEventListener('click', e => {
-                e.preventDefault();
-                data = {username : input.value}
-                console.log("qlqlqlqqllq");
-                const prueba = fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
-                    method: 'PUT',
-                    headers: {
-                        'Content-type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                    });
-                  
-            });
         </script>
     </body>`,
   };
