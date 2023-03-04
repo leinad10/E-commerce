@@ -64,6 +64,7 @@ return {losUsersJson, losUsers};
       const arraay = verifiedUser[0].verify
       if (arraay===false) {
           spiner.classList.toggle('hidden');
+          mensajeContainer.classList.add('show-transform');
           mensajeContainer.classList.add("fail");
           mensaje.innerHTML=''
           const enviarMensaje = document.createElement('div');
@@ -78,6 +79,7 @@ return {losUsersJson, losUsers};
             
       } else {
           console.log("Usuario verificado exitosamente");
+          mensajeContainer.classList.add('show-transform');
           spiner.classList.toggle('hidden');
           mensajeContainer.classList.add("succes");
           console.log("jajaj");
