@@ -24,6 +24,9 @@ exports.changeData = (req,res) => {
     const username = req.body
     const cooki = req.cookies
     const token = cooki[`acces-token-${username.username}`]
+    const body = {
+        verification:true
+    }
     if (!token) {
         res.status(400).json({error : "Acceso Denegado"})
         }
