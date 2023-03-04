@@ -57,7 +57,8 @@ form.addEventListener('submit', e => {
     mensajeContainer.classList.toggle('show-transform');
 
     aja(pillo).then(e => {
-      if (login.status===400) {
+      console.log(e);
+      if (e.login.status===400) {
         spiner.classList.toggle('hidden')
         mensajeContainer.classList.add('fail')
         mensaje.innerHTML=''
