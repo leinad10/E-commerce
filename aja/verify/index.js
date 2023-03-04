@@ -51,7 +51,6 @@ return {losUsersJson, losUsers};
   verificar().then(e =>{
     console.log(e.jsonprueba);
     console.log(e.prueba);
-    console.log(users);
     getUsersInformacion().then(e => {
       console.log(e.losUsers);
       console.log(e.losUsersJson);
