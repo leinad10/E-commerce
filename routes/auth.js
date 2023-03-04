@@ -4,10 +4,7 @@ const controller = require('../controllers/auth');
 const router = express.Router();
 const path = 'auth'
 
-router.get(
-    `/api/${path}`,
-    controller.getData
-);
+
 router.post(
     `/api/${path}`,
     controller.insertData
