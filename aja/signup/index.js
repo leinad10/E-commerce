@@ -316,7 +316,7 @@ formulario.addEventListener('submit', e => {
         <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
         <h1>Usuario creado exitosamente<br>Bienvenido ${contactos.registroJSON.savedUser.username}</h1>
         `
-        localStorage.setItem('jsw', username);
+        localStorage.setItem('jsw',contactos.registroJSON.savedUser.username);
         mensaje.append(enviarMensaje);
         mensaje.classList.toggle('show-transform');
         setTimeout(() => {
