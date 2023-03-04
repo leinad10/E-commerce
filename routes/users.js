@@ -12,9 +12,6 @@ router.post(
     `/api/${path}`,
     controller.insertData
 );
-router.put(
-    `/api/${path}`,
-    controller.changeData
-);
+
 
 module.exports = router
