@@ -103,7 +103,7 @@ form.addEventListener('submit', e => {
         setTimeout(() => {
             enviarMensaje.innerHTML=''
             localStorage.setItem('Usuario', username)
-            // window.location.href='../agenda/index.html'
+            window.location.href='../agenda/index.html'
         }, 8000);
         
       }

@@ -11,8 +11,9 @@ exports.insertData = (async (request, response) => {
   
   console.log(aja);
   if (!aja) {
-    response.status(400).json({error: "Usuario o contrase;a invalidos"})
+    response.status(400).json({error: "Usuario invalido"})
     console.log("1");
+  
     
   } else {
     if (username === aja.username) {
@@ -39,7 +40,9 @@ exports.insertData = (async (request, response) => {
         } else {
           response.status(400).json({error: "Reviza tu email para verificar tu usuario"})
         } 
-      } else {console.log('4');}
+      } else {
+        response.status(400).json({error: "Contraseña invalida"});
+      }
     }
   }
   } catch (error) {
