@@ -89,7 +89,7 @@ form.addEventListener('submit', e => {
         const enviarMensaje = document.createElement('div');
         enviarMensaje.innerHTML = `
         <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
-        <h1>${e.loginJSON.message}</h1>
+        <h1>Inicio de secion exitoso</h1>
         `
         mensaje.append(enviarMensaje);
         mensaje.classList.toggle('show-transform');
