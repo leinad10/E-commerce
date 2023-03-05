@@ -22,6 +22,32 @@ const spiner = document.querySelector('#loader');
 const mensajeContainer = document.querySelector('#container-message');
 
 const data = {username : username}
+
+const aja = async () => {
+  const registroUser = {
+    username: username,
+    reSend : true,
+  }
+  console.log(registroUser);
+  console.log(JSON.stringify(registroUser));
+  try {
+    const registro = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(registroUser)
+  }));
+  const registroJSON = await registro.json();
+  return {registro,registroJSON}
+}
+  catch {
+    console.log('error');
+    console.log(error.message);
+    console.log(error);
+  } 
+}; 
+
 const verificar = async (data) => {
   console.log("probando");
   const prueba = await fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
@@ -49,15 +75,17 @@ const losUsersJson = await (losUsers.json());
 return {losUsersJson, losUsers};
 }
 
-const reload = () => {
+const reload = (elMensaje) => {
+  console.log("eso");
   spiner.classList.toggle('hidden');
   mensajeContainer.classList.add('show-transform');
   mensajeContainer.classList.add("fail");
+  mensajeContainer.classList.add('agrandar');
   mensaje.innerHTML=''
   const enviarMensaje = document.createElement('div');
   enviarMensaje.innerHTML = `
   <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
-  <h1 style="text-align: justify;">Hubo un error intenta verificarte de nuevo dando click al boton de abajo</h1>
+  <h1 class="texto">${elMensaje}</h1>
   <form id="fformulario" autocomplete="off">
       <div class="input-container">
           <input type="text" class="inputs" id="usuarioInput" placeholder="Nombre de Usuario">
@@ -65,6 +93,7 @@ const reload = () => {
       <button id="vverificar" type="submit" class="side-button-2">Verificar</button>
   </form>
   `
+  // 
   mensaje.append(enviarMensaje);
   mensaje.classList.toggle('show-transform');
   const input = document.querySelector("#usuarioInput");
@@ -72,52 +101,66 @@ const reload = () => {
   theForm.addEventListener('submit', e => {
     e.preventDefault();
     localStorage.setItem('jsw', input.value);
-    location.reload;
+    aja().then(e => {
+      console.log(e.losUsers);
+      console.log(e.losUsersJson);
+    })
   }) 
 }
-
-
+ 
   verificar(data).then(e =>{
     console.log(e.jsonprueba);
     console.log(e.prueba);
+    if (data.username===null) {
+      const elMensaje = "Hubo un error intenta verificarte de nuevo ingresando tu username y dandole click al boton de abajo"
+      reload(elMensaje)
+    } else {
     getUsersInformacion().then(e => {
       console.log(e.losUsers);
       console.log(e.losUsersJson);
       const users = e.losUsersJson.docs
       const verifiedUser = users.filter(e => e.username === username)
-      console.log(verifiedUser[0]);
       console.log(verifiedUser);
-      const arraay = verifiedUser[0].verify
-      if (arraay) {
-        if (arraay===false) {
-          reload();
+      if (verifiedUser.length===1) {
+        console.log("333");
+        const arraay = verifiedUser[0].verify
+      
+          if (arraay===false) {
+            console.log("111");
+            const elMensaje = "Hubo un error intenta verificarte de nuevo ingresando tu username y dandole click al boton de abajo"
+            reload(elMensaje);
+          } else {
+            console.log("Usuario verificado exitosamente");
+            mensajeContainer.classList.add('show-transform');
+            spiner.classList.toggle('hidden');
+            mensajeContainer.classList.add("succes");
+            console.log("jajaj");
+            mensaje.innerHTML = ''
+            const enviarMensaje = document.createElement('div');
+            enviarMensaje.innerHTML = `
+            <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
+            <h1 class="texto">Usuario verificado exitosamente</h1>
+            `
+            mensaje.append(enviarMensaje);
+            mensaje.classList.toggle('show-transform');
+            setTimeout(() => {
+              window.location = "../login"
+            }, 5000);
+          } 
         } else {
-          console.log("Usuario verificado exitosamente");
-          mensajeContainer.classList.add('show-transform');
-          spiner.classList.toggle('hidden');
-          mensajeContainer.classList.add("succes");
-          console.log("jajaj");
-          mensaje.innerHTML = ''
-          const enviarMensaje = document.createElement('div');
-          enviarMensaje.innerHTML = `
-          <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
-          <h1 style="text-align: justify;">Usuario verificado exitosamente</h1>
-          `
-          mensaje.append(enviarMensaje);
-          mensaje.classList.toggle('show-transform');
-          setTimeout(() => {
-            window.location = "../login"
-          }, 5000);
-        }
-      } else if (!username) {
-          reload();
+        console.log("222");
+        const elMensaje = "No pudimos encontrar el username indicado, intenta de nuevo" 
+        reload(elMensaje)
       }
       
+      
+      
+     
     })
-  })
-console.log("muuuy bien hijo de puta");
+  }})
+
 console.log(data);
-console.log(prueba)
+
 
 
 home.addEventListener('click', e => {

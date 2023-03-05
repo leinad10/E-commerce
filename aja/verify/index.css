@@ -359,11 +359,36 @@ body {
     width: 50%;
     border: 0.5px black solid;
     border-radius: 100%;
-    padding-top: 1rem;
+    margin-top: 1rem;
 }
 .show-transform {
     transform: scale(1,1) !important;
     z-index: 20 !important;
+}
+.agrandar {
+    height: 45% !important;
+    width: 75% !important;
+}
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#fformulario {
+    display: flex;
+    gap: 1rem;
+}
+
+.inputs{
+    width: 100%;
+    outline: none;
+    font-size: 1.2rem;
+    background-color: #5d5a5a;
+    color: lightgray;
+    border-radius: 30px;
+    text-align: center;
+    border-color: transparent;
 }
 
     
@@ -710,6 +735,9 @@ body {
     .c {
         bottom: 16%;
     }
+    .agrandar{
+        width: 50% !important;
+    }
 
 
 }
@@ -750,7 +778,9 @@ body {
     .text {
         font-size: 1.8rem;
         bottom: 15%;
-    
+    }
+    .bueno {
+        width: 35%;
     }
 
 }

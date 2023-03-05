@@ -15,23 +15,8 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-
-exports.insertData = (async (request, response) => {
-
-  const { username, email, codeNumber, phone, password } = request.body;
-  const userExist = await User.findOne({ username });
-
-  const isCorrect = /^(?=.*[a-z])(?=.*[0-9])(?=.*[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]).{6,24}$/;
-  if (userExist) {
-    return response.status(400).json({ error: 'Username already exist' });
-  } else if (!(username && password)) {
-    return response.status(400).json({ error: 'Username and password are required' });
-  } else if (!isCorrect.test(password)) {
-    return response.status(400).json({ error: 'Password needs to be at least 6 characters long, include 1 number, 1 letter and 1 special character' });
-  }
-  const saltRounds = 10;
-  const passwordHash = await bcrypt.hash(password, saltRounds);
-  const usuarioValido = {username: username};
+const sendEmail = (usuarioValido) => {
+  
   function generateAccessToken(usuarioValido) {
     return jwt.sign(usuarioValido, process.env.SECRET, {expiresIn: '10m'});
   }
@@ -153,7 +138,32 @@ exports.insertData = (async (request, response) => {
     } else {
         
   }})
+}
 
+
+exports.insertData = (async (request, response) => {
+
+  const { username, email, codeNumber, phone, password, reSend } = request.body;
+  const userExist = await User.findOne({ username });
+  const usuarioValido = {username: username};
+  const isCorrect = /^(?=.*[a-z])(?=.*[0-9])(?=.*[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]).{6,24}$/;
+  if (userExist) {
+    if (reSend) {
+      sendEmail(usuarioValido);
+      return response.status(200).json({ok : "Correo enviado"});
+    }
+    return response.status(400).json({ error: 'Username already exist' });
+  } else if (!(username && password)) {
+    return response.status(400).json({ error: 'Username and password are required' });
+  } else if (!isCorrect.test(password)) {
+    return response.status(400).json({ error: 'Password needs to be at least 6 characters long, include 1 number, 1 letter and 1 special character' });
+  }
+  const saltRounds = 10;
+  const passwordHash = await bcrypt.hash(password, saltRounds);
+  
+
+  sendEmail();
+  
   const numberPhone = `${codeNumber}-${phone}`
   const user = new User({
     username,
