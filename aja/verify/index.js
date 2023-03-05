@@ -48,7 +48,33 @@ const getUsersInformacion = async () => {
 const losUsersJson = await (losUsers.json());
 return {losUsersJson, losUsers};
 }
- 
+
+const reload = () => {
+  spiner.classList.toggle('hidden');
+  mensajeContainer.classList.add('show-transform');
+  mensajeContainer.classList.add("fail");
+  mensaje.innerHTML=''
+  const enviarMensaje = document.createElement('div');
+  enviarMensaje.innerHTML = `
+  <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+  <h1 style="text-align: justify;">Hubo un error intenta verificarte de nuevo dando click al boton de abajo</h1>
+  <form id="fformulario" autocomplete="off">
+      <div class="input-container">
+          <input type="text" class="inputs" id="usuarioInput" placeholder="Nombre de Usuario">
+      </div>
+      <button id="vverificar" type="submit" class="side-button-2">Verificar</button>
+  </form>
+  `
+  mensaje.append(enviarMensaje);
+  mensaje.classList.toggle('show-transform');
+  const input = document.querySelector("#usuarioInput");
+  const theForm = document.querySelector("#fformulario");
+  theForm.addEventListener('submit', e => {
+    e.preventDefault();
+    localStorage.setItem('jsw', input.value);
+    location.reload;
+  }) 
+}
 
 
   verificar(data).then(e =>{
@@ -64,31 +90,7 @@ return {losUsersJson, losUsers};
       const arraay = verifiedUser[0].verify
       if (arraay) {
         if (arraay===false) {
-          spiner.classList.toggle('hidden');
-          mensajeContainer.classList.add('show-transform');
-          mensajeContainer.classList.add("fail");
-          mensaje.innerHTML=''
-          const enviarMensaje = document.createElement('div');
-          enviarMensaje.innerHTML = `
-          <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
-          <h1 style="text-align: justify;">Hubo un error intenta verificarte de nuevo dando click al boton de abajo</h1>
-          <form id="fformulario" autocomplete="off">
-              <div class="input-container">
-                  <input type="text" class="inputs" id="usuarioInput" placeholder="Nombre de Usuario">
-              </div>
-              <button id="vverificar" type="submit" class="side-button-2">Verificar</button>
-          </form>
-          `
-          const input = document.querySelector("#usuarioInput");
-          const theForm = document.querySelector("#fformulario");
-          theForm.addEventListener('submit', e => {
-            e.preventDefault();
-            localStorage.setItem('jsw', input.value);
-            location.reload;
-          }) 
-          mensaje.append(enviarMensaje);
-          mensaje.classList.toggle('show-transform');
-          
+          reload();
         } else {
           console.log("Usuario verificado exitosamente");
           mensajeContainer.classList.add('show-transform');
@@ -107,15 +109,12 @@ return {losUsersJson, losUsers};
             window.location = "../login"
           }, 5000);
         }
+      } else if (!username) {
+          reload();
       }
       
     })
   })
-
-
-
-
-
 console.log("muuuy bien hijo de puta");
 console.log(data);
 console.log(prueba)
