@@ -89,7 +89,7 @@ form.addEventListener('submit', e => {
         const enviarMensaje = document.createElement('div');
         enviarMensaje.innerHTML = `
         <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
-        <h1>${e.loginJSON.error}</h1>
+        <h1>${e.loginJSON.message}</h1>
         `
         mensaje.append(enviarMensaje);
         mensaje.classList.toggle('show-transform');
@@ -102,9 +102,10 @@ form.addEventListener('submit', e => {
         }, 5000);
         setTimeout(() => {
             enviarMensaje.innerHTML=''
-        }, 5000);
-        localStorage.setItem('Usuario', username)
-        window.location.href='../agenda/index.html'
+            localStorage.setItem('Usuario', username)
+            // window.location.href='../agenda/index.html'
+        }, 8000);
+        
       }
     })
 });
