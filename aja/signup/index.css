@@ -117,6 +117,7 @@ body {
     width: 50%;
     border: 0.5px black solid;
     border-radius: 100%;
+    padding-top: 1rem;
 }
 #messageFromDB > div {
     display: flex;

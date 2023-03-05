@@ -344,7 +344,8 @@ body {
     display: flex;
     flex-direction: row;
     height: 94%;
-}.loader {
+}
+.loader {
     border: 16px solid black; /* Light grey */
     border-top: 16px solid orange; /* Blue */
     border-radius: 50%;
@@ -358,6 +359,7 @@ body {
     width: 50%;
     border: 0.5px black solid;
     border-radius: 100%;
+    padding-top: 1rem;
 }
 .show-transform {
     transform: scale(1,1) !important;
@@ -386,7 +388,7 @@ body {
     z-index: -15;
     border-radius: 15px;
     border: 2px black solid;
-    transform: scale(0,0);
+    transform: scale(1,1);
     transition-property: transform, backgroun-color, z-index;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;

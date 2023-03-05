@@ -21,8 +21,8 @@ const mensaje = document.querySelector('#messageFromDB');
 const spiner = document.querySelector('#loader');
 const mensajeContainer = document.querySelector('#container-message');
 
-data = {username : username}
-const verificar = async () => {
+const data = {username : username}
+const verificar = async (data) => {
   console.log("probando");
   const prueba = await fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
   method: 'PUT',
@@ -48,10 +48,10 @@ const getUsersInformacion = async () => {
 const losUsersJson = await (losUsers.json());
 return {losUsersJson, losUsers};
 }
+ 
 
 
-
-  verificar().then(e =>{
+  verificar(data).then(e =>{
     console.log(e.jsonprueba);
     console.log(e.prueba);
     getUsersInformacion().then(e => {
@@ -62,7 +62,8 @@ return {losUsersJson, losUsers};
       console.log(verifiedUser[0]);
       console.log(verifiedUser);
       const arraay = verifiedUser[0].verify
-      if (arraay===false) {
+      if (arraay) {
+        if (arraay===false) {
           spiner.classList.toggle('hidden');
           mensajeContainer.classList.add('show-transform');
           mensajeContainer.classList.add("fail");
@@ -70,14 +71,25 @@ return {losUsersJson, losUsers};
           const enviarMensaje = document.createElement('div');
           enviarMensaje.innerHTML = `
           <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
-          <h1>Hubo un error intenta verificarte de nuevo dando click al boton de abajo</h1>
-          <button id="vverificar" class="side-button-2">Verificar</button>
+          <h1 style="text-align: justify;">Hubo un error intenta verificarte de nuevo dando click al boton de abajo</h1>
+          <form id="fformulario" autocomplete="off">
+              <div class="input-container">
+                  <input type="text" class="inputs" id="usuarioInput" placeholder="Nombre de Usuario">
+              </div>
+              <button id="vverificar" type="submit" class="side-button-2">Verificar</button>
+          </form>
           `
+          const input = document.querySelector("#usuarioInput");
+          const theForm = document.querySelector("#fformulario");
+          theForm.addEventListener('submit', e => {
+            e.preventDefault();
+            localStorage.setItem('jsw', input.value);
+            location.reload;
+          }) 
           mensaje.append(enviarMensaje);
           mensaje.classList.toggle('show-transform');
           
-            
-      } else {
+        } else {
           console.log("Usuario verificado exitosamente");
           mensajeContainer.classList.add('show-transform');
           spiner.classList.toggle('hidden');
@@ -87,7 +99,7 @@ return {losUsersJson, losUsers};
           const enviarMensaje = document.createElement('div');
           enviarMensaje.innerHTML = `
           <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
-          <h1>Usuario verificado exitosamente</h1>
+          <h1 style="text-align: justify;">Usuario verificado exitosamente</h1>
           `
           mensaje.append(enviarMensaje);
           mensaje.classList.toggle('show-transform');
@@ -95,6 +107,8 @@ return {losUsersJson, losUsers};
             window.location = "../login"
           }, 5000);
         }
+      }
+      
     })
   })
 

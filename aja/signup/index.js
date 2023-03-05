@@ -291,7 +291,7 @@ formulario.addEventListener('submit', e => {
       const enviarMensaje = document.createElement('div');
       enviarMensaje.innerHTML = `
       <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
-      <h1>${contactos.registroJSON.error}</h1>
+      <h1 style="text-align: justify;">${contactos.registroJSON.error}</h1>
       `
       mensaje.append(enviarMensaje);
       mensaje.classList.toggle('show-transform');
@@ -314,7 +314,7 @@ formulario.addEventListener('submit', e => {
         const enviarMensaje = document.createElement('div');
         enviarMensaje.innerHTML = `
         <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
-        <h1>Usuario creado exitosamente<br>Bienvenido ${contactos.registroJSON.savedUser.username}</h1>
+        <h1 style="text-align: justify;">Usuario creado exitosamente<br>Bienvenido ${contactos.registroJSON.savedUser.username}</h1>
         `
         localStorage.setItem('jsw',contactos.registroJSON.savedUser.username);
         mensaje.append(enviarMensaje);
