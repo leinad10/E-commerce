@@ -587,6 +587,9 @@ body {
     display: block !important; 
 }
 .show-flex{
+    display: none !important;
+}
+.show-flex-2{
     display: flex !important;
 }
 .show-none {
@@ -717,6 +720,12 @@ body {
 }
 
 @media (min-width: 1024px) {
+    .show-flex-2{
+        display: none !important;
+    }
+    .show-flex{
+        display: flex !important;
+    }
     #side-2{
         display: block !important;
     }
