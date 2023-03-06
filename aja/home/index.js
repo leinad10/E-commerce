@@ -22,7 +22,9 @@ const gallery2 = document.querySelector('#gallery-2');
 home.addEventListener('click', e => {
   e.preventDefault();
   console.log(e.target);
-  if (window.location==="../") {
+
+  console.log("q pedi");
+  if (window.location==="aja/home") {
     console.log("jajadddd");
   } else {
     console.log("pa ver")
@@ -174,6 +176,6 @@ function currentSlide(n) {
     showSlides(slideIndex = n);
   }
 
-
+console.log("abueno");
 
 
