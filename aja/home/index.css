@@ -87,6 +87,25 @@ body {
     cursor: pointer;
     z-index: 10;
 }
+
+#login-out-2{
+    display: none;
+    font-size: 2rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+    border-right: 0;
+    background-color: gray;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    cursor: pointer;
+    z-index: 10;
+}
 #cuenta {
     display: flex;
     font-size: 2rem;
@@ -124,6 +143,27 @@ body {
     z-index: 10;
 }
 #login-2 {
+    font-size: 0.8rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+    border-right: 0;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    background-color: lightgray;
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    cursor: pointer;
+    z-index: 10;
+}
+#login-out-2 {
     font-size: 0.8rem;
     border-width: 5px;
     border-radius: 1rem;
@@ -548,6 +588,9 @@ body {
 }
 .show-flex{
     display: flex !important;
+}
+.show-none {
+    display: none !important;
 }
 
 .main-container {
