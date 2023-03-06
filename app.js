@@ -52,8 +52,10 @@ app.use('/', express.static(path.resolve(__dirname, 'aja', 'home')));
 app.use('/signup', express.static(path.resolve(__dirname, 'aja', 'signup')));
 app.use('/verify', express.static(path.resolve(__dirname, 'aja', 'verify')));
 app.use('/login', express.static(path.resolve(__dirname, 'aja', 'login')));
-app.use('/app/', express.static(path.resolve(__dirname, 'aja', 'todo')));
-app.use('/agenda/', express.static(path.resolve(__dirname, 'aja', 'agenda')));
+app.use('/cart', express.static(path.resolve(__dirname, 'aja', 'cart')));
+app.use('/account', express.static(path.resolve(__dirname, 'aja', 'account')));
+app.use('/gallery', express.static(path.resolve(__dirname, 'aja', 'gallery')));
+app.use('/catalog', express.static(path.resolve(__dirname, 'aja', 'catalog')));
 app.use('/images', express.static(path.resolve(__dirname, 'images')));
 app.use('/*', express.static(path.resolve(__dirname, 'aja', 'notfound')));
 
