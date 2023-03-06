@@ -12,6 +12,8 @@ const cuenta2 = document.querySelector('#j-2');
 const login = document.querySelector('#login');
 const registro = document.querySelector('#registro');
 const nav = document.querySelector('#nav');
+const cuentaUsername = document.querySelector('#username');
+const cuentaUsername2 = document.querySelector('#username-2');
 
 const auth = async () => {
   data = {
@@ -37,10 +39,14 @@ auth().then(e => {
   }
   c.classList.add('show-none');
   d.classList.add('show-none');
+  nav.classList.add('show-none');
+  f.classList.add('show-none');
   login.classList.add('show-none');
   registro.classList.add('show-none');
   cuenta.classList.add('show-flex');
   cuenta2.classList.add('show-flex');
+  cuentaUsername.innerHTML = usuario
+  cuentaUsername2.innerHTML = usuario
 })
 
 botonDrop.addEventListener('click', (e) => {
