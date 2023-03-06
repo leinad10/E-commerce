@@ -50,9 +50,7 @@ const aja = async (pillo) => {
 //   boton.disabled = true
 // } else {boton.disabled=false}
 
-auth().then(e => {
-    
-})
+
 
 form.addEventListener('submit', e => {
     e.preventDefault();
