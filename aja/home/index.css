@@ -60,7 +60,7 @@ body {
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
     gap: 0.1rem;
-    padding: 1rem;
+    padding: 0rem;
     font-size: 1rem;
     padding-top: 1rem;
     border-right-width: 30px;

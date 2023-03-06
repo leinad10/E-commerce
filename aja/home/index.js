@@ -14,6 +14,8 @@ const registro = document.querySelector('#registro');
 const nav = document.querySelector('#nav');
 const cuentaUsername = document.querySelector('#username');
 const cuentaUsername2 = document.querySelector('#username-2');
+const logout = document.querySelector("#log-out");
+const logout2 = document.querySelector("#log-out-2");
 
 const auth = async () => {
   data = {
@@ -47,6 +49,18 @@ auth().then(e => {
   cuenta2.classList.add('show-flex-2');
   cuentaUsername.innerHTML = usuario
   cuentaUsername2.innerHTML = usuario
+
+  logout.addEventListener("click", e =>{
+    e.preventDefault();
+    localStorage.setItem('Usuario', "");
+    location.reload();
+  })
+  logout2.addEventListener("click", e =>{
+    e.preventDefault();
+    localStorage.setItem('Usuario', "");
+    location.reload();
+  })
+  
 })
 
 botonDrop.addEventListener('click', (e) => {
