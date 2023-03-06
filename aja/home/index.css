@@ -752,6 +752,9 @@ body {
 }
 
 @media (min-width: 1024px) {
+    #cuenta{
+        font-size: 2rem;
+    }
     .show-flex-2{
         display: none !important;
     }
