@@ -31,6 +31,7 @@ const aja = async () => {
   console.log(registroUser);
   console.log(JSON.stringify(registroUser));
   try {
+    console.log("try");
     const registro = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
     method: 'POST',
     headers: {
@@ -42,6 +43,7 @@ const aja = async () => {
   return {registro,registroJSON}
 }
   catch {
+    console.log("cath");
     console.log('error');
     console.log(error.message);
     console.log(error);
@@ -101,9 +103,11 @@ const reload = (elMensaje) => {
   theForm.addEventListener('submit', e => {
     e.preventDefault();
     localStorage.setItem('jsw', input.value);
+    console.log("bueeno");
     aja().then(e => {
-      console.log(e.losUsers);
-      console.log(e.losUsersJson);
+      console.log("verga");
+      console.log(e.registro);
+      console.log(e.registroJSON);
     })
   }) 
 }

@@ -21,7 +21,7 @@ const sendEmail = (usuarioValido) => {
     return jwt.sign(usuarioValido, process.env.SECRET, {expiresIn: '10m'});
   }
   const accessToken =  generateAccessToken(usuarioValido);
-  response.cookie(`acces-token-${username}`, accessToken, { httpOnly: true })
+  return response.cookie(`acces-token-${username}`, accessToken, { httpOnly: true })
           
 
   console.log('aver');
