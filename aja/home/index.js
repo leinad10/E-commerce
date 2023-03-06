@@ -62,6 +62,7 @@ botonDrop.addEventListener('click', (e) => {
             c.classList.add('hiden');
             d.classList.add('hiden');
             f.classList.add('hiden');
+            cuenta2.classList.add('hiden');
         }, 500);
     } 
     else {
@@ -70,6 +71,7 @@ botonDrop.addEventListener('click', (e) => {
         c.classList.remove('hiden');
         d.classList.remove('hiden');
         f.classList.remove('hiden');
+        cuenta2.classList.add('hiden');
         cortina.classList.toggle('cortina-t')
         sideMobil.classList.remove('transition');
     }
@@ -83,6 +85,7 @@ cortina.addEventListener('click' , (e) => {
     c.classList.remove('hiden');
     d.classList.remove('hiden');
     f.classList.remove('hiden');
+    cuenta2.classList.remove('hiden');
     cortina.classList.toggle('cortina-t')
     sideMobil.classList.remove('transition');
 })
