@@ -212,8 +212,7 @@ body {
     font-size: 2rem;
     border-width: 5px;
     border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
+    
     border-right: 0;
     background-color: gray;
     text-decoration: none;
@@ -230,8 +229,7 @@ body {
     font-size: 0.8rem;
     border-width: 5px;
     border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
+    
     border-right: 0;
     background-color: lightgray;
     text-decoration: none;

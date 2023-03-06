@@ -23,24 +23,20 @@ const mensajeContainer = document.querySelector('#container-message');
 
 const data = {username : username}
 
-const aja = async () => {
-  const registroUser = {
-    username: username,
-    reSend : true,
-  }
-  console.log(registroUser);
-  console.log(JSON.stringify(registroUser));
+const aja = async (enviarEmail) => {
+  
+  
   try {
     console.log("try");
-    const registro = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
+    const tuEmail = await (fetch('https://four-estaciones-gp8t.onrender.com/api/email', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify(registroUser)
+    body: JSON.stringify(enviarEmail)
   }));
-  const registroJSON = await registro.json();
-  return {registro,registroJSON}
+  const tuEmailJSON = await tuEmail.json();
+  return {tuEmail,tuEmailJSON}
 }
   catch {
     console.log("cath");
@@ -100,15 +96,42 @@ const reload = (elMensaje) => {
   mensaje.classList.toggle('show-transform');
   const input = document.querySelector("#usuarioInput");
   const theForm = document.querySelector("#fformulario");
+
   theForm.addEventListener('submit', e => {
     e.preventDefault();
+    spiner.classList.toggle('hidden');
+    mensaje.innerHTML=""
     localStorage.setItem('jsw', input.value);
-    console.log("bueeno");
-    aja().then(e => {
-      console.log("verga");
-      console.log(e.registro);
-      console.log(e.registroJSON);
-    })
+    getUsersInformacion().then(e => {
+      const users = e.losUsersJson.docs
+      const verifiedUser = users.filter(e => e.username === username)
+      console.log(verifiedUser);
+      console.log("pruebamelo");
+      const enviarEmail = {
+        username: verifiedUser[0].username,
+        email: verifiedUser[0].email,
+      } 
+      console.log(enviarEmail);
+      aja(enviarEmail).then(e => {
+        console.log(e.tuEmail);
+        console.log(e.tuEmailJSON);
+        if (e.tuEmail.status===200) {
+          spiner.classList.toggle('hidden');
+          console.log("Usuario verificado exitosamente");
+          mensajeContainer.classList.toggle("show-transform");
+          mensajeContainer.classList.remove("fail");
+          mensajeContainer.classList.add("stanby");
+          console.log("jajaj");
+          mensaje.innerHTML = ''
+          const enviarMensaje = document.createElement('div');
+          enviarMensaje.innerHTML = `
+          <img class="bueno" src="../../images/check-symbol-4794.svg" alt="">
+          <h1 class="texto">Hemos enviado un correo de verificacion nuevamente</h1>
+          `
+          mensaje.append(enviarMensaje);
+        }
+      })
+    });
   }) 
 }
  

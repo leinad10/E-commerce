@@ -418,6 +418,9 @@ body {
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
 }
+.stanby {
+    background-color: rgb(243, 243, 147) !important;
+}
 .fail {
     background-color: lightcoral !important;
 }
