@@ -88,7 +88,7 @@ body {
     z-index: 10;
 }
 #cuenta {
-    display: none;
+    display: flex;
     font-size: 2rem;
     border-width: 5px;
     border-radius: 1rem;
@@ -106,7 +106,7 @@ body {
     z-index: 10;
 }
 #cuenta-2 {
-    display: none;
+    display: flex;
     font-size: 2rem;
     border-width: 5px;
     border-radius: 1rem;

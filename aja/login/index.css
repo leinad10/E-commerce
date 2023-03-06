@@ -299,6 +299,9 @@ body {
 .hiden {
     opacity: 1 !important;
 }
+.show-none {
+    display: none !important;
+}
 
 #side-t {
     display: flex;

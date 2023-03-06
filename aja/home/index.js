@@ -11,6 +11,7 @@ const cuenta = document.querySelector('#j');
 const cuenta2 = document.querySelector('#j-2');
 const login = document.querySelector('#login');
 const registro = document.querySelector('#registro');
+const nav = document.querySelector('#nav');
 
 const auth = async () => {
   data = {
@@ -34,10 +35,10 @@ auth().then(e => {
   if (e.auth.status===400) {
     return 
   }
-  c.classList.add('hiden');
-  d.classList.add('hiden');
-  login.classList.add('hiden');
-  registro.classList.add('hiden');
+  c.classList.add('show-none');
+  d.classList.add('show-none');
+  login.classList.add('show-none');
+  registro.classList.add('show-none');
   cuenta.classList.add('show-flex');
   cuenta2.classList.add('show-flex');
 })
