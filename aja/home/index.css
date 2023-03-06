@@ -46,7 +46,13 @@ body {
 #nav {
     display: flex;
     gap: 10px;
-    
+}
+
+#j{
+    display: none;
+}
+#j-2 {
+    display: none;
 }
 
 #login:hover {
@@ -64,6 +70,42 @@ body {
     border-color: orange;
 }
 #login {
+    display: none;
+    font-size: 2rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+    border-right: 0;
+    background-color: gray;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    cursor: pointer;
+    z-index: 10;
+}
+#cuenta {
+    display: none;
+    font-size: 2rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+    border-right: 0;
+    background-color: gray;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    cursor: pointer;
+    z-index: 10;
+}
+#cuenta-2 {
     display: none;
     font-size: 2rem;
     border-width: 5px;
@@ -503,6 +545,9 @@ body {
 
 .show {
     display: block !important; 
+}
+.show-flex{
+    display: flex !important;
 }
 
 .main-container {

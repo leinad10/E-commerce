@@ -2,22 +2,35 @@ const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
 const b = document.querySelector('#side-f');
-
 const d = document.querySelector('#registro-2');
 const f = document.querySelector('#h')
 const cortina = document.querySelector('#cortina');
 const cortina2 = document.querySelector('#cortina-2')
-
 const username = localStorage.getItem("jsw");
 const mensaje = document.querySelector('#messageFromDB');
 const spiner = document.querySelector('#loader');
 const mensajeContainer = document.querySelector('#container-message');
-
-
 const usernameInput  = document.querySelector('#usuarioInput');
 const passwordInput = document.querySelector('#contraseñaInput');
 const boton = document.querySelector('#boton-login');
 const form = document.querySelector("#formulario");
+const usuario = localStorage.getItem("Usuario");
+
+
+const auth = async () => {
+  const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+  method: 'POST',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  body: JSON.stringify(usuario)
+  }));
+  console.log(auth);
+  const authJSON = await auth.json();
+  
+
+  return {auth, authJSON}
+}
 
 const aja = async (pillo) => {
   const login = await (fetch('https://four-estaciones-gp8t.onrender.com/api/login', {
@@ -36,6 +49,10 @@ const aja = async (pillo) => {
 // if (usernameInput.value===""|| passwordInput.value==="") {
 //   boton.disabled = true
 // } else {boton.disabled=false}
+
+auth().then(e => {
+    
+})
 
 form.addEventListener('submit', e => {
     e.preventDefault();

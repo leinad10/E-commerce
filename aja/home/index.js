@@ -4,12 +4,40 @@ const a = document.querySelector('#side-t');
 const b = document.querySelector('#side-f');
 const c = document.querySelector('#login-2');
 const d = document.querySelector('#registro-2');
-const f = document.querySelector('#h')
+const f = document.querySelector('#h');
 const cortina = document.querySelector('#cortina')
+const usuario = localStorage.getItem("Usuario");
+const cuenta = document.querySelector('#j');
+const cuenta2 = document.querySelector('#j-2');
+const login = document.querySelector('#login');
+const registro = document.querySelector('#registro');
 
+const auth = async () => {
+  const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+  method: 'POST',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  body: JSON.stringify(usuario)
+  }));
+  console.log(auth);
+  const authJSON = await auth.json();
+  
 
+  return {auth, authJSON}
+}
 
-
+auth().then(e => {
+  if (e.auth.status===400) {
+    return 
+  }
+  c.classList.add('hiden');
+  d.classList.add('hiden');
+  login.classList.add('hiden');
+  registro.classList.add('hiden');
+  cuenta.classList.add('show-flex');
+  cuenta2.classList.add('show-flex');
+})
 
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
