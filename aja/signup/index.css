@@ -552,7 +552,7 @@ body {
     background-color: black;
     border: 4px solid orange;
     border-radius: 30px;
-    padding: 0.5rem;
+    padding: 0.2rem;
 }
 #side-t-2 {
     display: flex;
@@ -604,7 +604,7 @@ body {
     background-color: black;
     border: 4px solid orange;
     border-radius: 30px;
-    padding: 0.5rem;
+    padding: 0.2rem;
 }
 .side-f-contacts {
     font-size: 0.5rem;
