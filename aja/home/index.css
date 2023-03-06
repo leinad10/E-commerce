@@ -733,9 +733,7 @@ body {
     #boton-mobil{
         display: none;
     }
-    #j{
-        display: none !important;
-    }
+    
     #login{
         display: flex;
         font-size: 1.8rem;

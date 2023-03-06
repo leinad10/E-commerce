@@ -44,7 +44,7 @@ auth().then(e => {
   login.classList.add('show-none');
   registro.classList.add('show-none');
   cuenta.classList.add('show-flex');
-  cuenta2.classList.add('show-flex');
+  cuenta2.classList.add('show-flex-2');
   cuentaUsername.innerHTML = usuario
   cuentaUsername2.innerHTML = usuario
 })
