@@ -7,16 +7,7 @@ const d = document.querySelector('#registro-2');
 const f = document.querySelector('#h')
 const cortina = document.querySelector('#cortina');
 const cortina2 = document.querySelector('#cortina-2')
-const home = document.querySelector('#home');
-const catalog = document.querySelector('#catalog');
-const account = document.querySelector('#account');
-const cart = document.querySelector('#cart');
-const gallery = document.querySelector('#gallery');
-const home2 = document.querySelector('#home-2');
-const catalog2 = document.querySelector('#catalog-2');
-const account2 = document.querySelector('#account-2');
-const cart2 = document.querySelector('#cart-2');
-const gallery2 = document.querySelector('#gallery-2');
+
 const username = localStorage.getItem("jsw");
 const mensaje = document.querySelector('#messageFromDB');
 const spiner = document.querySelector('#loader');
@@ -113,86 +104,6 @@ form.addEventListener('submit', e => {
 
 
 
-home.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-home2.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-catalog.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-catalog2.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-account.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-account2.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-cart.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-cart2.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-gallery.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
-gallery2.addEventListener('click', e => {
-  e.preventDefault();
-  if (window.location==="../") {
-    console.log("jajadddd");
-  } else {
-    window.location="../"
-  }
-});
 
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
