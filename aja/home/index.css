@@ -108,7 +108,7 @@ body {
 }
 #cuenta {
     display: flex;
-    font-size: 2rem;
+    font-size: 0.5rem;
     border-width: 5px;
     border-radius: 1rem;
     border-bottom-right-radius: 0%;
@@ -200,6 +200,38 @@ body {
 #registro {
     display: none;
     font-size: 2rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0%;
+    border-top-left-radius: 0%;
+    border-right: 0;
+    background-color: gray;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    z-index: 10;
+}
+#log-out{
+    font-size: 2rem;
+    border-width: 5px;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0%;
+    border-top-left-radius: 0%;
+    border-right: 0;
+    background-color: gray;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    border: 3px solid white;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 800;
+    z-index: 10;
+}
+#log-out-2{
+    font-size: 0.5rem;
     border-width: 5px;
     border-radius: 1rem;
     border-bottom-left-radius: 0%;
