@@ -255,6 +255,10 @@ formulario.addEventListener('submit', e => {
     phone: numberInput.value,
     password : paswordInput.value,
   }
+  const enviarEmail = {
+    username : usernameInput.value,
+    email : emailInput.value,
+  }
  
   mensajeContainer.classList.add('show-transform');
   cortina2.classList.add('show-transform');
@@ -280,7 +284,32 @@ formulario.addEventListener('submit', e => {
       console.log(error);
     } 
   }; 
+
+  const email = async () => {
+    try {
+      const sendEmail = await (fetch('https://four-estaciones-gp8t.onrender.com/api/email', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(enviarEmail)
+    }));
+    const sendEmailJSON = await registro.json();
+    return {sendEmail,sendEmailJSON}
+  }
+    catch {
+      console.log('error');
+      console.log(error.message);
+      console.log(error);
+    } 
+  };
+
+
   aja().then(contactos => {
+    email().then(e => {
+      console.log(e.sendEmail);
+      console.log(e.sendEmailJSON);
+    })
 
     console.log(contactos.registroJSON);
     console.log(contactos.registro);
