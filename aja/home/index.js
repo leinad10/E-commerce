@@ -13,12 +13,15 @@ const login = document.querySelector('#login');
 const registro = document.querySelector('#registro');
 
 const auth = async () => {
+  data = {
+    username: usuario
+  }
   const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
   method: 'POST',
   headers: {
       'Content-type': 'application/json',
    },
-  body: JSON.stringify(usuario)
+  body: JSON.stringify(data)
   }));
   console.log(auth);
   const authJSON = await auth.json();
