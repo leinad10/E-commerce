@@ -9,7 +9,7 @@ router.post(
     `/api/${path}`,
     controller.insertData
 );
-router.put(
+router.get(
     `/api/${path}`,
     controller.changeData
 );
