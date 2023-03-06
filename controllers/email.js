@@ -147,16 +147,3 @@ exports.insertData = (async (request, response) => {
   //     console.log('error')
   //   ;}  response.send({data: docs})
   // })
-
-
-
-
-
-exports.getData = (async (request, response) => {
-  const data = request.body
-  User.find({}, (err, docs) =>  {
-    response.send({
-      docs
-    })
-  })
-});

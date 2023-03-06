@@ -9,9 +9,6 @@ router.post(
     `/api/${path}`,
     controller.insertData
 );
-router.get(
-    `/api/${path}`,
-    controller.changeData
-);
+
 
 module.exports = router
