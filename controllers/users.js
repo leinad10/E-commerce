@@ -16,14 +16,6 @@ let transporter = nodemailer.createTransport({
 });
 
 const sendEmail = (usuarioValido) => {
-  
-  function generateAccessToken(usuarioValido) {
-    return jwt.sign(usuarioValido, process.env.SECRET, {expiresIn: '10m'});
-  }
-  const accessToken =  generateAccessToken(usuarioValido);
-  return response.cookie(`acces-token-${username}`, accessToken, { httpOnly: true })
-          
-
   console.log('aver');
   let mailOptions = {
     from: `"Verification 👻" <${process.env.CORREO_ELECTRONICO}>`, // sender address
@@ -139,6 +131,9 @@ const sendEmail = (usuarioValido) => {
         
   }})
 }
+function generateAccessToken(usuarioValido) {
+  return jwt.sign(usuarioValido, process.env.SECRET, {expiresIn: '10m'});
+}
 
 
 exports.insertData = (async (request, response) => {
@@ -149,6 +144,8 @@ exports.insertData = (async (request, response) => {
   const isCorrect = /^(?=.*[a-z])(?=.*[0-9])(?=.*[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]).{6,24}$/;
   if (userExist) {
     if (reSend) {
+      const accessToken =  generateAccessToken(usuarioValido);
+      response.cookie(`acces-token-${username}`, accessToken, { httpOnly: true })
       sendEmail(usuarioValido);
       return response.status(200).json({ok : "Correo enviado"});
     }
@@ -160,6 +157,9 @@ exports.insertData = (async (request, response) => {
   }
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
+  
+  const accessToken =  generateAccessToken(usuarioValido);
+  response.cookie(`acces-token-${username}`, accessToken, { httpOnly: true })
   
 
   sendEmail();
