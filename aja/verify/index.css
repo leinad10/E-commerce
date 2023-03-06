@@ -231,6 +231,9 @@ body {
     border: 4px solid orange;
     border-radius: 30px;
     padding: 0.5rem;
+    list-style: none;
+    text-align: center;
+    text-decoration: none;
 }
 #side-t-2 {
     display: flex;
@@ -283,6 +286,9 @@ body {
     border: 4px solid orange;
     border-radius: 30px;
     padding: 0.5rem;
+    list-style: none;
+    text-align: center;
+    text-decoration: none;
 }
 .side-f-contacts {
     font-size: 0.5rem;
