@@ -49,9 +49,15 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+
+
+.texto {
+    font-size: 1.5rem;
+}
 .bueno {
     text-align: center;
-    width: 50%;
+    width: 30%;
     border: 0.5px black solid;
     border-radius: 100%;
     margin-top: 1rem;
@@ -828,6 +834,9 @@ body {
     display: flex;
     padding: 0.3rem;
     width: 2rem;
+}
+.hidden {
+    display: none !important;
 }
 #side-2 {
     height: 100%;

@@ -20,10 +20,64 @@ const mensaje = document.querySelector('#messageFromDB');
 const mensajeContainer = document.querySelector('#container-message');
 const spiner = document.querySelector('#loader');
 
+
+const redirect = () => {
+  mensajeContainer.classList.toggle('show-transform');
+  auth().then(e => {
+    console.log(e.auth);
+    if (e.auth.status===400) {
+      spiner.classList.toggle('hidden')
+      mensajeContainer.classList.add('fail')
+      mensaje.innerHTML=''
+      const enviarMensaje = document.createElement('div');
+      enviarMensaje.innerHTML = `
+      <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+      <h1 class="texto">${e.authJSON.error}, debes iniciar secion para poder acceder a esta seccion</h1>
+      `
+      mensaje.append(enviarMensaje);
+      mensaje.classList.toggle('show-transform');
+      setTimeout(() => {
+        mensaje.classList.toggle('show-transform');
+        spiner.classList.toggle('hidden');
+        mensajeContainer.classList.toggle('show-transform');
+        mensajeContainer.classList.toggle('fail');
+      }, 5000);
+      setTimeout(() => {
+        // window.location = "../login"
+          
+      }, 5000);
+      return 
+    }
+    mensajeContainer.classList.toggle('show-transform');
+    c.classList.add('show-none');
+    d.classList.add('show-none');
+    nav.classList.add('show-none');
+    f.classList.add('show-none');
+    login.classList.add('show-none');
+    registro.classList.add('show-none');
+    cuenta.classList.add('show-flex');
+    cuenta2.classList.add('show-flex-2');
+    cuentaUsername.innerHTML = usuario
+    cuentaUsername2.innerHTML = usuario
+
+    logout.addEventListener("click", e =>{
+      e.preventDefault();
+      localStorage.setItem('Usuario', "");
+      location.reload();
+    })
+    logout2.addEventListener("click", e =>{
+      e.preventDefault();
+      localStorage.setItem('Usuario', "");
+      location.reload();
+    })
+
+    })
+}
 const auth = async () => {
   data = {
     username: usuario
   }
+  console.log(data);
   const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
   method: 'POST',
   headers: {
@@ -38,56 +92,11 @@ const auth = async () => {
   return {auth, authJSON}
 }
 
-mensajeContainer.classList.toggle('show-transform');
-auth().then(e => {
-  
-  if (e.auth.status===400) {
-    spiner.classList.toggle('hidden')
-    mensajeContainer.classList.add('fail')
-    mensaje.innerHTML=''
-    const enviarMensaje = document.createElement('div');
-    enviarMensaje.innerHTML = `
-    <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
-    <h1 style="text-align: justify;">${e.authJSON.message}</h1>
-    `
-    mensaje.append(enviarMensaje);
-    mensaje.classList.toggle('show-transform');
-    setTimeout(() => {
-      mensaje.classList.toggle('show-transform');
-      spiner.classList.toggle('hidden');
-      mensajeContainer.classList.toggle('show-transform');
-      mensajeContainer.classList.toggle('fail');
-      cortina2.classList.toggle('show-transform');
-    }, 5000);
-    setTimeout(() => {
-        enviarMensaje.innerHTML=''
-    }, 5000);
-    return 
-  }
-  mensajeContainer.classList.toggle('show-transform');
-  c.classList.add('show-none');
-  d.classList.add('show-none');
-  nav.classList.add('show-none');
-  f.classList.add('show-none');
-  login.classList.add('show-none');
-  registro.classList.add('show-none');
-  cuenta.classList.add('show-flex');
-  cuenta2.classList.add('show-flex-2');
-  cuentaUsername.innerHTML = usuario
-  cuentaUsername2.innerHTML = usuario
+redirect();
 
-  logout.addEventListener("click", e =>{
-    e.preventDefault();
-    localStorage.setItem('Usuario', "");
-    location.reload();
-  })
-  logout2.addEventListener("click", e =>{
-    e.preventDefault();
-    localStorage.setItem('Usuario', "");
-    location.reload();
-  })
-  
-})
+setInterval(() => {
+  redirect();
+}, 110000);
 
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
@@ -129,6 +138,7 @@ cortina.addEventListener('click' , (e) => {
     cortina.classList.toggle('cortina-t')
     sideMobil.classList.remove('transition');
 })
+
 
 
 
