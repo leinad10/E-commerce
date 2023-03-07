@@ -64,6 +64,7 @@ auth().then(e => {
     }, 5000);
     return 
   }
+  mensajeContainer.classList.toggle('show-transform');
   c.classList.add('show-none');
   d.classList.add('show-none');
   nav.classList.add('show-none');

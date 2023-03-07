@@ -16,11 +16,77 @@ body {
     background-color: rgb(231, 231, 231);
     overflow: hidden;
 }
+#container-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 2rem;
+    width: 50%;
+    background-color: gray;
+    height: 25%;
+    z-index: -15;
+    border-radius: 15px;
+    border: 2px black solid;
+    transform: scale(0,0);
+    transition-property: transform, backgroun-color, z-index;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+.loader {
+    border: 16px solid black; /* Light grey */
+    border-top: 16px solid orange; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;  
+}
+#messageFromDB > div {
+    display: flex;
+    text-align: center;
+    gap: 2rem;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+.bueno {
+    text-align: center;
+    width: 50%;
+    border: 0.5px black solid;
+    border-radius: 100%;
+    margin-top: 1rem;
+}
+@keyframes spin {
+    0% {transform: rotate(0deg); }
+    20% {transform: rotate(36deg);}
+    40% {transform: rotate(77deg);}    
+    60% {transform: rotate(108deg);}
+    80% {transform: rotate(144deg);}
+    100% { transform: rotate(360deg); }
+}
+#messageFromDB{
+    position: absolute;
+    padding: 0.2rem;
+    font-size: 0.6rem;
+    background-color: transparent;
+    z-index: 10;
+    transform: scale(0,0);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+.show-transform {
+    transform: scale(1,1) !important;
+    z-index: 20 !important;
+}
 #nav-title {
     height: fit-content;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.5rem;
     color: rgb(227, 221, 221);
+}
+.fail {
+    background-color: lightcoral !important;
 }   
 #div-nav {
     

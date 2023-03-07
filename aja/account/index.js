@@ -16,6 +16,9 @@ const cuentaUsername = document.querySelector('#username');
 const cuentaUsername2 = document.querySelector('#username-2');
 const logout = document.querySelector("#log-out");
 const logout2 = document.querySelector("#log-out-2");
+const mensaje = document.querySelector('#messageFromDB');
+const mensajeContainer = document.querySelector('#container-message');
+const spiner = document.querySelector('#loader');
 
 const auth = async () => {
   data = {
@@ -35,11 +38,33 @@ const auth = async () => {
   return {auth, authJSON}
 }
 
+mensajeContainer.classList.toggle('show-transform');
 auth().then(e => {
+  
   if (e.auth.status===400) {
-    
+    spiner.classList.toggle('hidden')
+    mensajeContainer.classList.add('fail')
+    mensaje.innerHTML=''
+    const enviarMensaje = document.createElement('div');
+    enviarMensaje.innerHTML = `
+    <img class="bueno" src="../../images/error-svgrepo-com.svg" alt="">
+    <h1 style="text-align: justify;">${e.authJSON.message}</h1>
+    `
+    mensaje.append(enviarMensaje);
+    mensaje.classList.toggle('show-transform');
+    setTimeout(() => {
+      mensaje.classList.toggle('show-transform');
+      spiner.classList.toggle('hidden');
+      mensajeContainer.classList.toggle('show-transform');
+      mensajeContainer.classList.toggle('fail');
+      cortina2.classList.toggle('show-transform');
+    }, 5000);
+    setTimeout(() => {
+        enviarMensaje.innerHTML=''
+    }, 5000);
     return 
   }
+  mensajeContainer.classList.toggle('show-transform');
   c.classList.add('show-none');
   d.classList.add('show-none');
   nav.classList.add('show-none');
@@ -106,38 +131,6 @@ cortina.addEventListener('click' , (e) => {
 })
 
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace("active","");
-    }
-    slides[slideIndex-1].style.display = "flex";
-    dots[slideIndex-1].className += " active";
-
-    
-  }
-
-let slideIndex = 1;
-setInterval(()=>{
-  showSlides(slideIndex);
-  slideIndex++
-}, 8000)
-
-
-// Next/previous controls
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
 
 console.log("abueno");
 
