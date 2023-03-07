@@ -20,6 +20,10 @@ const productSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    category: {
+        type: Strng,
+        required: true
+    }
 });
 
 productSchema.set('toJSON', {

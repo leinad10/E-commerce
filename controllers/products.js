@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
-    const {name, value, image, description} = request.body
+    const {name, value, image, description, category} = request.body
     const productsExist = await Products.findOne({ productName: name });
 
     if (productsExist) {
@@ -15,7 +15,8 @@ exports.insertData = (async (request, response) => {
         productName: name,
         productValue: value,
         productImage: image,
-        decription: description
+        decription: description,
+        category: category,
     });
     const savedProduct = await product.save();
     return response.status(200).json({savedProduct});
