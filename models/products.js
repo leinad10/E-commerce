@@ -13,6 +13,9 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    decription: {
+        type: String,
+    },
     available: {
         type: Boolean,
         default: true

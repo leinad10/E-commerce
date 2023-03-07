@@ -43,7 +43,7 @@ const redirect = () => {
         mensajeContainer.classList.toggle('fail');
       }, 5000);
       setTimeout(() => {
-        // window.location = "../login"
+        window.location = "../login"
           
       }, 5000);
       return 
@@ -96,7 +96,7 @@ redirect();
 
 setInterval(() => {
   redirect();
-}, 110000);
+}, 1100000);
 
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
