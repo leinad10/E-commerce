@@ -16,6 +16,9 @@ const cuentaUsername = document.querySelector('#username');
 const cuentaUsername2 = document.querySelector('#username-2');
 const logout = document.querySelector("#log-out");
 const logout2 = document.querySelector("#log-out-2");
+const mensaje = document.querySelector('#messageFromDB');
+const mensajeContainer = document.querySelector('#container-message');
+const spiner = document.querySelector('#loader');
 
 const auth = async () => {
   data = {
