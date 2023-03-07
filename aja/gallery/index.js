@@ -34,7 +34,7 @@ const auth = async () => {
 
   return {auth, authJSON}
 }
-cortina2.classList.toggle('show-transform');
+
 mensajeContainer.classList.toggle('show-transform');
 auth().then(e => {
   
@@ -127,38 +127,6 @@ cortina.addEventListener('click' , (e) => {
 })
 
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace("active","");
-    }
-    slides[slideIndex-1].style.display = "flex";
-    dots[slideIndex-1].className += " active";
-
-    
-  }
-
-let slideIndex = 1;
-setInterval(()=>{
-  showSlides(slideIndex);
-  slideIndex++
-}, 8000)
-
-
-// Next/previous controls
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
 
 console.log("abueno");
 
