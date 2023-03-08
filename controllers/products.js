@@ -27,9 +27,7 @@ exports.insertData = (async (request, response) => {
             console.log(err);
             return response.status(400).json({error: 'la cagaste'})
           }
-          return response.send({
-            docs
-          })
+          return response.status(200).json({docs})
         }
       }
     });
