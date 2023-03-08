@@ -96,6 +96,32 @@ const auth = async () => {
 
   return {auth, authJSON}
 }
+
+const bueno = async (e) => {
+  data = {
+      name: "",
+     value: "",
+     image: "",
+     description: "",
+     category:"",
+     metodo: "get",
+     id: e,
+  }
+  console.log(data);
+  const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+  method: 'POST',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  body: JSON.stringify(data)
+  }));
+  console.log(auth);
+  const authJSON = await auth.json();
+  
+
+  return {auth, authJSON}
+}
+
 const products = async () => {
   const aja = await (fetch('https://four-estaciones-gp8t.onrender.com/api/products', {
   method: 'GET',
@@ -211,7 +237,11 @@ for (var i = 0; i < btns.length; i++) {
 
 
   });
-  
+  div.addEventListener("click", e => {
+    e.preventDefault();
+    console.log(e.target);
+  })
+
 
 }) 
 
