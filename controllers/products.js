@@ -22,6 +22,9 @@ exports.insertData = (async (request, response) => {
       return response.status(200).json({savedProduct});
       } else {
         Products.findById({id: id}), (err, docs) => {
+          if (err) {
+            console.log(err);
+          }
           return response.send({
             docs
           })
