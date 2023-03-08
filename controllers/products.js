@@ -22,7 +22,7 @@ exports.insertData = (async (request, response) => {
       return response.status(200).json({savedProduct});
       } else {
         Products.findById({id: id}), (err, docs) => {
-          response.send({
+          return response.send({
             docs
           })
         }
