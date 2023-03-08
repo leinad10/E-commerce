@@ -8,7 +8,6 @@ exports.insertData = (async (request, response) => {
     const {name, value, image, description, category, metodo, id} = request.body
       if (metodo==="post" || metodo==="") {
         const productsExist = await Products.findOne({ productName: name });
-
       if (productsExist) {
         response.status(400).json({error : "Ya existe un producto con ese nombre"})
       }
@@ -23,7 +22,7 @@ exports.insertData = (async (request, response) => {
       return response.status(200).json({savedProduct});
       } else {
         Products.findById({id: id}), (err, docs) => {
-          response.semd({
+          response.send({
             docs
           })
         }

@@ -108,7 +108,7 @@ const bueno = async (e) => {
      id: e,
   }
   console.log(data);
-  const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+  const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/products', {
   method: 'POST',
   headers: {
       'Content-type': 'application/json',
@@ -239,7 +239,17 @@ for (var i = 0; i < btns.length; i++) {
   });
   div.addEventListener("click", e => {
     e.preventDefault();
-    console.log(e.target);
+    if (e.target.classList.contains("side-button-2")) {
+      console.log("risa");
+      const id = e.target.id
+      console.log(id);
+      bueno(id).then(e => {
+        console.log("qlq");
+        console.log(e.auth);
+        console.log(e.authJSON);
+      })
+      
+    }
   })
 
 
