@@ -2,6 +2,8 @@ const Products = require('../models/products');
 const bcrypt = require('bcrypt');
 const { model } = require('mongoose');
 const nodemailer = require("nodemailer");
+const { json } = require('body-parser');
+
 require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
@@ -21,14 +23,9 @@ exports.insertData = (async (request, response) => {
       const savedProduct = await product.save();
       return response.status(200).json({savedProduct});
       } else {
-        Products.findById(id), (err, docs) => {
-          if (err) {
-            
-            console.log(err);
-            return response.status(400).json({error: 'la cagaste'})
-          }
-          return response.status(200).json({docs})
-        }
+        const aja = await Products.find({_id : id});
+        console.log(aja);
+        response.status(200).json({aja});
       }
     });
 
@@ -37,6 +34,7 @@ exports.insertData = (async (request, response) => {
 exports.getData = (async (request, response) => {
     const data = request.body
     Products.find({data}, (err, docs) =>  {
+      console.log(docs);
       response.send({
         docs
       })
