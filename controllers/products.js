@@ -21,9 +21,11 @@ exports.insertData = (async (request, response) => {
       const savedProduct = await product.save();
       return response.status(200).json({savedProduct});
       } else {
-        Products.findById({id: id}), (err, docs) => {
+        Products.findById(id), (err, docs) => {
           if (err) {
+            
             console.log(err);
+            return response.status(400).json({error: 'la cagaste'})
           }
           return response.send({
             docs
