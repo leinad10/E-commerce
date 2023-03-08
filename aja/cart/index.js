@@ -241,7 +241,7 @@ for (var i = 0; i < btns.length; i++) {
     e.preventDefault();
     if (e.target.classList.contains("side-button-2")) {
       console.log("risa");
-      console.log(id);
+      const id = e.target.id
       bueno(id).then(e => {
         console.log("qlq");
         console.log(e.producto);
