@@ -131,7 +131,7 @@ products().then(e => {
         <h4 class="nombre">${element.productName}</h4>
         <p class="value">${element.productValue}</p>
         <p class="descripcion">${element.decription}</p>
-        <button id="${element.id}" class="side-button">Ordenar</button>
+        <button id="${element.id}" class="side-button-2">Ordenar</button>
       </div>
     `
     mostrarProductos.classList.add('column');

@@ -5,23 +5,33 @@ const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
-    const {name, value, image, description, category} = request.body
-    const productsExist = await Products.findOne({ productName: name });
+    const {name, value, image, description, category, metodo, id} = request.body
+      if (metodo==="post" || metodo==="") {
+        const productsExist = await Products.findOne({ productName: name });
 
-    if (productsExist) {
+      if (productsExist) {
         response.status(400).json({error : "Ya existe un producto con ese nombre"})
-    }
-    const product = new Products({
+      }
+      const product = new Products({
         productName: name,
         productValue: value,
         productImage: image,
         decription: description,
         category: category,
+      });
+      const savedProduct = await product.save();
+      return response.status(200).json({savedProduct});
+      } else {
+        Products.findById({id: id}), (err, docs) => {
+          response.semd({
+            docs
+          })
+        }
+      }
     });
-    const savedProduct = await product.save();
-    return response.status(200).json({savedProduct});
-});
 
+    
+    
 exports.getData = (async (request, response) => {
     const data = request.body
     Products.find({data}, (err, docs) =>  {
