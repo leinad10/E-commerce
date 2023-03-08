@@ -108,7 +108,7 @@ const bueno = async (e) => {
      id: e,
   }
   console.log(data);
-  const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/products', {
+  const producto = await (fetch('https://four-estaciones-gp8t.onrender.com/api/products', {
   method: 'POST',
   headers: {
       'Content-type': 'application/json',
@@ -116,10 +116,10 @@ const bueno = async (e) => {
   body: JSON.stringify(data)
   }));
   console.log(auth);
-  const authJSON = await auth.json();
+  const productoJSON = await producto.json();
   
 
-  return {auth, authJSON}
+  return {producto, productoJSON}
 }
 
 const products = async () => {
@@ -241,12 +241,22 @@ for (var i = 0; i < btns.length; i++) {
     e.preventDefault();
     if (e.target.classList.contains("side-button-2")) {
       console.log("risa");
-      const id = e.target.id
       console.log(id);
       bueno(id).then(e => {
         console.log("qlq");
-        console.log(e.auth);
-        console.log(e.authJSON);
+        console.log(e.producto);
+        console.log(e.productoJSON);
+        const element = e.productoJSON.aja[0]
+        console.log(element);
+        const nuevoMensaje = document.createElement('div');
+        nuevoMensaje.innerHTML = `
+          <img class="imagen" src="${element.productImage}" alt="Mountains" style="width:100%">
+          <h4 class="nombre">${element.productName}</h4>
+          <p class="value">${element.productValue}</p>
+          <p class="descripcion">${element.decription}</p>
+          <button id="${element.id}" class="side-button-2">Ordenar</button>
+        `
+        mensaje.append(nuevoMensaje);
       })
       
     }
