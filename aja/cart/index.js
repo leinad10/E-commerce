@@ -19,6 +19,12 @@ const logout2 = document.querySelector("#log-out-2");
 const mensaje = document.querySelector('#messageFromDB');
 const mensajeContainer = document.querySelector('#container-message');
 const spiner = document.querySelector('#loader');
+const div = document.querySelector('#div1');
+const all = document.querySelector('#all');
+const productoss = document.querySelector('#Productos');
+const postres = document.querySelector('#Postres');
+const combos = document.querySelector('#Combos');
+const bebidas = document.querySelector('#Bebidas');
 
 const redirect = () => {
   mensajeContainer.classList.toggle('show-transform');
@@ -42,7 +48,7 @@ const redirect = () => {
         mensajeContainer.classList.toggle('fail');
       }, 5000);
       setTimeout(() => {
-        window.location = "../login"
+        // window.location = "../login"
           
       }, 5000);
       return 
@@ -90,12 +96,126 @@ const auth = async () => {
 
   return {auth, authJSON}
 }
+const products = async () => {
+  const aja = await (fetch('https://four-estaciones-gp8t.onrender.com/api/products', {
+  method: 'GET',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  }));
+  
+  const ajaJSON = await aja.json();
+  
+
+  return {aja, ajaJSON}
+}
 
 redirect();
 
 setInterval(() => {
   redirect();
 }, 1100000);
+
+mensajeContainer.classList.toggle('show-transform');
+products().then(e => {
+  mensajeContainer.classList.toggle('show-transform');
+  console.log(e.aja);
+  console.log(e.ajaJSON);
+  const productos = e.ajaJSON.docs
+  console.log(productos);
+  productos.forEach(element => {
+    const mostrarProductos = document.createElement('div');
+    mostrarProductos.innerHTML = `
+      <div class="content">
+        <img class="imagen" src="${element.productImage}" alt="Mountains" style="width:100%">
+        <h4 class="nombre">${element.productName}</h4>
+        <p class="value">${element.productValue}</p>
+        <p class="descripcion">${element.decription}</p>
+        <button id="${element.id}" class="side-button">Ordenar</button>
+      </div>
+    `
+    mostrarProductos.classList.add('column');
+    mostrarProductos.classList.add(`${element.category}`);
+  // 
+  div.append(mostrarProductos);
+  filterSelection("all");
+    all.addEventListener('click', e => {
+      e.preventDefault();
+      filterSelection("all");
+    })
+    postres.addEventListener('click', e => {
+      e.preventDefault();
+      filterSelection("Postre");
+    })
+    productoss.addEventListener('click', e => {
+      e.preventDefault();
+      filterSelection("Producto");
+    })
+    combos.addEventListener('click', e => {
+      e.preventDefault();
+      filterSelection("Combos");
+    })
+    bebidas.addEventListener('click', e => {
+      e.preventDefault();
+      filterSelection("Bebidas");
+    })
+
+ // Execute the function and show all columns
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") {c = ""};
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "showw");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "showw");
+  }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", e => {
+    e.preventDefault();
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace("active", "");
+    this.className += " active";
+  });
+}
+
+
+  });
+  
+
+}) 
+
+
 
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
