@@ -1,3 +1,5 @@
+
+
 const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
@@ -49,7 +51,7 @@ const redirect = () => {
       }, 5000);
       setTimeout(() => {
         // window.location = "../login"
-          
+        mensaje.innerHTML=""
       }, 5000);
       return 
     }
@@ -237,6 +239,9 @@ for (var i = 0; i < btns.length; i++) {
 
 
   });
+  
+  const verga = []
+  
   div.addEventListener("click", e => {
     e.preventDefault();
     if (e.target.classList.contains("side-button-2")) {
@@ -248,15 +253,62 @@ for (var i = 0; i < btns.length; i++) {
         console.log(e.productoJSON);
         const element = e.productoJSON.aja[0]
         console.log(element);
-        const nuevoMensaje = document.createElement('div');
-        nuevoMensaje.innerHTML = `
-          <img class="imagen" src="${element.productImage}" alt="Mountains" style="width:100%">
-          <h4 class="nombre">${element.productName}</h4>
-          <p class="value">${element.productValue}</p>
-          <p class="descripcion">${element.decription}</p>
-          <button id="${element.id}" class="side-button-2">Ordenar</button>
-        `
-        mensaje.append(nuevoMensaje);
+        
+        const eso = {
+          producto: element.productName,
+          value: element.productValue,
+          descripcion: element.decription,
+          cantidad: 1
+        }
+        const esto = (verga, eso) => {
+          console.log("qlq");
+          if (verga.length===0) {
+            verga.push(eso)
+            console.log("hola");
+          } else {
+              console.log("aja");
+              let b = Boolean
+              let i = 0
+              for (const e of verga) {
+                console.log(verga.length);
+                if (e.producto===eso.producto) {
+                  console.log("qlq");
+                  e.cantidad = e.cantidad + 1
+                  return
+                } else {
+                  i = i+1
+                  if (i === verga.length) {
+                    verga.push(eso);
+                    i = 0
+                    return
+                  }
+                }
+
+              }
+          }
+          console.log(verga);
+          console.log("perra");
+          
+          
+        }
+        esto(verga,eso)
+        console.log(eso);
+        console.log(verga);
+        mensaje.innerHTML=""
+        verga.forEach(element => {
+          const nuevoMensaje = document.createElement('div');
+          nuevoMensaje.innerHTML = `
+            <h4 class="nombre">${element.producto}</h4>
+            <p class="value">${element.value}</p>
+            <p class="descripcion">${element.descripcion}</p>
+            <input tye='numeric' value='${element.cantidad}'></input>
+          `
+          
+          mensaje.append(nuevoMensaje);
+        });
+        
+        
+        console.log(mensaje);
       })
       
     }
