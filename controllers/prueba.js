@@ -1,4 +1,4 @@
-
+const fetch = require("node-fetch");
 const bcrypt = require('bcrypt');
 const { model } = require('mongoose');
 const nodemailer = require("nodemailer");

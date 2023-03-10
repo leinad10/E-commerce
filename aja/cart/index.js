@@ -29,7 +29,7 @@ const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
 
 const precios = async () => {
-  const aja = await (fetch('https://four-estaciones-gp8t.onrender.com/api/prueba', {
+  const aja = await (fetch('https://localhost:3003/api/prueba', {
   method: 'GET',
   headers: {
       'Content-type': 'application/json',
@@ -37,6 +37,8 @@ const precios = async () => {
    mode: "cors"
   }));
   const ajaJSON = await aja.json();
+  console.log(aja);
+  console.log(ajaJSON);
   return {aja, ajaJSON}
 }
 
@@ -396,8 +398,11 @@ for (var i = 0; i < btns.length; i++) {
           console.log(c);
           let totall = c.reduce((a, b) => a + b, 0);
           console.log(totall);
-          const aja = precios();
-          console.log(aja);
+          precios().then(e => {
+            console.log(e.aja);
+            console.log(e.ajaJSON);
+          })
+          
             
         })
         
