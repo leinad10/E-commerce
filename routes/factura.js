@@ -1,8 +1,8 @@
 const express = require('express');
 const { route } = require('../app');
-const controller = require('../controllers/auth');
+const controller = require('../controllers/factura');
 const router = express.Router();
-const path = 'auth'
+const path = 'factura'
 
 
 router.post(
