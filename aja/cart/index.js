@@ -114,7 +114,7 @@ const auth = async () => {
   return {auth, authJSON}
 }
 
-const factura = async (data) => {
+const facturaa = async (data) => {
   
   console.log(data);
   const factura = await (fetch('https://four-estaciones-gp8t.onrender.com/api/factura', {
@@ -485,7 +485,7 @@ for (var i = 0; i < btns.length; i++) {
                   metodo: "Post",
                   direccion: direeccion,
                 }
-                factura(data).then(e => {
+                facturaa(data).then(e => {
                   console.log(e.factura);
                   console.log(e.facturaJSON);
                 })
