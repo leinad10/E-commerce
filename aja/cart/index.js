@@ -20,6 +20,7 @@ const logout = document.querySelector("#log-out");
 const logout2 = document.querySelector("#log-out-2");
 const mensaje = document.querySelector('#messageFromDB');
 const mensajeContainer = document.querySelector('#container-message');
+const preguntaContainer = document.querySelector('#container-pregunta');
 const spiner = document.querySelector('#loader');
 const div = document.querySelector('#div1');
 const all = document.querySelector('#all');
@@ -29,7 +30,7 @@ const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
 
 const precios = async () => {
-  const aja = await (fetch('https://localhost:3003/api/prueba', {
+  const aja = await (fetch('https://four-estaciones-gp8t.onrender.com/api/prueba', {
   method: 'GET',
   headers: {
       'Content-type': 'application/json',
@@ -401,6 +402,73 @@ for (var i = 0; i < btns.length; i++) {
           precios().then(e => {
             console.log(e.aja);
             console.log(e.ajaJSON);
+            const aja = e.ajaJSON.ajaJSON
+            console.log(aja[0].exchange);
+            const dolar = aja[0].exchange
+            const bs = dolar * totall
+            console.log(bs);
+            mensaje.innerHTML=""
+            console.log(a);
+            console.log(a[0].cantidad);
+            console.log(a[0].nombre);
+            a.forEach(element => {
+              const dola = element.valor.split(" ");
+              const eso = dola[0]
+              const precio = element.cantidad * eso * dolar
+              const bueno = precio.toFixed(2);
+              const factura = document.createElement('div');
+              factura.innerHTML=`
+              <h4 class="nombree">${element.nombre}</h4>
+              <p class="valuee">${element.valor}</p>
+              <p class="descripcionn">${element.descripcion}</p>
+              <p class="cantidadd" id="q">${element.cantidad}</p>
+              <p class="bs">${bueno} Bs.</p>
+              `
+              factura.classList.add('factura');
+              mensaje.append(factura);
+            });
+            const confirmar = document.createElement('div');
+            confirmar.innerHTML=`
+              <button id="confirmar" class="side-button-2" type="button" class='plus'>confirmar</button>
+              <button id="cancelar" class="side-button-2" type="button" class='plus'>cancelar</button>
+            `
+            confirmar.classList.add('factura');
+            mensaje.append(confirmar);
+
+            const confirmarr = document.querySelector('#confirmar');
+            const cancelar = document.querySelector('#cancelar');
+
+            confirmarr.addEventListener('click', e => {
+              e.preventDefault();
+              const preghunta = document.createElement('div');
+              preghunta.innerHTML=`
+              <p class="">Indicanos donde recibiras tu pedido.</p>
+              <textarea id="textArea" name="textarea" rows="5" cols="25" placeholder="Escribe tu direccion aca."></textarea>
+              <button id="confirm" class="side-button-2" type="button" class='plus'>Confirmar</button>
+              `
+              preguntaContainer.append(preghunta);
+              mensajeContainer.classList.toggle('show-transform');
+              preguntaContainer.classList.toggle('show-transform');
+              const confirm = document.querySelector('#confirm');
+              const textArea = document.querySelector('#textArea');
+
+              confirm.addEventListener ('click', e => {
+                e.preventDefault();
+                const direeccion = textArea.value
+                console.log(direeccion);
+                console.log(a);
+                console.log(totall);
+                console.log(totall * dolar);
+              })
+            
+
+            })
+            
+            cancelar.addEventListener('click', e => {
+              e.preventDefault();
+              location.reload();
+            })
+            
           })
           
             
