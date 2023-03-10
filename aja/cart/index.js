@@ -28,6 +28,18 @@ const postres = document.querySelector('#Postres');
 const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
 
+const precios = async () => {
+  const aja = await (fetch('https://bcv-api.deno.dev/v1/exchange/Dolar', {
+  method: 'GET',
+  headers: {
+      'Content-type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+   },
+  }));
+  
+  return {aja}
+}
+
 const redirect = () => {
   mensajeContainer.classList.toggle('show-transform');
   auth().then(e => {
@@ -295,17 +307,100 @@ for (var i = 0; i < btns.length; i++) {
         console.log(eso);
         console.log(verga);
         mensaje.innerHTML=""
+        spiner.classList.add('show-none');
+        mensajeContainer.classList.toggle('show-transform');
+        mensaje.classList.toggle('show-transform');
         verga.forEach(element => {
           const nuevoMensaje = document.createElement('div');
           nuevoMensaje.innerHTML = `
-            <h4 class="nombre">${element.producto}</h4>
-            <p class="value">${element.value}</p>
-            <p class="descripcion">${element.descripcion}</p>
-            <input tye='numeric' value='${element.cantidad}'></input>
+            <h4 class="nombree">${element.producto}</h4>
+            <p class="valuee">${element.value} $</p>
+            <p class="descripcionn">${element.descripcion}</p>
+            <input class="cantidadd" tye='numeric' id="q" value='${element.cantidad}'></input>
           `
-          
+          nuevoMensaje.classList.add('pedido')
           mensaje.append(nuevoMensaje);
         });
+
+
+        const pulsOrder = document.createElement('div');
+        pulsOrder.innerHTML = `
+        <button id="plus" type="button" class='plus'>➕</button>
+        <button id="ordenar" class="side-button-2" type="button" class='plus'>ordenar</button>
+
+        `
+        mensaje.append(pulsOrder);
+        pulsOrder.classList.add('order');
+
+        const plus = document.querySelector('#plus');
+
+        plus.addEventListener("click", e => {
+          e.preventDefault();
+          mensajeContainer.classList.toggle('show-transform');
+          mensaje.classList.toggle('show-transform');
+        })
+
+        const ordenar = document.querySelector('#ordenar');
+
+        ordenar.addEventListener('click', e => {
+          e.preventDefault();
+          console.log(mensaje.children);
+          const factura = mensaje.children
+          const arr = Array.from(factura);
+          console.log(arr);
+          const k = []
+          arr.forEach(element => {
+            if (element.classList.contains("pedido")) {
+                k.push(element);
+            }
+          });
+          console.log(k);
+          const a = []
+          k.forEach(element => {
+            console.log(element.innerHTML); 
+            const s = element.children
+            console.log(s);
+            const t = []
+            const arr = Array.from(s);
+            arr.forEach(element => {
+              console.log(element);
+              let ok = element.innerHTML
+              if (element.classList.contains('cantidadd')) {
+                ok = element.value
+              } 
+
+              
+              t.push(ok);
+              
+            });
+            const aja = {
+              nombre : t[0],
+              valor: t[1],
+              descripcion: t[2],
+              cantidad: t[3]
+            }
+            a.push(aja);
+          });
+          console.log(a);
+          const c = []
+          a.forEach(element => {
+             console.log(element);
+             const eso = element.valor
+             const aja = Number(element.cantidad)
+             const v = eso.split(" ")
+             console.log(v[0]);
+             const total = v[0] * aja
+             console.log(total);
+             c.push(total);
+          });
+          console.log(c);
+          let totall = c.reduce((a, b) => a + b, 0);
+          console.log(totall);
+            precios().then(e => {
+              console.log(e.aja);
+            })
+
+        })
         
         
         console.log(mensaje);

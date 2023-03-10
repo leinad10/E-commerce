@@ -112,6 +112,28 @@ body {
     background-color: #666;
      color: white;
   }
+
+  .pedido {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  .nombree{
+    width: 30%;
+  }
+  .valuee {
+    width: 10%;
+  }
+  .descripcionn{
+    width: 50%;
+  }
+  .cantidadd {
+    width: 10%;
+  }
+  .order {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+  }
 /*  */
 /*  */
 /*  */
@@ -145,7 +167,8 @@ body {
     padding: 2rem;
     width: 50%;
     background-color: gray;
-    height: 25%;
+    min-height: 30%;
+    height: fit-content;
     z-index: -15;
     border-radius: 15px;
     border: 2px black solid;
@@ -188,7 +211,7 @@ body {
 #messageFromDB{
     position: absolute;
     padding: 0.2rem;
-    font-size: 0.6rem;
+    font-size: 1rem;
     background-color: transparent;
     z-index: 10;
     transform: scale(0,0);
