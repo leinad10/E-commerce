@@ -34,6 +34,7 @@ const precios = async () => {
   headers: {
       'Content-type': 'application/json',
    },
+   mode: "cors"
   }));
   const ajaJSON = await aja.json();
   return {aja, ajaJSON}
