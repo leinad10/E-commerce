@@ -1,4 +1,4 @@
-const Facturas = require('../models/facturas');
+const Facturas = require('../models/factura');
 
 const { model } = require('mongoose');
 
