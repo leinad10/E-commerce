@@ -29,7 +29,7 @@ const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
 
 const precios = async () => {
-  const aja = await (fetch('https://s3.amazonaws.com/dolartoday/data.json', {
+  const aja = await (fetch('https://four-estaciones-gp8t.onrender.com/api/prueba', {
   method: 'GET',
   headers: {
       'Content-type': 'application/json',
@@ -396,10 +396,8 @@ for (var i = 0; i < btns.length; i++) {
           console.log(c);
           let totall = c.reduce((a, b) => a + b, 0);
           console.log(totall);
-            precios().then(e => {
-              console.log(e.aja);
-              console.log(e.ajaJSON);
-            })
+          const aja = precios();
+          console.log(aja);
             
         })
         

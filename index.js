@@ -6,6 +6,7 @@ const productsRouter = require('./routes/products');
 const loginRouter = require('./routes/login');
 const authRouter = require('./routes/auth');
 const emailRouter = require('./routes/email');
+const pruebaRouter = require('./routes/prueba');
 
 const server = http.createServer(app);
 const bodyParser = require('body-parser');
@@ -13,7 +14,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 
-
+app.use(pruebaRouter);
 app.use(loginRouter);
 app.use(usersRouter);
 app.use(productsRouter);
