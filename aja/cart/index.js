@@ -29,15 +29,14 @@ const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
 
 const precios = async () => {
-  const aja = await (fetch('https://bcv-api.deno.dev/v1/exchange/Dolar', {
+  const aja = await (fetch('https://s3.amazonaws.com/dolartoday/data.json', {
   method: 'GET',
   headers: {
       'Content-type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
    },
   }));
-  
-  return {aja}
+  const ajaJSON = await aja.json();
+  return {aja, ajaJSON}
 }
 
 const redirect = () => {
@@ -398,8 +397,9 @@ for (var i = 0; i < btns.length; i++) {
           console.log(totall);
             precios().then(e => {
               console.log(e.aja);
+              console.log(e.ajaJSON);
             })
-
+            
         })
         
         
