@@ -8,13 +8,13 @@ require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
     const {productos, totalDolars, totalBolivares, estado, direccion, metodo } = request.body
-    const factura = {
+    const factura = new Facturas({
         productos,
         totalDolars,
         totalBolivares,
         direccion,
         estado
-    }
+    });
     const savedfactura = await factura.save();
     return response.status(200).json({savedfactura});
     });
