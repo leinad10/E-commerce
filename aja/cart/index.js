@@ -114,6 +114,23 @@ const auth = async () => {
   return {auth, authJSON}
 }
 
+const factura = async (data) => {
+  
+  console.log(data);
+  const factura = await (fetch('https://four-estaciones-gp8t.onrender.com/api/factura', {
+  method: 'POST',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  body: JSON.stringify(data)
+  }));
+  console.log(auth);
+  const facturaJSON = await factura.json();
+  
+
+  return {factura, facturaJSON}
+}
+
 const bueno = async (e) => {
   data = {
       name: "",
@@ -459,6 +476,19 @@ for (var i = 0; i < btns.length; i++) {
                 console.log(a);
                 console.log(totall);
                 console.log(totall * dolar);
+                const bolivar = totall * dolar
+                const data = {
+                  productos: a,
+                  totalDolars: totall,
+                  totalBolivares: bolivar,
+                  estado: "Pending",
+                  metodo: "Post",
+                  direccion: direeccion,
+                }
+                factura(data).then(e => {
+                  console.log(e.factura);
+                  console.log(e.facturaJSON);
+                })
               })
             
 

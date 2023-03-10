@@ -13,6 +13,10 @@ const facturaSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    direccion: {
+        type: String,
+        required: true,
+    },
     estado: {
         type: String,
         required: true,
