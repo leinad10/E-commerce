@@ -517,6 +517,7 @@ for (var i = 0; i < btns.length; i++) {
                     facturaa(data).then(e => {
                       console.log(e.factura);
                       console.log(e.facturaJSON);
+
                     })
 
                   }
@@ -531,6 +532,12 @@ for (var i = 0; i < btns.length; i++) {
             cancelar.addEventListener('click', e => {
               e.preventDefault();
               location.reload();
+              preguntaContainer.innerHTML=""
+                preghunta.innerHTML=`
+                <p>El #id de su orden es ${e.authJSON.savedfactura.id}</p>
+                <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
+                `
+                preguntaContainer.append(preghunta);
             })
             
           })
