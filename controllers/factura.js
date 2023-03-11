@@ -23,7 +23,7 @@ exports.insertData = (async (request, response) => {
     
 exports.getData = (async (request, response) => {
     const data = request.body
-    Products.find({data}, (err, docs) =>  {
+    Facturas.find({data}, (err, docs) =>  {
       console.log(docs);
       response.send({
         docs
