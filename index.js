@@ -8,6 +8,7 @@ const authRouter = require('./routes/auth');
 const emailRouter = require('./routes/email');
 const pruebaRouter = require('./routes/prueba');
 const facturaRouter = require('./routes/factura');
+const facturaRouter = require('./routes/whats');
 
 const server = http.createServer(app);
 const bodyParser = require('body-parser');
@@ -15,6 +16,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 
+app.use(whatsRouter);
 app.use(facturaRouter);
 app.use(pruebaRouter);
 app.use(loginRouter);
