@@ -8,7 +8,7 @@ const authRouter = require('./routes/auth');
 const emailRouter = require('./routes/email');
 const pruebaRouter = require('./routes/prueba');
 const facturaRouter = require('./routes/factura');
-const facturaRouter = require('./routes/whats');
+const whatsRouter = require('./routes/whats');
 
 const server = http.createServer(app);
 const bodyParser = require('body-parser');
