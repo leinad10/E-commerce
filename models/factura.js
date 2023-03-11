@@ -20,6 +20,21 @@ const facturaSchema = new mongoose.Schema({
     estado: {
         type: String,
         required: true,
+    },
+    usuario: {
+        type: String,
+        required: true,
+    },
+    metodoDePago: {
+        type: String,
+        required: true,
+    },
+    pagoRecibido: {
+        type: Boolean,
+        default: false,
+    },
+    numeroRef:{
+        type: String,
     }
 
 });

@@ -201,6 +201,28 @@ body {
     transition-timing-function: ease-in-out;
 }
 
+.incorrect {
+    border: 3px solid rgb(138, 22, 22) !important;
+    animation: shake 0.5s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: 1;
+    
+  }
+  @keyframes shake {
+    0% { transform: translate(1px, 1%) rotate(0deg); }
+    10% { transform: translate(-1px, 1%) rotate(-1deg); }
+    20% { transform: translate(-3px, 1%) rotate(1deg); }
+    30% { transform: translate(3px, 1%) rotate(0deg); }
+    40% { transform: translate(1px, 1%) rotate(1deg); }
+    50% { transform: translate(-1px, 1%) rotate(-1deg); }
+    60% { transform: translate(-3px, 1%) rotate(0deg); }
+    70% { transform: translate(3px, 1%) rotate(-1deg); }
+    80% { transform: translate(-1px, 1%) rotate(1deg); }
+    90% { transform: translate(1px, 1%) rotate(0deg); }
+    100% { transform: translate(1px, 1%) rotate(-1deg); }
+  }  
+
 .loader {
     border: 16px solid black; /* Light grey */
     border-top: 16px solid orange; /* Blue */

@@ -7,13 +7,16 @@ const { json } = require('body-parser');
 require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
-    const {productos, totalDolars, totalBolivares, estado, direccion, metodo } = request.body
+    const {productos, totalDolars, totalBolivares, estado, direccion, metodo, usuario, metodoDePago, numeroRef } = request.body
     const factura = new Facturas({
         productos,
         totalDolars,
         totalBolivares,
         direccion,
-        estado
+        estado,
+        usuario,
+        metodoDePago,
+        numeroRef,
     });
     const savedfactura = await factura.save();
     return response.status(200).json({savedfactura});

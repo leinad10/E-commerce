@@ -477,18 +477,52 @@ for (var i = 0; i < btns.length; i++) {
                 console.log(totall);
                 console.log(totall * dolar);
                 const bolivar = totall * dolar
-                const data = {
-                  productos: a,
-                  totalDolars: totall,
-                  totalBolivares: bolivar,
-                  estado: "Pending",
-                  metodo: "Post",
-                  direccion: direeccion,
-                }
-                facturaa(data).then(e => {
-                  console.log(e.factura);
-                  console.log(e.facturaJSON);
+                preguntaContainer.innerHTML=""
+                preghunta.innerHTML=`
+                <div id="pagoMobil">
+                    <h1>Pago Mobil</h1>
+                    <p>Cedula</p>
+                    <p>Numero de telefono</p>
+                    <p>Banco</p>
+                    <input id="referencia" placeholder="Numero de referencia"></input>
+                </div>
+                <div id="efectivo">
+                    <h1>Efectivo</h1>
+                </div>
+                `
+                preguntaContainer.append(preghunta);
+                const referencia = document.querySelector('#referencia')
+                const pagoMobil = document.querySelector('#pagoMobil');
+                const efectivo = document.querySelector('#efectivo');
+
+                pagoMobil.addEventListener('click', e =>{
+                  e.preventDefault();
+                  if (referencia.value==="") {
+                    referencia.classList.add('incorrect');
+                  } else {
+                    referencia.classList.remove('incorrect');
+                    const numeroRef = referencia.value
+                    const metodoDePago = "Pago Mobil"
+                    const data = {
+                      productos: a,
+                      totalDolars: totall,
+                      totalBolivares: bolivar,
+                      estado: "En proceso",
+                      metodo: "Post",
+                      direccion: direeccion,
+                      usuario: usuario,
+                      metodoDePago: metodoDePago,
+                      numeroRef: numeroRef
+                    }
+                    facturaa(data).then(e => {
+                      console.log(e.factura);
+                      console.log(e.facturaJSON);
+                    })
+
+                  }
+
                 })
+
               })
             
 
