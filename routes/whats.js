@@ -9,4 +9,9 @@ router.post(
     controller.insertData
 );
 
+router.get(
+    `/api/${path}`,
+    controller.getData
+);
+
 module.exports = router
