@@ -32,7 +32,7 @@ const bebidas = document.querySelector('#Bebidas');
 const whats = async (data) => {
   
   console.log(data);
-  const what = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+  const what = await (fetch('https://four-estaciones-gp8t.onrender.com/api/whats', {
   method: 'POST',
   headers: {
       'Content-type': 'application/json',
@@ -134,7 +134,7 @@ const auth = async () => {
 const facturaa = async (data) => {
   
   console.log(data);
-  const factura = await (fetch('https://four-estaciones-gp8t.onrender.com/api/whats', {
+  const factura = await (fetch('https://four-estaciones-gp8t.onrender.com/api/factura', {
   method: 'POST',
   headers: {
       'Content-type': 'application/json',
