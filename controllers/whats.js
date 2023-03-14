@@ -25,7 +25,7 @@ exports.insertData = (async (request, response) => {
   });
 
   exports.insertData = (async (req, res) => {
-        Products.find({}, (err, docs) =>  {
+        Factura.find({}, (err, docs) =>  {
         console.log(docs);
         response.send({
           docs
