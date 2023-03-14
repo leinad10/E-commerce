@@ -300,7 +300,7 @@ for (var i = 0; i < btns.length; i++) {
         console.log("qlq");
         console.log(e.producto);
         console.log(e.productoJSON);
-        const element = e.productoJSON.aja[0]
+        const element = e.productoJSON;
         console.log(element);
         
         const eso = {
