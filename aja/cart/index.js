@@ -134,7 +134,7 @@ const auth = async () => {
 const facturaa = async (data) => {
   
   console.log(data);
-  const factura = await (fetch('https://four-estaciones-gp8t.onrender.com/api/factura', {
+  const factura = await (fetch('https://four-estaciones-gp8t.onrender.com/api/whats', {
   method: 'POST',
   headers: {
       'Content-type': 'application/json',
