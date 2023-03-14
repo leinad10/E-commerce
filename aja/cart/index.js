@@ -543,7 +543,7 @@ for (var i = 0; i < btns.length; i++) {
                         console.log(e.what);
                         preguntaContainer.innerHTML=""
                         preghunta.innerHTML=`
-                        <p>El #id de su orden es ${id}</p>
+                        <p>El #id de su orden es ${iidd}</p>
                         <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
                         `
                         preguntaContainer.append(preghunta);

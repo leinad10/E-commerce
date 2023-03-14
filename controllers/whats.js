@@ -24,7 +24,7 @@ exports.insertData = (async (request, response) => {
     response.status(200).json({ok: "mensaje enviado"})
   });
 
-  exports.insertData = (async (req, res) => {
+  exports.getData = (async (req, res) => {
         Factura.find({}, (err, docs) =>  {
         console.log(docs);
         res.send({
