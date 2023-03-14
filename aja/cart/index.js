@@ -535,7 +535,10 @@ for (var i = 0; i < btns.length; i++) {
                       console.log(e.factura);
                       console.log(e.facturaJSON);
                       const iidd = e.facturaJSON.savedfactura.id
-                      whats(iidd).then(e => {
+                      const data = {
+                        id: iidd
+                      }
+                      whats(data).then(e => {
                         console.log(e.whatJSON);
                         console.log(e.what);
                         preguntaContainer.innerHTML=""
