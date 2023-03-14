@@ -14,9 +14,7 @@ const client = require('twilio')(process.env.accountSid, process.env.authToken);
     
 exports.insertData = (async (request, response) => {
     const {id} = request.body
-    const aja = await Factura.find({}, (err, docs) => {
-        console.log(docs);
-    })
+    const aja = await Factura.findById(id);
     console.log(aja);
     client.messages.create({
         body: 'Your appointment is coming up on July 21 at 3PM',

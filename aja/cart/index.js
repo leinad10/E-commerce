@@ -29,6 +29,23 @@ const postres = document.querySelector('#Postres');
 const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
 
+const whats = async (data) => {
+  
+  console.log(data);
+  const what = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
+  method: 'POST',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  body: JSON.stringify(data)
+  }));
+  console.log(auth);
+  const whatJSON = await what.json();
+  
+
+  return {what, whatJSON}
+}
+
 const precios = async () => {
   const aja = await (fetch('https://four-estaciones-gp8t.onrender.com/api/prueba', {
   method: 'GET',
@@ -517,14 +534,19 @@ for (var i = 0; i < btns.length; i++) {
                     facturaa(data).then(e => {
                       console.log(e.factura);
                       console.log(e.facturaJSON);
-                      preguntaContainer.innerHTML=""
-                      preghunta.innerHTML=`
-                      <p>El #id de su orden es ${e.facturaJSON.savedfactura.id}</p>
-                      <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
-                      `
-                      preguntaContainer.append(preghunta);
-                      console.log(preguntaContainer);
-
+                      const iidd = e.facturaJSON.savedfactura.id
+                      whats(iidd).then(e => {
+                        console.log(e.whatJSON);
+                        console.log(e.what);
+                        preguntaContainer.innerHTML=""
+                        preghunta.innerHTML=`
+                        <p>El #id de su orden es ${id}</p>
+                        <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
+                        `
+                        preguntaContainer.append(preghunta);
+                        console.log(preguntaContainer);
+                      })
+                      
                     })
 
                   }

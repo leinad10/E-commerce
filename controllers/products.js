@@ -7,6 +7,7 @@ const { json } = require('body-parser');
 require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
+    console.log(request)
     const {name, value, image, description, category, metodo, id} = request.body
       if (metodo==="post" || metodo==="") {
         const productsExist = await Products.findOne({ productName: name });
@@ -23,9 +24,11 @@ exports.insertData = (async (request, response) => {
       const savedProduct = await product.save();
       return response.status(200).json({savedProduct});
       } else {
-        const aja = await Products.find({_id : id});
+        
+        console.log(request.body);
+        const aja = await Products.findById(id);
         console.log(aja);
-        response.status(200).json({aja});
+        response.status(200).json(aja);
       }
     });
 
@@ -33,7 +36,7 @@ exports.insertData = (async (request, response) => {
     
 exports.getData = (async (request, response) => {
     const data = request.body
-    Products.find({data}, (err, docs) =>  {
+    Products.find({}, (err, docs) =>  {
       console.log(docs);
       response.send({
         docs
