@@ -27,7 +27,7 @@ exports.insertData = (async (request, response) => {
   exports.insertData = (async (req, res) => {
         Factura.find({}, (err, docs) =>  {
         console.log(docs);
-        response.send({
+        res.send({
           docs
         })
       })
