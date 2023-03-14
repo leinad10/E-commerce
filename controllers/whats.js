@@ -19,7 +19,7 @@ exports.insertData = (async (request, response) => {
     client.messages.create({
         body:  `Tienes un nuevo pedido: ${aja.productos}, metodo: ${aja.metodoDePago},
         total bs: ${aja.totalBolivares}, numero de referencia: ${aja.numeroRef}`,
-        from: 'whatsapp:+584242155597',
+        from: 'whatsapp:+14155238886',
         to: 'whatsapp:+584120299927'}).then(message => console.log(message.sid)).done();
     response.status(200).json({ok: "mensaje enviado"})
   });
