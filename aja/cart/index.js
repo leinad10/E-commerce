@@ -29,6 +29,23 @@ const postres = document.querySelector('#Postres');
 const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
 
+
+const bot = async (data) => {
+  console.log(data);
+  const factura = await (fetch('http://localhost:4000/send-message-provider', {
+  method: 'POST',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  body: JSON.stringify(data)
+  }));
+  console.log(auth);
+  const facturaJSON = await factura.json();
+  
+
+  return {factura, facturaJSON}
+}
+
 const whats = async (data) => {
   
   console.log(data);
@@ -525,7 +542,7 @@ for (var i = 0; i < btns.length; i++) {
                       totalDolars: totall,
                       totalBolivares: bolivar,
                       estado: "En proceso",
-                      metodo: "Post",
+                      metodo: "",
                       direccion: direeccion,
                       usuario: usuario,
                       metodoDePago: metodoDePago,
@@ -536,11 +553,13 @@ for (var i = 0; i < btns.length; i++) {
                       console.log(e.facturaJSON);
                       const iidd = e.facturaJSON.savedfactura.id
                       const data = {
-                        id: iidd
+                        phone: "584120297347",
+                        id: iidd,
+                        metodo: "get"
                       }
-                      whats(data).then(e => {
-                        console.log(e.whatJSON);
-                        console.log(e.what);
+                      bot(data).then(e => {
+                        console.log(e.facturaJSON);
+                        console.log(e.factura);
                         preguntaContainer.innerHTML=""
                         preghunta.innerHTML=`
                         <p>El #id de su orden es ${iidd}</p>
