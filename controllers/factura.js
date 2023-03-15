@@ -7,8 +7,9 @@ const { json } = require('body-parser');
 require('dotenv').config();
 
 exports.insertData = (async (request, response) => {
-    const {productos, totalDolars, totalBolivares, estado, direccion, metodo, usuario, metodoDePago, numeroRef } = request.body
-    const factura = new Facturas({
+    const {productos, totalDolars, totalBolivares, estado, direccion, metodo, usuario, metodoDePago, numeroRef, id } = request.body
+    if (metodo === "post" || metodo === "") {
+      const factura = new Facturas({
         productos,
         totalDolars,
         totalBolivares,
@@ -20,6 +21,13 @@ exports.insertData = (async (request, response) => {
     });
     const savedfactura = await factura.save();
     return response.status(200).json({savedfactura});
+    } else {
+        const aja = await Facturas.findById(id, (err, docs) => {
+          return response.status(200).json({docs})
+        });
+        
+    }
+    
     });
 
     

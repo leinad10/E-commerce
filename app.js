@@ -28,14 +28,22 @@ const path = require('path');
 
 const { MONGO_URI } = require('./config');
 
+
+
+
+
 (async () => {
     try {
         await mongoose.connect(MONGO_URI);
         console.log('Conecto a mongoDB')
+    
     } catch (error) {
         console.log('No conecto a MongoDB')
     }
 })();
+
+
+ 
 
 app.use(bodyParser.json())
 app.use(morgan('tiny'));
