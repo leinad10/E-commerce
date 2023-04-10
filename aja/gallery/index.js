@@ -1,7 +1,7 @@
 const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
-const b = document.querySelector('#side-f');
+
 const c = document.querySelector('#login-2');
 const d = document.querySelector('#registro-2');
 const f = document.querySelector('#h');
@@ -19,6 +19,33 @@ const logout2 = document.querySelector("#log-out-2");
 const mensaje = document.querySelector('#messageFromDB');
 const mensajeContainer = document.querySelector('#container-message');
 const spiner = document.querySelector('#loader');
+const sideText = document.querySelectorAll('.side-t-p')
+const sideImg = document.querySelectorAll(".side-t-img");
+const side = document.querySelector("#side-2");
+const body = document.querySelector('body');
+
+body.addEventListener('mouseover', e => {
+  e.preventDefault();
+  if (e.target.classList.contains('side-button-2') || e.target.classList.contains('aja')) {
+    console.log('qlqlq');
+    side.classList.add('side-hover');
+    sideText.forEach(e => {
+      e.classList.remove('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.add('hidden');
+    })
+
+  } else {
+    side.classList.remove('side-hover');
+    sideText.forEach(e => {
+      e.classList.add('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.remove('hidden');
+    })
+  }
+})
 
 const auth = async () => {
   data = {
@@ -98,7 +125,7 @@ botonDrop.addEventListener('click', (e) => {
         console.log(aja);
         setTimeout(() => {
             a.classList.add('hiden');
-            b.classList.add('hiden');
+            
             c.classList.add('hiden');
             d.classList.add('hiden');
             f.classList.add('hiden');
@@ -107,7 +134,7 @@ botonDrop.addEventListener('click', (e) => {
     } 
     else {
         a.classList.remove('hiden');
-        b.classList.remove('hiden');
+        
         c.classList.remove('hiden');
         d.classList.remove('hiden');
         f.classList.remove('hiden');
@@ -121,7 +148,7 @@ cortina.addEventListener('click' , (e) => {
     e.preventDefault();
     console.log("jaja")
     a.classList.remove('hiden');
-    b.classList.remove('hiden');
+   
     c.classList.remove('hiden');
     d.classList.remove('hiden');
     f.classList.remove('hiden');

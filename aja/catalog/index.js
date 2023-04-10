@@ -1,7 +1,7 @@
 const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
-const b = document.querySelector('#side-f');
+
 const c = document.querySelector('#login-2');
 const d = document.querySelector('#registro-2');
 const f = document.querySelector('#h');
@@ -25,10 +25,92 @@ const productoss = document.querySelector('#Productos');
 const postres = document.querySelector('#Postres');
 const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
+const sideText = document.querySelectorAll('.side-t-p')
+const sideImg = document.querySelectorAll(".side-t-img");
+const side = document.querySelector("#side-2");
+const body = document.querySelector('body');
+import { wrapGrid } from 'https://cdn.skypack.dev/animate-css-grid';
+import animateCssGrid from 'https://cdn.skypack.dev/animate-css-grid';
+
+wrapGrid(div ,{
+  // int: default is 0 ms
+  stagger: 20,
+  // int: default is 250 ms
+  duration: 250,
+  // string: default is 'easeInOut'
+  easing: 'backInOut',
+});
+body.addEventListener('mouseover', e => {
+  e.preventDefault();
+  if (e.target.classList.contains('side-button-2') || e.target.classList.contains('aja')) {
+    console.log('qlqlq');
+    side.classList.add('side-hover');
+    sideText.forEach(e => {
+      e.classList.remove('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.add('hidden');
+    })
+
+  } else {
+    side.classList.remove('side-hover');
+    sideText.forEach(e => {
+      e.classList.add('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.remove('hidden');
+    })
+  }
+
+  if (e.target.classList.contains('imagen')||e.target.classList.contains('nombre')||e.target.classList.contains('value')) {
+    console.log(e.target.parentElement);
+    const content = document.querySelectorAll('.column')
+    console.log('aja');
+    
+    content.forEach(e => {
+      console.log(e.children);
+      const k = e.children[0]
+      console.log(k.children[3]);
+      k.children[3].classList.remove('show-grid')
+      
+    })
+    const bueno = e.target.parentElement.parentElement
+    
+    console.log(e.target.parentElement.parentElement.classList[2]);
+    const current = bueno.classList[2];
+    div.className= `big${current}`
+    // console.log(current);
+    // console.log(e.target.parentElement.parentElement.parentElement.children[current-2]);
+    // console.log(current%2);
+    // let eso = ''
+    // if (current%2 === '0') {
+    //   eso = current/2
+    // } else {
+    //   eso = (current/2)
+    // }
+     
+    // bueno.style.gridRow = `${eso}`
+    // console.log(e.target.parentElement.children[3]);
+    e.target.parentElement.children[3].classList.add('show-grid')
+    // e.target.parentElement.parentElement.style.gridRow = '0'
+  } else {
+    const content = document.querySelectorAll('.column')
+    console.log('aja');
+    
+    content.forEach(e => {
+      console.log(e.children);
+      const k = e.children[0]
+      console.log(k.children[3]);
+      k.children[3].classList.remove('show-grid')
+      
+    })
+    div.className = "";
+  }
+})
 
 
 const auth = async () => {
-  data = {
+  const data = {
     username: usuario
   }
   const auth = await (fetch('https://four-estaciones-gp8t.onrender.com/api/auth', {
@@ -66,8 +148,9 @@ products().then(e => {
   console.log(e.aja);
   console.log(e.ajaJSON);
   const productos = e.ajaJSON.docs
-  console.log(productos);
-  productos.forEach(element => {
+  console.log(productos.length);
+  let i = 1
+  function aja(element, i) {
     const mostrarProductos = document.createElement('div');
     mostrarProductos.innerHTML = `
       <div class="content">
@@ -79,6 +162,7 @@ products().then(e => {
     `
     mostrarProductos.classList.add('column');
     mostrarProductos.classList.add(`${element.category}`);
+    mostrarProductos.classList.add(`numero-${i}`);
   // 
   div.append(mostrarProductos);
   filterSelection("all");
@@ -146,13 +230,15 @@ var btns = btnContainer.getElementsByClassName("btn");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", e => {
     e.preventDefault();
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace("active", "");
+    const current = document.getElementsByClassName("active");
+    // current[0].className = current[0].className.replace("active", "");
     this.className += " active";
   });
 }
-
-
+  }
+  productos.forEach(element => {
+    aja(element, i)
+    i++
   });
   
 
@@ -196,13 +282,14 @@ auth().then(e => {
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
     if (!(sideMobil.classList.contains("transition"))) {
-        sideMobil.classList.add('transition');
+      sideMobil.classList.add('showw')  
+      sideMobil.classList.add('transition');
         cortina.classList.toggle('cortina-t')
 
-        console.log(aja);
+
         setTimeout(() => {
             a.classList.add('hiden');
-            b.classList.add('hiden');
+           
             c.classList.add('hiden');
             d.classList.add('hiden');
             f.classList.add('hiden');
@@ -211,13 +298,16 @@ botonDrop.addEventListener('click', (e) => {
     } 
     else {
         a.classList.remove('hiden');
-        b.classList.remove('hiden');
+       
         c.classList.remove('hiden');
         d.classList.remove('hiden');
         f.classList.remove('hiden');
         cuenta2.classList.add('hiden');
         cortina.classList.toggle('cortina-t')
         sideMobil.classList.remove('transition');
+        setTimeout(() => {
+          sideMobil.classList.remove('showw'); 
+        }, 1000);
     }
 })
 
@@ -225,13 +315,17 @@ cortina.addEventListener('click' , (e) => {
     e.preventDefault();
     console.log("jaja")
     a.classList.remove('hiden');
-    b.classList.remove('hiden');
+    
     c.classList.remove('hiden');
     d.classList.remove('hiden');
     f.classList.remove('hiden');
     cuenta2.classList.remove('hiden');
     cortina.classList.toggle('cortina-t')
     sideMobil.classList.remove('transition');
+    sideMobil.classList.remove('showw');
+    setTimeout(() => {
+      sideMobil.classList.remove('showw'); 
+    }, 1000);
 })
 
 

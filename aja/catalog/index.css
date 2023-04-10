@@ -5,13 +5,10 @@
     margin: 0%;
     padding: 0%;
 }
-html {
-    width: 100vw;
-    height: 95vh;
-}
+
 body {
+    height: 100vh;
     width: 100vw;
-    height: 100%;
     margin: 0%;
     background-color: rgb(231, 231, 231);
     overflow: hidden;
@@ -90,24 +87,20 @@ body {
 }   
 #div-nav {
     
-     border: 10px solid orange;
-     display: flex;
-     box-shadow: 5px 15px 30px gray;
-     z-index: 10; 
+    display: flex;
+    z-index: 10; 
+    height: 5%;
 }
 #nav-tab {
-    width: 100vw;
-    padding: 1rem;
-    padding-right: 2rem;
-    background-color: black;
-    border-width: 2px;
-    border-color: white;
-    border-style: solid;
-    height: 6%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
+   width: 100vw;
+   padding: 1rem;
+   padding-right: 2rem;
+   background-color: black;
+   height: 100%;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+   align-items: center;
 }
 #nav {
     display: flex;
@@ -120,15 +113,15 @@ body {
 #j-2 {
     display: none;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     opacity: 0;
+    background-color: black;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
     gap: 0.1rem;
     padding: 0rem;
     font-size: 1rem;
-    padding-top: 1rem;
     border-right-width: 30px;
 }
 
@@ -164,21 +157,25 @@ body {
 #login {
     display: none;
     font-size: 2rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
     border-right: 0;
     background-color: gray;
+    box-shadow: inset 0px 0px 10px 5px black;
+    
     text-decoration: none;
     padding: 10px;
     color: black;
-    border: 3px solid white;
     font-family:'Courier New', Courier, monospace;
     font-weight: 800;
     cursor: pointer;
     z-index: 10;
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
 }
+
+    #login:hover {
+    box-shadow: none;
+    }
 
 #login-out-2{
     display: none;
@@ -199,20 +196,14 @@ body {
     z-index: 10;
 }
 #cuenta {
-    display: flex;
-    font-size: 0.5rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-    border-right: 0;
-    background-color: gray;
+    font-size: 1.2rem;
+    width: 100%;
+    background-color: black;
     text-decoration: none;
-    padding: 10px;
-    color: black;
-    border: 3px solid white;
+    padding: 5px;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
     cursor: pointer;
     z-index: 10;
 }
@@ -235,23 +226,17 @@ body {
     z-index: 10;
 }
 #login-2 {
-    font-size: 0.8rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-    border-right: 0;
+    font-size: 2rem;
     opacity: 0;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
-    background-color: lightgray;
+    background-color: black;
     text-decoration: none;
     padding: 5px;
-    color: black;
-    border: 3px solid white;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
     cursor: pointer;
     z-index: 10;
 }
@@ -280,11 +265,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+    padding: 0.5rem;
     opacity: 0;
     position: relative;
     gap: 0.2rem;
-
+    background-color: black;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
@@ -292,19 +277,24 @@ body {
 #registro {
     display: none;
     font-size: 2rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
     border-right: 0;
     background-color: gray;
+    box-shadow: inset 0px 0px 10px 5px black;
+    
     text-decoration: none;
     padding: 10px;
     color: black;
-    border: 3px solid white;
     font-family:'Courier New', Courier, monospace;
     font-weight: 800;
+    cursor: pointer;
     z-index: 10;
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#registro:hover {
+    box-shadow: none;
 }
 #log-out{
     font-size: 2rem;
@@ -323,64 +313,67 @@ body {
     z-index: 10;
 }
 #log-out-2{
-    font-size: 0.5rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
-    border-right: 0;
-    background-color: gray;
+    font-size: 1.2rem;
+    background-color: black;
     text-decoration: none;
-    padding: 10px;
-    color: black;
-    border: 3px solid white;
+    padding: 5px;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
+    cursor: pointer;
     z-index: 10;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom: 0; 
+    border-left-width: 0.5px;
+    border-color: white;
+    border-style: dashed;
 }
 
 #registro-2 {
-    
-    font-size: 0.8rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
-    border-right: 0;
-    background-color: lightgray;
-    text-decoration: none;
+    font-size: 2rem;
     opacity: 0;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
+    background-color: black;
+    text-decoration: none;
     padding: 5px;
-    color: black;
-    border: 3px solid white;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
+    cursor: pointer;
     z-index: 10;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom: 0; 
+    border-left-width: 0.5px;
+    border-color: white;
+    border-style: dashed;
 }
 #side {
-    display: block;
+    display: none;
+    flex-direction: column;
     position: absolute;
-    height: 100%;
-    background-color: #887E7E;
-    width: 0%;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    border-color: black;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    border-top-width: 1px;
+    border-color: white;
     border-style: solid;
+    top: 8%;
+    right: -100%;
+    width: 100%;
     z-index: 10;
     opacity: 0.1;
-    transition-property: width, opacity;
+    transition-property: width, opacity, right;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
 }
 
 #cortina{
     position: absolute;
+    top: 0%;
     background-color: black;
     width: 100%;
     right: 100%;
@@ -408,9 +401,8 @@ body {
 }
 
 .transition {
-    width: 50% !important;
     opacity: 1 !important;
-    border-right-width: 5px !important;
+    right: 0% !important;
 }
 .hiden {
     opacity: 1 !important;
@@ -423,17 +415,13 @@ body {
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
-    gap: 1.5rem;
-    padding: 1rem;
-    padding-top: 2rem;
+    
 }
 .side-button{
-    font-size: 1rem;
+    font-size: 1.8rem;
     color: white;
     background-color: black;
-    border: 4px solid orange;
-    border-radius: 30px;
-    padding: 0.5rem;
+    width: 100%;
     list-style: none;
     text-align: center;
     text-decoration: none;
@@ -441,10 +429,7 @@ body {
 #side-t-2 {
     display: flex;
     flex-direction: column;
-    
-    gap: 1.5rem;
-    padding: 1rem;
-    padding-top: 2rem;
+    width: 100%;
 }
 
 #side-f {
@@ -483,12 +468,20 @@ body {
     justify-content: space-evenly;
 }
 .side-button-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1rem;
+    height: 100%;
     color: white;
     background-color: black;
-    border: 4px solid orange;
-    border-radius: 30px;
-    padding: 0.5rem;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: white;
+    padding: 10rem;
     list-style: none;
     text-align: center;
     text-decoration: none;
@@ -542,8 +535,10 @@ body {
     background-color:transparent;
     position: absolute;
     flex-direction: row;
+    background-color: rgb(229, 227, 227);
+    top: 8%;
     width: 100%;
-    height: 90%;
+    height: 100%;
     z-index: 0;
     justify-content: center;
     align-items: center;
@@ -593,10 +588,7 @@ body {
 /*  */
 /*  */
 /*  */
-.main {
-    max-width: 1000px;
-    margin: auto;
-  }
+
   
   h1 {
     font-size: 50px;
@@ -606,25 +598,243 @@ body {
 
   /* Add padding BETWEEN each column (if you want) */
   #div1{
-    display: block;
+    display: grid;
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "siete ocho"
+        "nueve diez"
+        "once doce"
+        "trece catorce";
+    grid-template-rows: auto;
+    grid-template-columns: 48% 48%;
+    row-gap: 10px;
+    column-gap: 10px;
     padding: 5%;
-    background-color: #887E7E;
+    background-color: rgb(216 212 212);
     margin: 1%;
     width: 90%;
     overflow: auto;
+    margin-bottom: 20px;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
   }
-  
+
+  .numero-1 {
+    grid-area: uno;
+  }
+  .numero-2 {
+    grid-area: dos;
+  }
+  .numero-3 {
+    grid-area: tres;
+  }
+  .numero-4 {
+    grid-area: cuatro;
+  }
+  .numero-5 {
+    grid-area: cinco;
+  }
+  .numero-6 {
+    grid-area: seis;
+  }
+  .numero-7 {
+    grid-area: siete;
+  }
+  .numero-8 {
+    grid-area: ocho;
+  }
+  .numero-9 {
+    grid-area: nueve;
+  }
+  .numero-10 {
+    grid-area: diez;
+  }
+  .numero-11{
+    grid-area: once;
+  }
+  .numero-12 {
+    grid-area: doce;
+  }
+  .numero-13 {
+    grid-area: trece;
+  }
+  .numero-14 {
+    grid-area: catorce;
+  }
+  .bignumero-1 {
+    grid-template-areas: 
+        "uno uno"
+        "uno uno"
+        "dos tres"
+        "cuatro cinco"
+        "seis siete"
+        "ocho nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-2 {
+    grid-template-areas: 
+        "dos dos"
+        "dos dos"
+        "uno tres"
+        "cuatro cinco"
+        "seis siete"
+        "ocho nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-3 {
+    grid-template-areas: 
+        "uno dos"
+        "tres tres"
+        "tres tres"
+        "cuatro cinco"
+        "seis siete"
+        "ocho nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-4 {
+    grid-template-areas: 
+        "uno dos"
+        "cuatro cuatro"
+        "cuatro cuatro"
+        "tres cinco"
+        "seis siete"
+        "ocho nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-5 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco cinco"
+        "cinco cinco"
+        "seis siete"
+        "ocho nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-6 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "seis seis"
+        "seis seis"
+        "cinco siete"
+        "ocho nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-7 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "siete siete"
+        "siete siete"
+        "ocho nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-8 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "ocho ocho"
+        "ocho ocho"
+        "siete nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-9 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "siete ocho"
+        "nueve nueve"
+        "nueve nueve"
+        "diez once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-10 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "siete ocho"
+        "diez diez"
+        "diez diez"
+        "nueve once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-11 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "siete ocho"
+        "nueve diez"
+        "once once"
+        "once once"
+        "doce trece"
+        "catorce quince" !important;
+  }
+  .bignumero-12 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "siete ocho"
+        "nueve diez"
+        "doce doce"
+        "doce doce"
+        "once trece"
+        "catorce quince" !important;
+  }
+  .bignumero-13 {
+    grid-template-areas: 
+        "uno dos"
+        "tres cuatro"
+        "cinco seis"
+        "siete ocho"
+        "nueve diez"
+        "once doce"
+        "trece trece"
+        "trece trece"
+        "catorce quince" !important;
+  }
   
   
   /* Create three equal columns that floats next to each other */
   .column {
-    float: left;
-    margin: 0%;
-    width: 31.33%;
-    display: none; /* Hide columns by default */
+   display: none;
+   transition-property: position;
+   transition-timing-function: ease-in-out;
+   transition-duration: 1s;
+   /* Hide columns by default */
   }
-
+.show-grid{
+    display: flex !important;
+}
   .descripcion{
+    display: none;
     height: 1%;
   }
   
@@ -639,9 +849,12 @@ body {
   .content {
     display: flex;
     flex-direction: column;
-    height: 1%;
     background-color: white;
     padding: 10px;
+    width: 100%;
+  }
+  .imagen {
+    width: 100%;
   }
   
   /* The "show" class is added to the filtered elements */
@@ -892,6 +1105,13 @@ body {
 #cart-2:hover {
     color: orange;
 }
+#contactanos-2:hover {
+    color: orange;
+}
+#contactanos:hover {
+    color: orange;
+}
+
 
 #home{
     font-family:'Courier New', Courier, monospace;;
@@ -928,7 +1148,13 @@ body {
 #cart-2 {
     font-family:'Courier New', Courier, monospace;
 }
+#contactanos-2 {
+    font-family:'Courier New', Courier, monospace;
+}
 
+#contactanos {
+    font-family:'Courier New', Courier, monospace;
+}
 
 #arriba {
     font-size: 1rem;
@@ -950,57 +1176,46 @@ body {
     width: 2rem;
 }
 #side-2 {
-    height: 100%;
-    background-color: #887E7E;
-    width: 33%;
-    border-right-width: 5px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    border-color: black;
-    border-style: solid;
-    box-shadow: 10px 10px 30px gray;
+    position: absolute;
+    left: 1%;
+    top: 10%;
+    opacity: 0.5;
+    background-color: blue;
+    width: 5%;
     z-index: 10;
+    transition-duration: 0.5s;
+    transition-property: width, opacity;
+    transition-timing-function: ease-in-out;
 }
 
-@media (min-width: 1024px) {
-    #j-2{
-        flex: none !important;
-    }
-    #cuenta{
-        font-size: 2rem;
-    }
-    .show-flex-2{
-        display: none !important;
-    }
-    .show-flex{
-        display: flex !important;
-    }
-    #side-2{
-        display: block !important;
-    }
-
-    #boton-mobil{
-        display: none;
-    }
-    
-    #login{
-        display: flex;
-        font-size: 1.8rem;
-    }
-    #registro {
-        display: flex;
-        font-size: 1.8rem;
-    }
-    #nav-title {
-        font-size: 2.5rem;
-    }
-    .c {
-        bottom: 16%;
-    }
-
-
+.side-t-p {
+    display: flex;
+    height: 100%;
 }
+
+.side-t-img {
+    display: flex;
+    font-size: 1.45rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.showw {
+    display: flex !important;
+}
+.side-hover {
+    opacity: 1 !important;
+    width: 14% !important;
+}
+
+
+.side-show {
+    display: flex !important;
+}
+
+
 
 @media (min-width: 600px) {
     .b {
@@ -1013,6 +1228,12 @@ body {
 }
 
 @media (min-width: 768px) {
+    .mySlides {
+        height: 100%;
+      }
+    #prueba {
+        height: 100%;
+    }
     .side-button{
         font-size: 1.8rem;
         
@@ -1039,6 +1260,190 @@ body {
         font-size: 1.8rem;
         bottom: 15%;
     
+    }
+    #div1{
+        display: grid;
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "siete ocho nueve"
+            "diez once doce"
+            "trece catorce quince";
+        grid-template-rows: auto;
+        grid-template-columns: 33% 33% 33%;
+      }
+    
+      .bignumero-1 {
+        grid-template-areas: 
+            "uno uno uno"
+            "uno uno uno"
+            "dos tres cuatro"
+            "cinco seis siete"
+            "ocho nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-2 {
+        grid-template-areas: 
+            "dos dos dos"
+            "dos dos dos"
+            "uno tres cuatro"
+            "cinco seis siete"
+            "ocho nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-3 {
+        grid-template-areas: 
+            "tres tres tres"
+            "tres tres tres"
+            "uno dos cuatro"
+            "cinco seis siete"
+            "ocho nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-4 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cuatro cuatro"
+            "cuatro cuatro cuatro"
+            "cinco seis siete"
+            "ocho nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-5 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cinco cinco cinco"
+            "cinco cinco cinco"
+            "cuatro seis siete"
+            "ocho nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-6 {
+        grid-template-areas: 
+            "uno dos tres"
+            "seis seis seis"
+            "seis seis seis"
+            "cuatro cinco siete"
+            "ocho nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-7 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "siete siete siete"
+            "siete siete siete"
+            "ocho nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-8 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "ocho ocho ocho"
+            "ocho ocho ocho"
+            "siete nueve diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-9 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "nueve nueve nueve"
+            "nueve nueve nueve"
+            "siete ocho diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-10 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "siete ocho nueve"
+            "diez diez diez"
+            "diez diez diez"
+            "once doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-11 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "siete ocho nueve"
+            "once once once"
+            "once once once"
+            "diez doce trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-12 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "siete ocho nueve"
+            "doce doce doce"
+            "doce doce doce"
+            "diez once trece"
+            "catroce quince diezyseis" !important;
+      }
+      .bignumero-13 {
+        grid-template-areas: 
+            "uno dos tres"
+            "cuatro cinco seis"
+            "siete ocho nueve"
+            "diez once doce"
+            "trece trece trece"
+            "trece trece trece"
+            "catroce quince diezyseis" !important;
+      }
+}
+@media (min-width: 1024px) {
+    #j-2{
+        flex: none !important;
+    }
+    #cuenta{
+        font-size: 2rem;
+    }
+    .show-flex-2{
+        display: none !important;
+    }
+    .show-flex{
+        display: flex !important;
+    }
+    #side-2{
+        display: flex !important;
+    }
+    .side-button-2 {
+        padding: 1rem !important;
+    }
+
+    #boton-mobil{
+        display: none;
+    }
+    
+    #login{
+        display: flex;
+        font-size: 1.8rem;
+    }
+    #registro {
+        display: flex;
+        font-size: 1.8rem;
+    }
+    #nav-title {
+        font-size: 2.5rem;
+    }
+    .c {
+        bottom: 16%;
+    }
+    #div1 {
+        width: 50% !important;
     }
 
 }

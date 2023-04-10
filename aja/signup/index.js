@@ -1,7 +1,7 @@
 const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
-const b = document.querySelector('#side-f');
+const b = document.querySelector('#registro-2')
 const c = document.querySelector('#login-2');
 const f = document.querySelector('#h');
 const cortina = document.querySelector('#cortina')
@@ -19,7 +19,32 @@ const spiner = document.querySelector('#loader');
 const mensajeContainer = document.querySelector('#container-message');
 const verificarPasword = document.querySelector('#validacionContraseñaInput');
 const btn = document.querySelector('#boton-registrar');
+const sideText = document.querySelectorAll('.side-t-p')
+const sideImg = document.querySelectorAll(".side-t-img");
+const side = document.querySelector("#side-2");
 
+body.addEventListener('mouseover', e => {
+  e.preventDefault();
+  if (e.target.classList.contains('side-button-2') || e.target.classList.contains('aja')) {
+    console.log('qlqlq');
+    side.classList.add('side-hover');
+    sideText.forEach(e => {
+      e.classList.remove('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.add('hidden');
+    })
+
+  } else {
+    side.classList.remove('side-hover');
+    sideText.forEach(e => {
+      e.classList.add('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.remove('hidden');
+    })
+  }
+})
 
 
 botonDrop.addEventListener('click', (e) => {
@@ -28,7 +53,6 @@ botonDrop.addEventListener('click', (e) => {
         sideMobil.classList.add('transition');
         cortina.classList.toggle('cortina-t')
 
-        console.log(aja);
         setTimeout(() => {
             a.classList.add('hiden');
             b.classList.add('hiden');

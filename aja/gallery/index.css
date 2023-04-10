@@ -5,13 +5,8 @@
     margin: 0%;
     padding: 0%;
 }
-html {
-    width: 100vw;
-    height: 95vh;
-}
+
 body {
-    width: 100vw;
-    height: 100%;
     margin: 0%;
     background-color: rgb(231, 231, 231);
     overflow: hidden;
@@ -90,24 +85,20 @@ body {
 }   
 #div-nav {
     
-     border: 10px solid orange;
-     display: flex;
-     box-shadow: 5px 15px 30px gray;
-     z-index: 10; 
+    display: flex;
+    z-index: 10; 
+    height: 5%;
 }
 #nav-tab {
-    width: 100vw;
-    padding: 1rem;
-    padding-right: 2rem;
-    background-color: black;
-    border-width: 2px;
-    border-color: white;
-    border-style: solid;
-    height: 6%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
+   width: 100vw;
+   padding: 1rem;
+   padding-right: 2rem;
+   background-color: black;
+   height: 100%;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+   align-items: center;
 }
 #nav {
     display: flex;
@@ -120,15 +111,15 @@ body {
 #j-2 {
     display: none;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     opacity: 0;
+    background-color: black;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
     gap: 0.1rem;
     padding: 0rem;
     font-size: 1rem;
-    padding-top: 1rem;
     border-right-width: 30px;
 }
 
@@ -164,21 +155,25 @@ body {
 #login {
     display: none;
     font-size: 2rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
     border-right: 0;
     background-color: gray;
+    box-shadow: inset 0px 0px 10px 5px black;
+    
     text-decoration: none;
     padding: 10px;
     color: black;
-    border: 3px solid white;
     font-family:'Courier New', Courier, monospace;
     font-weight: 800;
     cursor: pointer;
     z-index: 10;
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
 }
+
+    #login:hover {
+    box-shadow: none;
+    }
 
 #login-out-2{
     display: none;
@@ -199,20 +194,14 @@ body {
     z-index: 10;
 }
 #cuenta {
-    display: flex;
-    font-size: 0.5rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-    border-right: 0;
-    background-color: gray;
+    font-size: 1.2rem;
+    width: 100%;
+    background-color: black;
     text-decoration: none;
-    padding: 10px;
-    color: black;
-    border: 3px solid white;
+    padding: 5px;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
     cursor: pointer;
     z-index: 10;
 }
@@ -235,23 +224,17 @@ body {
     z-index: 10;
 }
 #login-2 {
-    font-size: 0.8rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-right-radius: 0%;
-    border-top-right-radius: 0%;
-    border-right: 0;
+    font-size: 2rem;
     opacity: 0;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
-    background-color: lightgray;
+    background-color: black;
     text-decoration: none;
     padding: 5px;
-    color: black;
-    border: 3px solid white;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
     cursor: pointer;
     z-index: 10;
 }
@@ -280,11 +263,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+    padding: 0.5rem;
     opacity: 0;
     position: relative;
     gap: 0.2rem;
-
+    background-color: black;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
@@ -292,19 +275,24 @@ body {
 #registro {
     display: none;
     font-size: 2rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
     border-right: 0;
     background-color: gray;
+    box-shadow: inset 0px 0px 10px 5px black;
+    
     text-decoration: none;
     padding: 10px;
     color: black;
-    border: 3px solid white;
     font-family:'Courier New', Courier, monospace;
     font-weight: 800;
+    cursor: pointer;
     z-index: 10;
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+#registro:hover {
+    box-shadow: none;
 }
 #log-out{
     font-size: 2rem;
@@ -323,64 +311,60 @@ body {
     z-index: 10;
 }
 #log-out-2{
-    font-size: 0.5rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
-    border-right: 0;
-    background-color: gray;
+    font-size: 1.2rem;
+    background-color: black;
     text-decoration: none;
-    padding: 10px;
-    color: black;
-    border: 3px solid white;
+    padding: 5px;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
+    cursor: pointer;
     z-index: 10;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom: 0; 
+    border-left-width: 0.5px;
+    border-color: white;
+    border-style: dashed;
 }
 
 #registro-2 {
-    
-    font-size: 0.8rem;
-    border-width: 5px;
-    border-radius: 1rem;
-    border-bottom-left-radius: 0%;
-    border-top-left-radius: 0%;
-    border-right: 0;
-    background-color: lightgray;
-    text-decoration: none;
+    font-size: 2rem;
     opacity: 0;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
+    background-color: black;
+    text-decoration: none;
     padding: 5px;
-    color: black;
-    border: 3px solid white;
+    color: white;
     font-family:'Courier New', Courier, monospace;
-    font-weight: 800;
+    font-weight: 500;
+    cursor: pointer;
     z-index: 10;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom: 0; 
+    border-left-width: 0.5px;
+    border-color: white;
+    border-style: dashed;
 }
 #side {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    height: 100%;
-    background-color: #887E7E;
-    width: 0%;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    border-color: black;
-    border-style: solid;
+    right: -100%;
+    width: 100%;
     z-index: 10;
     opacity: 0.1;
-    transition-property: width, opacity;
+    transition-property: width, opacity, right;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
 }
 
 #cortina{
     position: absolute;
+    top: 0%;
     background-color: black;
     width: 100%;
     right: 100%;
@@ -408,9 +392,9 @@ body {
 }
 
 .transition {
-    width: 50% !important;
     opacity: 1 !important;
     border-right-width: 5px !important;
+    right: 0% !important;
 }
 .hiden {
     opacity: 1 !important;
@@ -423,17 +407,13 @@ body {
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
-    gap: 1.5rem;
-    padding: 1rem;
-    padding-top: 2rem;
+    
 }
 .side-button{
-    font-size: 1rem;
+    font-size: 1.8rem;
     color: white;
     background-color: black;
-    border: 4px solid orange;
-    border-radius: 30px;
-    padding: 0.5rem;
+    width: 100%;
     list-style: none;
     text-align: center;
     text-decoration: none;
@@ -441,10 +421,7 @@ body {
 #side-t-2 {
     display: flex;
     flex-direction: column;
-    
-    gap: 1.5rem;
-    padding: 1rem;
-    padding-top: 2rem;
+    width: 100%;
 }
 
 #side-f {
@@ -483,12 +460,20 @@ body {
     justify-content: space-evenly;
 }
 .side-button-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1rem;
+    height: 100%;
     color: white;
     background-color: black;
-    border: 4px solid orange;
-    border-radius: 30px;
-    padding: 0.5rem;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: white;
+    padding: 10rem;
     list-style: none;
     text-align: center;
     text-decoration: none;
@@ -772,6 +757,13 @@ body {
 #cart-2:hover {
     color: orange;
 }
+#contactanos-2:hover {
+    color: orange;
+}
+#contactanos:hover {
+    color: orange;
+}
+
 
 #home{
     font-family:'Courier New', Courier, monospace;;
@@ -808,7 +800,13 @@ body {
 #cart-2 {
     font-family:'Courier New', Courier, monospace;
 }
+#contactanos-2 {
+    font-family:'Courier New', Courier, monospace;
+}
 
+#contactanos {
+    font-family:'Courier New', Courier, monospace;
+}
 
 #arriba {
     font-size: 1rem;
@@ -830,17 +828,43 @@ body {
     width: 2rem;
 }
 #side-2 {
-    height: 100%;
-    background-color: #887E7E;
-    width: 33%;
-    border-right-width: 5px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    border-color: black;
-    border-style: solid;
-    box-shadow: 10px 10px 30px gray;
+    position: absolute;
+    left: 1%;
+    top: 10%;
+    opacity: 0.5;
+    background-color: blue;
+    width: 5%;
     z-index: 10;
+    transition-duration: 0.5s;
+    transition-property: width, opacity;
+    transition-timing-function: ease-in-out;
+}
+
+.side-t-p {
+    display: flex;
+    height: 100%;
+}
+
+.side-t-img {
+    display: flex;
+    font-size: 1.45rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.showw {
+    display: flex !important;
+}
+.side-hover {
+    opacity: 1 !important;
+    width: 14% !important;
+}
+
+
+.side-show {
+    display: flex !important;
 }
 
 @media (min-width: 1024px) {
@@ -857,7 +881,10 @@ body {
         display: flex !important;
     }
     #side-2{
-        display: block !important;
+        display: flex !important;
+    }
+    .side-button-2 {
+        padding: 1rem !important;
     }
 
     #boton-mobil{
@@ -893,6 +920,12 @@ body {
 }
 
 @media (min-width: 768px) {
+    .mySlides {
+        height: 100%;
+      }
+    #prueba {
+        height: 100%;
+    }
     .side-button{
         font-size: 1.8rem;
         

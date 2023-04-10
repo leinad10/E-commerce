@@ -1,9 +1,7 @@
-
-
 const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
-const b = document.querySelector('#side-f');
+
 const c = document.querySelector('#login-2');
 const d = document.querySelector('#registro-2');
 const f = document.querySelector('#h');
@@ -28,6 +26,23 @@ const productoss = document.querySelector('#Productos');
 const postres = document.querySelector('#Postres');
 const combos = document.querySelector('#Combos');
 const bebidas = document.querySelector('#Bebidas');
+const sideText = document.querySelectorAll('.side-t-p')
+const sideImg = document.querySelectorAll(".side-t-img");
+const side = document.querySelector("#side-2");
+const body = document.querySelector('body');
+import { wrapGrid } from 'https://cdn.skypack.dev/animate-css-grid';
+import animateCssGrid from 'https://cdn.skypack.dev/animate-css-grid';
+
+wrapGrid(div ,{
+  // int: default is 0 ms
+  stagger: 20,
+  // int: default is 250 ms
+  duration: 250,
+  // string: default is 'easeInOut'
+  easing: 'backInOut',
+}); 
+
+
 
 
 const bot = async (data) => {
@@ -130,7 +145,7 @@ const redirect = () => {
     })
 }
 const auth = async () => {
-  data = {
+  const data = {
     username: usuario
   }
   console.log(data);
@@ -166,7 +181,7 @@ const facturaa = async (data) => {
 }
 
 const bueno = async (e) => {
-  data = {
+  const data = {
       name: "",
      value: "",
      image: "",
@@ -210,26 +225,29 @@ setInterval(() => {
   redirect();
 }, 1100000);
 
+
 mensajeContainer.classList.toggle('show-transform');
 products().then(e => {
   mensajeContainer.classList.toggle('show-transform');
   console.log(e.aja);
   console.log(e.ajaJSON);
   const productos = e.ajaJSON.docs
-  console.log(productos);
-  productos.forEach(element => {
+  console.log(productos.length);
+  let i = 1
+  function aja(element, i) {
     const mostrarProductos = document.createElement('div');
     mostrarProductos.innerHTML = `
-      <div class="content">
-        <img class="imagen" src="${element.productImage}" alt="Mountains" style="width:100%">
-        <h4 class="nombre">${element.productName}</h4>
-        <p class="value">${element.productValue}</p>
-        <p class="descripcion">${element.decription}</p>
-        <button id="${element.id}" class="side-button-2">Ordenar</button>
-      </div>
+    <div class="content">
+      <img class="imagen" src="${element.productImage}" alt="Mountains" style="width:100%">
+      <h4 class="nombre">${element.productName}</h4>
+      <p class="value">${element.productValue} $</p>
+      <p class="descripcion">${element.decription}</p>
+      <button id="${element.id}" class="side-button-aja">Ordenar</button>
+    </div>
     `
     mostrarProductos.classList.add('column');
     mostrarProductos.classList.add(`${element.category}`);
+    mostrarProductos.classList.add(`numero-${i}`);
   // 
   div.append(mostrarProductos);
   filterSelection("all");
@@ -304,13 +322,17 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 
+  }
+  productos.forEach(element => {
+    aja(element, i)
+    i++
   });
   
   const verga = []
   
   div.addEventListener("click", e => {
     e.preventDefault();
-    if (e.target.classList.contains("side-button-2")) {
+    if (e.target.classList.contains("side-button-aja")) {
       console.log("risa");
       const id = e.target.id
       bueno(id).then(e => {
@@ -321,6 +343,7 @@ for (var i = 0; i < btns.length; i++) {
         console.log(element);
         
         const eso = {
+          imagen: element.productImage,
           producto: element.productName,
           value: element.productValue,
           descripcion: element.decription,
@@ -364,27 +387,48 @@ for (var i = 0; i < btns.length; i++) {
         spiner.classList.add('show-none');
         mensajeContainer.classList.toggle('show-transform');
         mensaje.classList.toggle('show-transform');
-        verga.forEach(element => {
+        let i = 1
+        function pero(element,i) {
           const nuevoMensaje = document.createElement('div');
+          console.log(element);
           nuevoMensaje.innerHTML = `
-            <h4 class="nombree">${element.producto}</h4>
-            <p class="valuee">${element.value} $</p>
-            <p class="descripcionn">${element.descripcion}</p>
-            <input class="cantidadd" tye='numeric' id="q" value='${element.cantidad}'></input>
+            <img class="imagen" src="${element.imagen}" alt="Mountains" style="width:100%">
+            <h4 class="nombre">${element.producto}</h4>
+            <div class="ccantidad">
+              <p class="value">${element.value} $</p>
+              <input class="cantidadd" tye='numeric' id="q" value='${element.cantidad}'></input>
+            </div>
+            
+          
           `
+         
+           
           nuevoMensaje.classList.add('pedido')
           mensaje.append(nuevoMensaje);
+          nuevoMensaje.style.gridArea = `numero-${i}`
+          mensaje.className = `show-transform messageGrid cantidad${i}` 
+        };
+
+        verga.forEach(element => {
+          pero(element, i)
+          i++
         });
+        const puls = document.createElement('div');
+        puls.innerHTML = `
+        <button id="plus" type="button" class='pluss'>➕</button>
+        `
+        mensaje.append(puls);
+        puls.classList.add('plusContainer')
+        
+        
 
-
-        const pulsOrder = document.createElement('div');
-        pulsOrder.innerHTML = `
-        <button id="plus" type="button" class='plus'>➕</button>
-        <button id="ordenar" class="side-button-2" type="button" class='plus'>ordenar</button>
+        const Order = document.createElement('div');
+        Order.innerHTML = `
+        <button id="ordenar" class="side-button-bueno" type="button" class='plus'>ordenar</button>
 
         `
-        mensaje.append(pulsOrder);
-        pulsOrder.classList.add('order');
+        mensaje.append(Order);
+        Order.classList.add('realizar');
 
         const plus = document.querySelector('#plus');
 
@@ -400,6 +444,7 @@ for (var i = 0; i < btns.length; i++) {
           e.preventDefault();
           console.log(mensaje.children);
           const factura = mensaje.children
+          console.log(factura);
           const arr = Array.from(factura);
           console.log(arr);
           const k = []
@@ -416,21 +461,26 @@ for (var i = 0; i < btns.length; i++) {
             console.log(s);
             const t = []
             const arr = Array.from(s);
+            console.log(arr);
             arr.forEach(element => {
               console.log(element);
+              console.log(element.innerHTML);
               let ok = element.innerHTML
-              if (element.classList.contains('cantidadd')) {
-                ok = element.value
+              if (element.classList.contains('ccantidad')) {
+                console.log(element.children);
+                const daw = element.children[0].innerHTML
+                t.push(daw)
+                ok = element.children[1].value
               } 
 
               
               t.push(ok);
               
             });
+            console.log(t);
             const aja = {
-              nombre : t[0],
-              valor: t[1],
-              descripcion: t[2],
+              nombre : t[1],
+              valor: t[2],
               cantidad: t[3]
             }
             a.push(aja);
@@ -440,10 +490,15 @@ for (var i = 0; i < btns.length; i++) {
           a.forEach(element => {
              console.log(element);
              const eso = element.valor
+             console.log(eso);
              const aja = Number(element.cantidad)
              const v = eso.split(" ")
-             console.log(v[0]);
-             const total = v[0] * aja
+             const j = v[0]
+             const g = j.replace("," , ".")
+             console.log(g);
+             console.log(aja);
+             
+             const total = g * aja
              console.log(total);
              c.push(total);
           });
@@ -464,27 +519,33 @@ for (var i = 0; i < btns.length; i++) {
             console.log(a[0].nombre);
             a.forEach(element => {
               const dola = element.valor.split(" ");
+              console.log(dola);
               const eso = dola[0]
-              const precio = element.cantidad * eso * dolar
+              const vee = eso.replace(",", ".")
+              console.log(eso);
+              const precio = element.cantidad * vee * dolar
+              console.log(precio);
               const bueno = precio.toFixed(2);
+              console.log(bueno);
               const factura = document.createElement('div');
               factura.innerHTML=`
               <h4 class="nombree">${element.nombre}</h4>
               <p class="valuee">${element.valor}</p>
-              <p class="descripcionn">${element.descripcion}</p>
               <p class="cantidadd" id="q">${element.cantidad}</p>
               <p class="bs">${bueno} Bs.</p>
               `
               factura.classList.add('factura');
               mensaje.append(factura);
+              
             });
             const confirmar = document.createElement('div');
             confirmar.innerHTML=`
-              <button id="confirmar" class="side-button-2" type="button" class='plus'>confirmar</button>
-              <button id="cancelar" class="side-button-2" type="button" class='plus'>cancelar</button>
+              <button id="confirmar" class="side-button-aja" type="button" class='plus'>confirmar</button>
+              <button id="cancelar" class="side-button-aja" type="button" class='plus'>cancelar</button>
             `
             confirmar.classList.add('factura');
             mensaje.append(confirmar);
+            mensaje.className = "show-transform ffaactura"
 
             const confirmarr = document.querySelector('#confirmar');
             const cancelar = document.querySelector('#cancelar');
@@ -495,9 +556,10 @@ for (var i = 0; i < btns.length; i++) {
               preghunta.innerHTML=`
               <p class="">Indicanos donde recibiras tu pedido.</p>
               <textarea id="textArea" name="textarea" rows="5" cols="25" placeholder="Escribe tu direccion aca."></textarea>
-              <button id="confirm" class="side-button-2" type="button" class='plus'>Confirmar</button>
+              <button id="confirm" class="side-button-aja" type="button" class='plus'>Confirmar</button>
               `
               preguntaContainer.append(preghunta);
+              preghunta.classList.add('pregunta')
               mensajeContainer.classList.toggle('show-transform');
               preguntaContainer.classList.toggle('show-transform');
               const confirm = document.querySelector('#confirm');
@@ -513,21 +575,59 @@ for (var i = 0; i < btns.length; i++) {
                 const bolivar = totall * dolar
                 preguntaContainer.innerHTML=""
                 preghunta.innerHTML=`
-                <div id="pagoMobil">
+                <div id="pagoMobil" class="metodoo">
                     <h1>Pago Mobil</h1>
                     <p>Cedula</p>
                     <p>Numero de telefono</p>
                     <p>Banco</p>
                     <input id="referencia" placeholder="Numero de referencia"></input>
                 </div>
-                <div id="efectivo">
+                <div id="efectivo" class="metodoo">
                     <h1>Efectivo</h1>
                 </div>
                 `
+                preghunta.classList.add('metodo');
                 preguntaContainer.append(preghunta);
                 const referencia = document.querySelector('#referencia')
                 const pagoMobil = document.querySelector('#pagoMobil');
                 const efectivo = document.querySelector('#efectivo');
+
+                efectivo.addEventListener('click', e => {
+                  e.preventDefault();
+                  const metodoDePago = "Efectivo"
+                    const data = {
+                      productos: a,
+                      totalDolars: totall,
+                      totalBolivares: bolivar,
+                      estado: "En proceso",
+                      metodo: "",
+                      direccion: direeccion,
+                      usuario: usuario,
+                      metodoDePago: metodoDePago,
+                    }
+                    facturaa(data).then(e => {
+                      console.log(e.factura);
+                      console.log(e.facturaJSON);
+                      const iidd = e.facturaJSON.savedfactura.id
+                      const data = {
+                        phone: "584120297347",
+                        id: iidd,
+                        metodo: "get"
+                      }
+                      bot(data).then(e => {
+                        console.log(e.facturaJSON);
+                        console.log(e.factura);
+                        preguntaContainer.innerHTML=""
+                        preghunta.innerHTML=`
+                        <p>El #id de su orden es ${iidd}</p>
+                        <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
+                        `
+                        preguntaContainer.append(preghunta);
+                        console.log(preguntaContainer);
+                      })
+                      
+                    })
+                })
 
                 pagoMobil.addEventListener('click', e =>{
                   e.preventDefault();
@@ -606,13 +706,13 @@ for (var i = 0; i < btns.length; i++) {
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
     if (!(sideMobil.classList.contains("transition"))) {
+        sideMobil.classList.add('showw')  
         sideMobil.classList.add('transition');
         cortina.classList.toggle('cortina-t')
 
-        console.log(aja);
         setTimeout(() => {
             a.classList.add('hiden');
-            b.classList.add('hiden');
+            
             c.classList.add('hiden');
             d.classList.add('hiden');
             f.classList.add('hiden');
@@ -621,13 +721,16 @@ botonDrop.addEventListener('click', (e) => {
     } 
     else {
         a.classList.remove('hiden');
-        b.classList.remove('hiden');
+     
         c.classList.remove('hiden');
         d.classList.remove('hiden');
         f.classList.remove('hiden');
         cuenta2.classList.add('hiden');
-        cortina.classList.toggle('cortina-t')
+        cortina.classList.toggle('cortina-t');
         sideMobil.classList.remove('transition');
+        setTimeout(() => {
+          sideMobil.classList.remove('showw'); 
+        }, 1000);
     }
 })
 
@@ -635,15 +738,85 @@ cortina.addEventListener('click' , (e) => {
     e.preventDefault();
     console.log("jaja")
     a.classList.remove('hiden');
-    b.classList.remove('hiden');
+  
     c.classList.remove('hiden');
     d.classList.remove('hiden');
     f.classList.remove('hiden');
     cuenta2.classList.remove('hiden');
     cortina.classList.toggle('cortina-t')
     sideMobil.classList.remove('transition');
+    sideMobil.classList.remove('showw');
+    setTimeout(() => {
+      sideMobil.classList.remove('showw'); 
+    }, 1000);
 })
+body.addEventListener('mouseover', e => {
+  e.preventDefault();
+  if (e.target.classList.contains('side-button-2') || e.target.classList.contains('aja')) {
+    console.log('qlqlq');
+    side.classList.add('side-hover');
+    sideText.forEach(e => {
+      e.classList.remove('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.add('hidden');
+    })
 
+  } else {
+    side.classList.remove('side-hover');
+    sideText.forEach(e => {
+      e.classList.add('hidden');
+    })
+    sideImg.forEach(e => {
+      e.classList.remove('hidden');
+    })
+  }
+
+  if (e.target.classList.contains('imagen')||e.target.classList.contains('nombre')||e.target.classList.contains('value')&& !(e.target.classList.contains('side-button-aja'))) {
+    console.log(e.target.parentElement);
+    const content = document.querySelectorAll('.column')
+    console.log('aja');
+    
+    content.forEach(e => {
+      console.log(e.children);
+      const k = e.children[0]
+      console.log(k.children[3]);
+      k.children[3].classList.remove('show-grid')
+      
+    })
+    const bueno = e.target.parentElement.parentElement
+    
+    console.log(e.target.parentElement.parentElement.classList[2]);
+    const current = bueno.classList[2];
+    div.className= `big${current}`
+    // console.log(current);
+    // console.log(e.target.parentElement.parentElement.parentElement.children[current-2]);
+    // console.log(current%2);
+    // let eso = ''
+    // if (current%2 === '0') {
+    //   eso = current/2
+    // } else {
+    //   eso = (current/2)
+    // }
+     
+    // bueno.style.gridRow = `${eso}`
+    // console.log(e.target.parentElement.children[3]);
+    e.target.parentElement.children[3].classList.add('show-grid')
+    // e.target.parentElement.parentElement.style.gridRow = '0'
+  } else if (!(e.target.classList.contains('side-button-aja'))) {
+    const content = document.querySelectorAll('.column')
+    console.log('aja');
+    
+    content.forEach(e => {
+      console.log(e.children);
+      const k = e.children[0]
+      console.log(k.children[3]);
+      k.children[3].classList.remove('show-grid')
+      
+    })
+    div.className = "";
+  }
+})
 
 
 console.log("abueno");
