@@ -2,7 +2,8 @@ const express = require('express');
 const { route } = require('../app');
 const controller = require('../controllers/uploads');
 const router = express.Router();
-const path = 'uploads'
+const path = 'uploads';
+
 
 router.post(
     `/api/${path}`,

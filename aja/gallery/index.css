@@ -7,6 +7,8 @@
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
     margin: 0%;
     background-color: rgb(231, 231, 231);
     overflow: hidden;
@@ -84,7 +86,8 @@ body {
     background-color: lightcoral !important;
 }   
 #div-nav {
-    
+    position: absolute;
+    width: 100%;
     display: flex;
     z-index: 10; 
     height: 5%;
@@ -92,7 +95,6 @@ body {
 #nav-tab {
    width: 100vw;
    padding: 1rem;
-   padding-right: 2rem;
    background-color: black;
    height: 100%;
    display: flex;
@@ -350,12 +352,19 @@ body {
     border-style: dashed;
 }
 #side {
-    display: flex;
+    display: none;
     flex-direction: column;
     position: absolute;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    border-top-width: 1px;
+    border-color: white;
+    border-style: solid;
+    top: 8%;
     right: -100%;
     width: 100%;
-    z-index: 10;
+    z-index: 25;
     opacity: 0.1;
     transition-property: width, opacity, right;
     transition-duration: 0.5s;
@@ -370,7 +379,7 @@ body {
     right: 100%;
     height: 100%;
     opacity: 0;
-    z-index: 5;
+    z-index: -1 !important;
     transition-property: opacity, right;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
@@ -393,7 +402,6 @@ body {
 
 .transition {
     opacity: 1 !important;
-    border-right-width: 5px !important;
     right: 0% !important;
 }
 .hiden {
@@ -403,7 +411,6 @@ body {
 #side-t {
     display: flex;
     flex-direction: column;
-    opacity: 0;
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
@@ -522,16 +529,86 @@ body {
     display: flex;
     flex-direction: column;
 }
+/* .categoryDiv {
+
+} */
+.seccionDiv {
+    display: flex;
+    position: absolute;
+    
+    flex-direction: column;
+    
+    width: 100%;
+    height: 100%;
+}
+.divImage-evento{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    justify-content: space-between;
+    width: 100%;
+    height: 33.33333%;
+    background-color: gray;
+    font-family: fantasy;
+    font-weight: bold;
+    font-size: 2rem;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    
+}
+.divImage-produccion{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 66.66666%;
+    width: 100%;
+    height: 33.33333%;
+    background-color: gray;
+    font-family: fantasy;
+    font-weight: bold;
+    font-size: 2rem;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    
+    
+    
+}
+.divImage-producto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+    position: absolute;
+    top: 33.33333%;
+    width: 100%;
+    height: 33.33333%;
+    background-color: black;
+    color: gray;
+    font-family: fantasy;
+    font-weight: bold;
+    font-size: 2rem;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    
+    
+}
 #main {
     display: flex;
     background-color:transparent;
-    position: absolute;
     flex-direction: row;
+    position: absolute;
+    top: 9%;
     width: 100%;
-    height: 90%;
+    height: 91%;
     z-index: 0;
     justify-content: center;
     align-items: center;
+    
 }
 
 #aaja {
@@ -545,10 +622,11 @@ body {
     background-color:transparent;
     flex-direction: column;
     width: 100%;
-    height: 89.3%;
+    height: 100%;
     z-index: -10;
     justify-content: center;
     align-items: center;
+    
 }
 
 #div1 {
@@ -560,7 +638,99 @@ body {
     z-index: -10;
     justify-content: center;
     align-items: center;
+    
 }
+#div1 > .divImage-producto > .seccionDiv{
+    left: 0 !important;
+}
+.categoryDiv {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    
+}
+.aja {
+    opacity: 1;
+}
+.titleDiv {
+    position: absolute;
+    z-index: 10;
+    padding: 0.4rem;
+}
+.ver {
+    opacity: 1;
+}
+.divImages {
+    display: flex;
+    height: 20%;
+}
+.galleryImage {
+    height: 100%;
+    width: 100%;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    object-fit: cover;
+}
+
+.showing-evento-in-producto {
+    top: 87.3333%
+}
+.showing-evento-in-produccion {
+    top : 93.6666%
+}
+.showing-evento {
+    height: 87.3333%;
+}
+.showing-producto-in-evento {
+    height: 6.5%;
+}
+.showing-producto-in-produccion {
+    top : 93.6666%
+}
+.showing-producto {
+    top: 6.5%;
+    height: 87.3333%;
+}
+.showing-produccion-in-evento {
+    height: 6.5%;
+}
+.showing-produccion-in-producto {
+    top: 6.5%;
+    height: 6.5%;
+}
+.showing-produccion {
+    top: 13%;
+    height: 87.3333%;
+}
+.oculto {
+    opacity: 0 !important;
+    z-index: -10;
+}
+.showing {
+    opacity: 1 !important;
+    position: relative !important;
+}
+
+.equis {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    z-index: -1;
+    opacity: 0;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: 3s;
+}
+.showEquis {
+    opacity: 1 !important;
+    z-index: 1 !important;
+}
+
 /*  */
 /* .slideshow-container {
     max-width: 1000px;

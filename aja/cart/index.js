@@ -42,7 +42,17 @@ wrapGrid(div ,{
   easing: 'backInOut',
 }); 
 
-
+const user = async () => {
+  const user = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
+  method: 'GET',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  }));
+  const userJSON = await user.json();
+  
+  return {user, userJSON}
+}
 
 
 const bot = async (data) => {
@@ -605,33 +615,41 @@ for (var i = 0; i < btns.length; i++) {
                       usuario: usuario,
                       metodoDePago: metodoDePago,
                     }
-                    facturaa(data).then(e => {
-                      console.log(e.factura);
-                      console.log(e.facturaJSON);
-                      const iidd = e.facturaJSON.savedfactura.id
-                      const data = {
-                        phone: "584120297347",
-                        id: iidd,
-                        metodo: "get"
-                      }
-                      bot(data).then(e => {
-                        console.log(e.facturaJSON);
+                    user().then(e => {
+                      console.log(e.userJSON);
+                      const users = e.userJSON.docs
+                      const aja = users.filter(element => element.username===usuario);
+                      console.log(aja);
+
+                      facturaa(data).then(e => {
                         console.log(e.factura);
-                        preguntaContainer.innerHTML=""
-                        preghunta.innerHTML=`
-                        <p>El #id de su orden es ${iidd}</p>
-                        <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
-                        `
-                        preguntaContainer.append(preghunta);
-                        console.log(preguntaContainer);
+                        console.log(e.facturaJSON);
+                        const iidd = e.facturaJSON.savedfactura.id
+                        const data = {
+                          phone: "584120297347",
+                          id: iidd,
+                          metodo: "get"
+                        }
+                        bot(data).then(e => {
+                          console.log(e.facturaJSON);
+                          console.log(e.factura);
+                          preguntaContainer.innerHTML=""
+                          preghunta.innerHTML=`
+                          <p>El #id de su orden es ${iidd}</p>
+                          <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
+                          `
+                          preguntaContainer.append(preghunta);
+                          preghunta.className = "final"
+                          console.log(preguntaContainer);
+                        })
+                        
                       })
-                      
                     })
                 })
 
-                pagoMobil.addEventListener('click', e =>{
+                pagoMobil.addEventListener('click', e => {
                   e.preventDefault();
-                  if (referencia.value==="") {
+                  if (referencia.value === "") {
                     referencia.classList.add('incorrect');
                   } else {
                     referencia.classList.remove('incorrect');
@@ -648,28 +666,37 @@ for (var i = 0; i < btns.length; i++) {
                       metodoDePago: metodoDePago,
                       numeroRef: numeroRef
                     }
-                    facturaa(data).then(e => {
-                      console.log(e.factura);
-                      console.log(e.facturaJSON);
-                      const iidd = e.facturaJSON.savedfactura.id
-                      const data = {
-                        phone: "584120297347",
-                        id: iidd,
-                        metodo: "get"
-                      }
-                      bot(data).then(e => {
-                        console.log(e.facturaJSON);
+                    user().then(e => {
+                      console.log(e.userJSON);
+                      const users = e.userJSON
+                      const aja = users.filter(element => element.username===usuario);
+                      console.log(aja);
+
+                      facturaa(data).then(e => {
                         console.log(e.factura);
-                        preguntaContainer.innerHTML=""
-                        preghunta.innerHTML=`
-                        <p>El #id de su orden es ${iidd}</p>
-                        <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
-                        `
-                        preguntaContainer.append(preghunta);
-                        console.log(preguntaContainer);
+                        console.log(e.facturaJSON);
+                        const iidd = e.facturaJSON.savedfactura.id
+                        const data = {
+                          phone: "584120297347",
+                          id: iidd,
+                          metodo: "get"
+                        }
+                        bot(data).then(e => {
+                          console.log(e.facturaJSON);
+                          console.log(e.factura);
+                          preguntaContainer.innerHTML=""
+                          preghunta.innerHTML=`
+                          <p>El #id de su orden es ${iidd}</p>
+                          <p>Verifica el estado de tu orden en la pestaña de <a href="../account">Cuenta</a>.</p>
+                          `
+                          preguntaContainer.append(preghunta);
+                          preghunta.className = "final"
+                          console.log(preguntaContainer);
+                        })
+                        
                       })
-                      
                     })
+                    
 
                   }
 
@@ -745,7 +772,6 @@ cortina.addEventListener('click' , (e) => {
     cuenta2.classList.remove('hiden');
     cortina.classList.toggle('cortina-t')
     sideMobil.classList.remove('transition');
-    sideMobil.classList.remove('showw');
     setTimeout(() => {
       sideMobil.classList.remove('showw'); 
     }, 1000);

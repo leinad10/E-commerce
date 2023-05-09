@@ -1,3 +1,5 @@
+
+
 const botonDrop = document.querySelector("#botonDrop");
 const sideMobil = document.querySelector("#side");
 const a = document.querySelector('#side-t');
@@ -23,6 +25,144 @@ const sideText = document.querySelectorAll('.side-t-p')
 const sideImg = document.querySelectorAll(".side-t-img");
 const side = document.querySelector("#side-2");
 const body = document.querySelector('body');
+const div = document.querySelector('#div1');
+
+const user = async () => {
+  const user = await (fetch('https://four-estaciones-gp8t.onrender.com/api/users', {
+  method: 'GET',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  }));
+  const userJSON = await user.json();
+  
+  return {user, userJSON}
+}
+
+const factura = async () => {
+  const factura = await (fetch('https://four-estaciones-gp8t.onrender.com/api/factura', {
+  method: 'GET',
+  headers: {
+      'Content-type': 'application/json',
+   },
+  }));
+  const facturaJSON = await factura.json();
+  
+  return {factura, facturaJSON}
+}
+
+user().then(e => {
+  const aja = e.userJSON.docs
+  const eso = aja.filter(element => element.username===usuario);
+  console.log(eso[0]);
+  const ve = eso[0]
+  if (ve.admin==="true") {
+    console.log("soy admin");
+    factura().then(e=>{
+      console.log(e.facturaJSON);
+      const eso = e.facturaJSON.docs
+      const aja = e.facturaJSON.docs
+      console.log(aja);
+      
+      div.innerHTML = "";
+      const informacion = document.createElement('div');
+      informacion.innerHTML = `<div class="informacion-div"> <p> Nombre de usuario: </p> <p>${ve.username}</p> </div>
+      <div class="informacion-div"> <p> Telefono: </p> <p> ${ve.numberPhone}</p> </div>
+      <div class="informacion-div"> <p> Id: </p> <p> ${ve.id}</p> </div>
+      `
+      div.append(informacion);
+      informacion.classList.add('informacion');
+      if (aja==="") {
+        const facturas = document.createElement('div');
+        facturas.innerHTML = `No has hecho ningun pedido hasta ahora, Realiza tu primer pedido aqui: <a href='../cart'> Ordenar </a>`
+      } else {
+        const k = document.createElement('div');
+        k.innerHTML=""
+        k.classList.add('grupo-facturas');
+        div.append(k);
+        aja.forEach(e => {
+          const fua = e.productos
+          const gua = e.totalBolivares.toFixed(2);
+          const que = document.createElement('div');
+          que.innerHTML = `<div class='facturas'> <p> Estado: </p> </p>${e.estado}</div>
+          <div class='facturas'> <p> Id: </p> </p>${e.id}</div>
+          <div class='facturas'> <p> Metodo de Pago: </p> </p>${e.metodoDePago}</div>
+          <div class='facturas'> <p> Numero de Referencia: </p> </p>${e.numeroRef}</div>
+          <div class='facturas'> <p> Total en Bolivares: </p> </p>${gua} Bs.</div>
+          <div class='facturas'> <p> Total en Dolares: </p> </p>${e.totalDolars} $</div>
+          <div class='facturas'> <p> Direccion de envio: </p> </p>${e.direccion}</div>
+          `
+          k.append(que);
+          que.classList.add('facturita');
+          const productoFactura = document.querySelector("#productos");
+
+          fua.forEach(a => {
+            const aja = document.createElement('div');
+            console.log(a.nombre);
+            aja.innerHTML = `<div class="facturas-producto"> <p>Producto:</p> <p>${a.nombre}</p> </div>
+            <div class="facturas-producto"> <p>Cantidad:</p> <p>${a.cantidad}</p> </div>
+            <div class="facturas-producto"> <p>Valor:</p> <p>${a.valor}</p> </div>` 
+            aja.classList.add('factura-producto');
+            que.append(aja);
+          })
+        })
+      }
+    })
+    
+  } else {
+    factura().then(e=>{
+      console.log(e.facturaJSON);
+      const eso = e.facturaJSON.docs
+      const aja = eso.filter(element => element.usuario===usuario);
+      console.log(aja);
+      console.log("no soy admin");
+      div.innerHTML = "";
+      const informacion = document.createElement('div');
+      informacion.innerHTML = `<div class="informacion-div"> <p> Nombre de usuario: </p> <p>${ve.username}</p> </div>
+      <div class="informacion-div"> <p> Telefono: </p> <p> ${ve.numberPhone}</p> </div>
+      <div class="informacion-div"> <p> Id: </p> <p> ${ve.id}</p> </div>
+      `
+      div.append(informacion);
+      informacion.classList.add('informacion');
+      if (aja==="") {
+        const facturas = document.createElement('div');
+        facturas.innerHTML = `No has hecho ningun pedido hasta ahora, Realiza tu primer pedido aqui: <a href='../cart'> Ordenar </a>`
+      } else {
+        const k = document.createElement('div');
+        k.innerHTML=""
+        k.classList.add('grupo-facturas');
+        div.append(k);
+        aja.forEach(e => {
+          const fua = e.productos
+          const gua = e.totalBolivares.toFixed(2);
+          const que = document.createElement('div');
+          que.innerHTML = `<div class='facturas'> <p> Estado: </p> </p>${e.estado}</div>
+          <div class='facturas'> <p> Id: </p> </p>${e.id}</div>
+          <div class='facturas'> <p> Metodo de Pago: </p> </p>${e.metodoDePago}</div>
+          <div class='facturas'> <p> Numero de Referencia: </p> </p>${e.numeroRef}</div>
+          <div class='facturas'> <p> Total en Bolivares: </p> </p>${gua} Bs.</div>
+          <div class='facturas'> <p> Total en Dolares: </p> </p>${e.totalDolars} $</div>
+          <div class='facturas'> <p> Direccion de envio: </p> </p>${e.direccion}</div>
+          `
+          k.append(que);
+          que.classList.add('facturita');
+          const productoFactura = document.querySelector("#productos");
+
+          fua.forEach(a => {
+            const aja = document.createElement('div');
+            console.log(a.nombre);
+            aja.innerHTML = `<div class="facturas-producto"> <p>Producto:</p> <p>${a.nombre}</p> </div>
+            <div class="facturas-producto"> <p>Cantidad:</p> <p>${a.cantidad}</p> </div>
+            <div class="facturas-producto"> <p>Valor:</p> <p>${a.valor}</p> </div>` 
+            aja.classList.add('factura-producto');
+            que.append(aja);
+          })
+        })
+      }
+    })
+  }
+})
+
 
 body.addEventListener('mouseover', e => {
   e.preventDefault();
@@ -69,10 +209,10 @@ const redirect = () => {
         mensajeContainer.classList.toggle('show-transform');
         mensajeContainer.classList.toggle('fail');
       }, 5000);
-      setTimeout(() => {
-        window.location = "../login"
+      // setTimeout(() => {
+      //   window.location = "../login"
           
-      }, 5000);
+      // }, 5000);
       return 
     }
     mensajeContainer.classList.toggle('show-transform');
@@ -128,10 +268,10 @@ setInterval(() => {
 botonDrop.addEventListener('click', (e) => {
     e.preventDefault();
     if (!(sideMobil.classList.contains("transition"))) {
+        sideMobil.classList.add('showw') 
         sideMobil.classList.add('transition');
         cortina.classList.toggle('cortina-t')
 
-        console.log(aja);
         setTimeout(() => {
             a.classList.add('hiden');
             
@@ -150,6 +290,9 @@ botonDrop.addEventListener('click', (e) => {
         cuenta2.classList.add('hiden');
         cortina.classList.toggle('cortina-t')
         sideMobil.classList.remove('transition');
+        setTimeout(() => {
+          sideMobil.classList.remove('showw'); 
+        }, 1000);
     }
 })
 
@@ -164,6 +307,9 @@ cortina.addEventListener('click' , (e) => {
     cuenta2.classList.remove('hiden');
     cortina.classList.toggle('cortina-t')
     sideMobil.classList.remove('transition');
+    setTimeout(() => {
+      sideMobil.classList.remove('showw'); 
+    }, 1000);
 })
 
 
